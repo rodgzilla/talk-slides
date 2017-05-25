@@ -18,4 +18,129 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \tableofcontents
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Basic notions}
+
+  An adversarial example is a sample of input data which has been
+  modified very slightly in a way that is intended to cause a machine
+  learning classifier to misclassify it.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Gradient descent}
+
+  \begin{center}
+    \scalebox{0.5}{
+      \input{figures/scatter_01.tex}
+    }
+  \end{center}
+
+  We have a set of points that we want to approximate with a line.
+
+  \[
+  y = ax + b
+  \]
+
+  \pause
+
+  First we choose a \textcolor{blue}{loss} that measures how good our
+  predictions are.
+
+  \[
+  l(x, y, a, b) = (y - (a x + b))^{2}
+  \]
+
+  \pause
+
+  We compute how the loss is affected by small changes of $a$ and
+  $b$:
+
+  \[
+  \frac{dl}{da} = 2 x (ax + b - y) \qquad \qquad \frac{dl}{db} = 2 (ax + b - y)
+  \]
+
+  And we update $a$ and $b$ iteratively until we reach a satisfying
+  result (the average loss is low enough).
+
+%  a = -0.08 \quad b = 0.68
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Gradient descent}
+
+  \begin{center}
+    \scalebox{0.5}{
+      \input{figures/scatter_02.tex}
+    }
+  \end{center}
+
+  In our previous example, we have modified \textcolor{red}{the model}
+  in order to minimize the loss.
+
+  \[
+  y = \textcolor{red}{a}x + \textcolor{red}{b}
+  \]
+
+  \pause
+
+  Now suppose we are an evil attacker who wants to maximise the loss
+  with the model being fixed. The only thing we can modify is the
+  \textcolor{blue}{inputs}.
+
+  \[
+  l(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
+  \]
+
+  \pause
+
+  In order to do this, we compute how the loss is affected by small
+  changes of the input:
+
+  \[
+  \frac{dl}{dx} = 2 a (ax + b - y)
+  \]
+
+  We can now make \emph{imperceptible} changes to the data points to make
+  the loss grow.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Attack}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Attack}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Defense}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Defense}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \end{document}
