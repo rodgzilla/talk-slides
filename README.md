@@ -1,2 +1,3 @@
 # Deep-learning-presentation
-A basic presentation of deep learning and a few of its applications
+Various presentations about deep learning and a few of its applications.
+
