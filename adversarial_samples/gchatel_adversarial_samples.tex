@@ -32,15 +32,29 @@
 \begin{frame}
   \frametitle{Basic notions}
 
-  An adversarial example is a sample of input data which has been
-  modified very slightly in a way that is intended to cause a machine
-  learning classifier to misclassify it.
+  \framesubtitle{Adversarial example}
+
+  An \emph{adversarial example} is a sample of input data which has
+  been modified \emph{very slightly} in a way that is intended to
+  cause a machine learning classifier to misclassify it.
+
+  \bigskip
+
+  \pause
+
+  \begin{center}
+    \includegraphics[trim={2pt 2pt 2pt 0}, clip, width =
+      \linewidth]{images/adversarial_example_wig.png}
+  \end{center}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Gradient descent}
+
+  \framesubtitle{Basic concept}
 
   \begin{center}
     \scalebox{0.9}{
@@ -54,6 +68,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Gradient descent}
+
+  \framesubtitle{Model optimization}
 
   \begin{center}
     \scalebox{0.5}{
@@ -96,6 +112,10 @@
 \begin{frame}
   \frametitle{Gradient descent}
 
+  \framesubtitle{Being evil}
+
+  \vspace{-0.5cm}
+
   \begin{center}
     \scalebox{0.5}{
       \input{figures/scatter_02.tex}
@@ -111,9 +131,9 @@
 
   \pause
 
-  Now suppose we are an evil attacker who wants to maximise the loss
-  with the model being fixed. The only thing we can modify is the
-  \textcolor{blue}{inputs}.
+  Now suppose we are an attacker who wants to maximise the loss of a
+  model, its parameters being fixed. The only thing we can modify is
+  the \textcolor{blue}{inputs}.
 
   \[
   l(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
@@ -133,12 +153,46 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \section{Attack}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Attack}
+  \frametitle{Fast Gradient Sign Method}
+
+  Move along the derivate away from the correct value as a way to
+  maximise the error.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{FGSM variants}
+
+  \begin{itemize}
+  \item Targeted FGSM
+  \item Iterative FGSM
+  \item RAND + FGSM
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Black box attack}
+
+  This is nice but happens if you cannot access the gradients
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial examples in the physical world}
+
+  This is nice but in the physical world, we are not feeding the
+  network with our own data, it is acquired by the network's system
+  (using camera for example).
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
