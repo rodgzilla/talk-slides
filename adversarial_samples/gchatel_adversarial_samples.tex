@@ -40,6 +40,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \frametitle{Gradient descent}
+
+  \begin{center}
+    \scalebox{0.9}{
+      \input{figures/parabola.tex}
+    }
+  \end{center}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,7 +82,7 @@
   $b$:
 
   \[
-  \frac{dl}{da} = 2 x (ax + b - y) \qquad \qquad \frac{dl}{db} = 2 (ax + b - y)
+  \frac{\mathrm{d}l}{\mathrm{d}a} = 2 x (ax + b - y) \qquad \qquad \frac{\mathrm{d}l}{\mathrm{d}b} = 2 (ax + b - y)
   \]
 
   And we update $a$ and $b$ iteratively until we reach a satisfying
@@ -118,7 +125,7 @@
   changes of the input:
 
   \[
-  \frac{dl}{dx} = 2 a (ax + b - y)
+  \frac{\mathrm{d}l}{\mathrm{d}x} = 2 a (ax + b - y)
   \]
 
   We can now make \emph{imperceptible} changes to the data points to make
