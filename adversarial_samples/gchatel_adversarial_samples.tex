@@ -57,10 +57,13 @@
   \framesubtitle{Basic concept}
 
   \begin{center}
-    \scalebox{0.9}{
+    \scalebox{0.8}{
       \input{figures/parabola.tex}
     }
   \end{center}
+
+  The curve needs to be \textit{smooth enough} for the gradient
+  descent to work.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,7 +105,7 @@
   \]
 
   And we update $a$ and $b$ iteratively until we reach a satisfying
-  result (the average loss is low enough).
+  result (the average loss for our data points is low enough).
 
 %  a = -0.08 \quad b = 0.68
 \end{frame}
@@ -132,8 +135,8 @@
   \pause
 
   Now suppose we are an attacker who wants to maximise the loss of a
-  model, its parameters being fixed. The only thing we can modify is
-  the \textcolor{blue}{inputs}.
+  model, its \textcolor{red}{parameters} being fixed. The only thing
+  we can modify is the \textcolor{blue}{inputs}.
 
   \[
   l(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
@@ -198,7 +201,7 @@
 \begin{frame}
   \frametitle{Adversarial examples in the physical world}
 
-  This is nice but in the physical world, we are not feeding the
+  This is nice but in real world scenarios, we are not feeding the
   network with our own data, it is acquired by the network's system
   (using camera for example).
 
@@ -209,7 +212,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Defense}
+  \frametitle{Defenses}
+
+  \begin{description}
+  \item[Adversarial sample detection] We try to detect whether an
+    input sample is adversarial or not before classifying it.
+  \item[Gradient masking] The goal of gradient masking is to leave the
+    decision boundaries untouched but damage the gradient used in
+    white-box attacks.
+  \item[Distillation and network saturation] These methods are used to
+    introduce numeraical instabilities in gradient computations.
+  \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
