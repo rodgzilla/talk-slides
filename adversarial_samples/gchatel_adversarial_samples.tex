@@ -157,22 +157,31 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Fast Gradient Sign Method}
+  \frametitle{Attacks}
 
-  Move along the derivate away from the correct value as a way to
-  maximise the error.
+  \begin{description}
+  \item[Random noise] Does not work
+  \item[FGSM] Good but can be well defended by training the network
+    with adversarial samples
+  \item[Iterative FGSM] Higher error than FGSM for an equivalent
+    $\varepsilon$ but less transferability. I-FGSM produces weaker
+    black-box attacks.
+  \item[Targeted FGSM] Aims at fooling a model into outputting a given
+    target class.
+  \item[RAND + FGSM] Significant improvements against adversarially
+    trained models. RAND+FGSM transfers at lower rates than FGSM
+    examples. Unsing RAND+FGSM to adverarially train networks does not
+    improve their defense against RAND+FGSM.
+  \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{FGSM variants}
+  \frametitle{Fast Gradient Sign Method}
 
-  \begin{itemize}
-  \item Targeted FGSM
-  \item Iterative FGSM
-  \item RAND + FGSM
-  \end{itemize}
+  Move along the derivate away from the correct value as a way to
+  maximise the error.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
