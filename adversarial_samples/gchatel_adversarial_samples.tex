@@ -40,14 +40,6 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-
-  \tableofcontents
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,24 +172,24 @@
 \section{Attack}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Attacks}
+%% \begin{frame}
+%%   \frametitle{Attacks}
 
-  \begin{description}
-  \item[Random noise] Does not work
-  \item[FGSM] Good but can be well defended by training the network
-    with adversarial samples
-  \item[Iterative FGSM] Higher error than FGSM for an equivalent
-    $\varepsilon$ but less transferability. I-FGSM produces weaker
-    black-box attacks.
-  \item[Targeted FGSM] Aims at fooling a model into outputting a given
-    target class.
-  \item[RAND + FGSM] Significant improvements against adversarially
-    trained models. RAND+FGSM transfers at lower rates than FGSM
-    examples. Unsing RAND+FGSM to adverarially train networks does not
-    improve their defense against RAND+FGSM.
-  \end{description}
-\end{frame}
+%%   \begin{description}
+%%   \item[Random noise] Does not work
+%%   \item[FGSM] Good but can be well defended by training the network
+%%     with adversarial samples
+%%   \item[Iterative FGSM] Higher error than FGSM for an equivalent
+%%     $\varepsilon$ but less transferability. I-FGSM produces weaker
+%%     black-box attacks.
+%%   \item[Targeted FGSM] Aims at fooling a model into outputting a given
+%%     target class.
+%%   \item[RAND + FGSM] Significant improvements against adversarially
+%%     trained models. RAND+FGSM transfers at lower rates than FGSM
+%%     examples. Unsing RAND+FGSM to adverarially train networks does not
+%%     improve their defense against RAND+FGSM.
+%%   \end{description}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -227,8 +219,47 @@
 \begin{frame}
   \frametitle{Fast Gradient Sign Method}
 
-  Move along the derivate away from the correct value as a way to
-  maximise the error.
+  Let $x$ be the original image, $\theta$ the parameters of the model,
+  $y$ the target associated with $x$ and $J(\theta, x, y)$ the loss
+  function.
+
+  \bigskip
+
+  We compute the gradient of the loss function according to the input
+  pixels.
+
+  \[
+  \nabla_{x} J(\theta, x, y)
+  \]
+
+  \bigskip
+
+  The perturbation is the signs of these derivatives multiplied by a
+  small number $\varepsilon$.
+
+  \[
+  \eta = \varepsilon \text{sign}(\nabla_{x} J(\theta, x, y))
+  \]
+
+  \bigskip
+
+  The final adversarial sample is the sum of the original image and
+  the pertubation.
+
+  \[
+  x_{adv} = x + \eta
+  \]
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Fast gradient sign method}
+
+  \begin{center}
+    \input{figures/FGSM.tex}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -1,0 +1,33 @@
+\begin{tikzpicture}[xscale=3.5, yscale=2]
+  \node(orig) at (0, 0) {
+    \includegraphics[width = 3cm]{images/FGSM_orig.png}
+  };
+
+  \node(pert) at (1, 0) {
+    \includegraphics[width = 3cm]{images/FGSM_pert.png}
+  };
+
+  \node(adv) at (2, 0) {
+    \includegraphics[width = 3cm]{images/FGSM_adv.png}
+  };
+
+  \node(x) at (0, 1) {
+    $x$
+  };
+
+  \node(plus) at (0.5, 1) {
+    +
+  };
+
+  \node(grad) at (1, 1) {
+    $\varepsilon \text{sign}(\nabla_{x} J(\theta, x, y))$
+  };
+
+  \node(equal) at (1.5, 1) {
+    =
+  };
+
+  \node(result) at (2, 1) {
+    $x_{\text{adv}}$
+  };
+\end{tikzpicture}
