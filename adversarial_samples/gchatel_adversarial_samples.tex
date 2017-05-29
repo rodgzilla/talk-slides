@@ -20,9 +20,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Basic notions}
-
-  \framesubtitle{Adversarial example}
+  \frametitle{What is an adversarial example?}
 
   An \emph{adversarial example} is a sample of input data which has
   been modified \emph{very slightly} in a way that is intended to
@@ -217,7 +215,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Fast Gradient Sign Method}
+  \frametitle{Fast Gradient Sign Method [Goodfellow et al. 2015]}
 
   Let $x$ be the original image, $\theta$ the parameters of the model,
   $y$ the target associated with $x$ and $J(\theta, x, y)$ the loss
@@ -255,7 +253,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Fast gradient sign method}
+  \frametitle{Fast Gradient Sign Method}
 
   \begin{center}
     \input{figures/FGSM.tex}
@@ -267,7 +265,11 @@
 \begin{frame}
   \frametitle{Black box attack}
 
-  This is nice but happens if you cannot access the gradients
+  \framesubtitle{or good luck getting gradients out of a self-driving car}
+
+  \begin{center}
+    \includegraphics[width = 5cm]{images/cool_story_bro.jpg}
+  \end{center}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -301,6 +303,49 @@
   \item[Distillation and network saturation] These methods are used to
     introduce numerical instabilities in gradient computations.
   \end{description}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Defending machine learning}
+
+  ''Most defenses against adversarial examples that have been proposed
+  so far just do not work very well at all, but the ones that do work
+  are not adaptive. This means it is like they are playing a game of
+  whack-a-mole: they close some vulnerabilities, but leave others
+  open.''
+
+  \bigskip
+
+  - Ian Goodfellow, Nicolas Papernot, February 2017
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{References}
+
+  {\footnotesize
+    \begin{enumerate}
+    \item Goodfellow, I. J., Shlens, J., \& Szegedy,
+      C. (2014). Explaining and harnessing adversarial
+      examples. arXiv preprint arXiv:1412.6572.
+    \item Papernot, N., McDaniel, P., Wu, X., Jha, S., \& Swami,
+      A. (2016, May). Distillation as a defense to adversarial
+      perturbations against deep neural networks. In Security and
+      Privacy (SP), 2016 IEEE Symposium on (pp. 582-597). IEEE.
+    \item Papernot, N., McDaniel, P., Goodfellow, I., Jha, S., Celik,
+      Z. B., \& Swami, A. (2016). Practical black-box attacks against
+      deep learning systems using adversarial examples. arXiv preprint
+      arXiv:1602.02697.
+    \item Tramèr, F., Kurakin, A., Papernot, N., Boneh, D., \&
+      McDaniel, P. (2017). Ensemble Adversarial Training: Attacks and
+      Defenses. arXiv preprint arXiv:1705.07204.
+    \end{enumerate}
+  }
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
