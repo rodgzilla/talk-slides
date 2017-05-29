@@ -151,8 +151,29 @@
   \frac{\mathrm{d}l}{\mathrm{d}x} = 2 a (ax + b - y)
   \]
 
-  We can now make \emph{imperceptible} changes to the data points to make
-  the loss grow.
+  We can now make \emph{imperceptible} changes to an input to make the
+  loss grow.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neural networks}
+
+  I used a basic regression task to illustrate the concept of
+  adversarial samples generation.
+
+  \bigskip
+
+  Everything works the same way when working with a neural network on
+  an image classification task.
+
+  \bigskip
+
+  We also have a differentiable \textcolor{red}{loss function} (often
+  \textcolor{red}{categorical cross entropy}) and
+  \textcolor{blue}{inputs} (\textcolor{blue}{pixel values}) that we
+  can modify to increase the loss.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
