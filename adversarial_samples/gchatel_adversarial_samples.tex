@@ -78,8 +78,7 @@
 
   \pause
 
-  First we choose a \textcolor{blue}{loss} that measures how good our
-  predictions are.
+  First we choose a loss that measures how good our predictions are.
 
   \[
   l(x, y, a, b) = (y - (a x + b))^{2}
@@ -87,8 +86,7 @@
 
   \pause
 
-  We compute how the loss is affected by small changes of $a$ and
-  $b$:
+  We compute how the loss is affected by small changes of $a$ and $b$.
 
   \[
   \frac{\mathrm{d}l}{\mathrm{d}a} = 2 x (ax + b - y) \qquad \qquad \frac{\mathrm{d}l}{\mathrm{d}b} = 2 (ax + b - y)
@@ -135,7 +133,7 @@
   \pause
 
   In order to do this, we compute how the loss is affected by small
-  changes of the input:
+  changes of the input.
 
   \[
   \frac{\mathrm{d}l}{\mathrm{d}x} = 2 a (ax + b - y)
@@ -149,11 +147,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Neural networks}
-
-  I used a basic regression task to illustrate the concept of
-  adversarial samples generation.
-
-  \bigskip
 
   Everything works the same way when working with a neural network on
   an image classification task.
@@ -263,13 +256,51 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Black box attack}
+  \frametitle{Black box attack [Papernot et al. 2016]}
 
-  \framesubtitle{or good luck getting gradients out of a self-driving car}
+  \framesubtitle{or good luck getting gradients out of your
+    self-driving car}
 
   \begin{center}
     \includegraphics[width = 5cm]{images/cool_story_bro.jpg}
   \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Black box attack [Papernot et al. 2016]}
+
+  \framesubtitle{Transferability of adversarial samples}
+
+  %% If our interface with the target model is its final output, we
+  %% cannot use gradients to create adversarial samples.
+
+  We can train a new model $M'$ to solve the same classification task
+  at the target model $M$.
+
+  \bigskip
+
+  Once trained, we can create an adversarial sample $x'$ for the $M'$
+  model and experience have shown that $x'$ will also fool $M$ very
+  often.
+
+  \bigskip
+
+  What if we do not have a training set for the target network? Well\dots{} build one.
+
+  \bigskip
+
+  \textit{``After labeling 6,400 synthetic inputs to train our
+    substitute (an order of magnitude smaller than the training set
+    used by MetaMind) we find that their DNN misclassifies adversarial
+    examples crafted with our substitute at a rate of 84.24\%''}
+
+  \bigskip
+
+  - Papernot et al., about the attack on the MetaMind deep neural
+  network.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,7 +342,7 @@
 
   \frametitle{Defending machine learning}
 
-  ''Most defenses against adversarial examples that have been proposed
+  ``Most defenses against adversarial examples that have been proposed
   so far just do not work very well at all, but the ones that do work
   are not adaptive. This means it is like they are playing a game of
   whack-a-mole: they close some vulnerabilities, but leave others
@@ -333,9 +364,12 @@
       C. (2014). Explaining and harnessing adversarial
       examples. arXiv preprint arXiv:1412.6572.
     \item Papernot, N., McDaniel, P., Wu, X., Jha, S., \& Swami,
-      A. (2016, May). Distillation as a defense to adversarial
+      A. (2016). Distillation as a defense to adversarial
       perturbations against deep neural networks. In Security and
       Privacy (SP), 2016 IEEE Symposium on (pp. 582-597). IEEE.
+    \item Kurakin, A., Goodfellow, I., \& Bengio,
+      S. (2016). Adversarial examples in the physical world. arXiv
+      preprint arXiv:1607.02533.
     \item Papernot, N., McDaniel, P., Goodfellow, I., Jha, S., Celik,
       Z. B., \& Swami, A. (2016). Practical black-box attacks against
       deep learning systems using adversarial examples. arXiv preprint
