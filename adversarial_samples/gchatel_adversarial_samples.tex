@@ -139,8 +139,8 @@
   \frac{\mathrm{d}l}{\mathrm{d}x} = 2 a (ax + b - y)
   \]
 
-  We can now make \emph{imperceptible} changes to an input to make the
-  loss grow.
+  We can now make \emph{imperceptible} changes to an input that will
+  increase the loss value.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -248,6 +248,9 @@
 \begin{frame}
   \frametitle{Fast Gradient Sign Method}
 
+  \framesubtitle{Using the \textbf{VGG16} network with imagenet
+    weights}
+
   \begin{center}
     \input{figures/FGSM.tex}
   \end{center}
@@ -278,17 +281,24 @@
   %% cannot use gradients to create adversarial samples.
 
   We can train a new model $M'$ to solve the same classification task
-  at the target model $M$.
+  as the target model $M$.
+
+  \pause
 
   \bigskip
 
-  Once trained, we can create an adversarial sample $x'$ for the $M'$
-  model and experience have shown that $x'$ will also fool $M$ very
-  often.
+  Once trained, we can create an adversarial sample $x_{adv}'$ for the
+  $M'$ model and experiences have shown that $x_{adv}'$ will also fool
+  $M$ very often.
+
+  \pause
 
   \bigskip
 
-  What if we do not have a training set for the target network? Well\dots{} build one.
+  What if we do not have a training set for the target network?
+  Well\dots{} build one using $M$ predictions.
+
+  \pause
 
   \bigskip
 
@@ -297,9 +307,9 @@
     used by MetaMind) we find that their DNN misclassifies adversarial
     examples crafted with our substitute at a rate of 84.24\%''}
 
-  \bigskip
+  \smallskip
 
-  - Papernot et al., about the attack on the MetaMind deep neural
+  - Papernot et al., about their attack on the MetaMind deep neural
   network.
 
 \end{frame}
@@ -307,12 +317,35 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Adversarial examples in the physical world}
+  \frametitle{Adversarial examples in the physical world [Kurakin et
+      al. 2017]}
 
-  This is nice but in real world scenarios, we are not feeding the
-  network with our own data, it is acquired by the network's system
-  (using camera for example).
+  \framesubtitle{Being evil, for real}
 
+  In real world scenarios, we do not run the network on our own data,
+  it is acquired by the network's system (\textit{e.g.} a camera).
+
+  \pause
+
+  \medskip
+
+  It also works, for free.
+
+  \begin{center}
+    \includegraphics[width = 7cm]{images/physical_adversarial_sample.png}
+  \end{center}
+
+%  \bigskip
+
+  \textit{``We used images taken from a cell-phone camera as a input
+    to an Inception v3 image classification neural network. We showed
+    that in such a set-up, a significant fraction of adversarial
+    images crafted using the original network are misclassified even
+    when fed to the classifier through the camera.''}
+
+  \smallskip
+
+  Kurakin et al.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
