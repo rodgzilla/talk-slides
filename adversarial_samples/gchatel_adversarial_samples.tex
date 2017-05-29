@@ -20,16 +20,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-
-  \tableofcontents
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Introduction}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
   \frametitle{Basic notions}
 
   \framesubtitle{Adversarial example}
@@ -49,6 +39,16 @@
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \tableofcontents
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -172,8 +172,8 @@
 
   We also have a differentiable \textcolor{red}{loss function} (often
   \textcolor{red}{categorical cross entropy}) and
-  \textcolor{blue}{inputs} (\textcolor{blue}{pixel values}) that we
-  can modify to increase the loss.
+  \textcolor{blue}{inputs} (\textcolor{blue}{pixel values} in the case
+  of images) that we can modify to increase the loss.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -197,6 +197,29 @@
     examples. Unsing RAND+FGSM to adverarially train networks does not
     improve their defense against RAND+FGSM.
   \end{description}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Random noise perturbation}
+
+  \begin{center}
+    \includegraphics[width = 0.7 \linewidth]{images/wait-a-minute.jpg}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Random noise perturbation}
+
+  \framesubtitle{Nope.}
+
+  \begin{center}
+    \includegraphics[width = \linewidth]{images/random_perturbation.png}
+  \end{center}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -238,13 +261,14 @@
   \begin{description}
   \item[Adversarial sample detection] We try to detect whether an
     input sample is adversarial or not before classifying it.
-  \item Training with an adversarial objective function is an
-    effective regularizer (from [explaining and harnessing]).
+  \item[Regularization] Training with an adversarial objective
+    function is an effective regularizer (from [explaining and
+      harnessing]).
   \item[Gradient masking] The goal of gradient masking is to leave the
     decision boundaries untouched but damage the gradient used in
     white-box attacks.
   \item[Distillation and network saturation] These methods are used to
-    introduce numeraical instabilities in gradient computations.
+    introduce numerical instabilities in gradient computations.
   \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
