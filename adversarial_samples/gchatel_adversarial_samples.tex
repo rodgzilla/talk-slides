@@ -87,7 +87,7 @@
   First we choose a loss that measures how good our predictions are.
 
   \[
-  l(x, y, a, b) = (y - (a x + b))^{2}
+  L(x, y, a, b) = (y - (a x + b))^{2}
   \]
 
   \pause
@@ -95,7 +95,8 @@
   We compute how the loss is affected by small changes of $a$ and $b$.
 
   \[
-  \frac{\mathrm{d}l}{\mathrm{d}a} = 2 x (ax + b - y) \qquad \qquad \frac{\mathrm{d}l}{\mathrm{d}b} = 2 (ax + b - y)
+  \frac{\mathrm{d}L}{\mathrm{d}a} = 2 x (ax + b - y) \qquad \qquad
+  \frac{\mathrm{d}L}{\mathrm{d}b} = 2 (ax + b - y)
   \]
 
   And we update $a$ and $b$ iteratively until we reach a satisfying
@@ -133,7 +134,7 @@
   we can modify is the \textcolor{blue}{inputs}.
 
   \[
-  l(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
+  L(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
   \]
 
   \pause
@@ -142,7 +143,7 @@
   changes of the input.
 
   \[
-  \frac{\mathrm{d}l}{\mathrm{d}x} = 2 a (ax + b - y)
+  \frac{\mathrm{d}L}{\mathrm{d}x} = 2 a (ax + b - y)
   \]
 
   We can now make \emph{imperceptible} changes to an input that will
@@ -228,7 +229,7 @@
   pixels.
 
   \[
-  \nabla_{x} J(\theta, x, y)
+  \nabla_{x} L(\theta, x, y)
   \]
 
   \bigskip
@@ -237,7 +238,7 @@
   small number $\varepsilon$.
 
   \[
-  \eta = \varepsilon \text{sign}(\nabla_{x} J(\theta, x, y))
+  \eta = \varepsilon \text{sign}(\nabla_{x} L(\theta, x, y))
   \]
 
   \bigskip
@@ -387,6 +388,8 @@
 
   We can generate adversarial samples, and train the network to
   produce the correct classification.
+
+  \medskip
 
   \begin{itemize}
   \item \textcolor{green}{Works against FGSM}
