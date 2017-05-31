@@ -129,9 +129,9 @@
 
   \pause
 
-  Now suppose we are an attacker who wants to maximise the loss of a
+  Now suppose we are an attacker who wants to maximize the loss of a
   model, its \textcolor{red}{parameters} being fixed. The only thing
-  we can modify is the \textcolor{blue}{inputs}.
+  we can modify are the \textcolor{blue}{inputs}.
 
   \[
   L(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
@@ -244,7 +244,7 @@
   \bigskip
 
   The final adversarial sample is the sum of the original image and
-  the pertubation.
+  the perturbation.
 
   \[
   x_{adv} = x + \eta
@@ -268,7 +268,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Black box attack [Papernot et al. 2016]}
+  \frametitle{Black-box attack [Papernot et al. 2016]}
 
   \framesubtitle{or good luck getting gradients out of your
     self-driving car}
@@ -282,7 +282,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Black box attack [Papernot et al. 2016]}
+  \frametitle{Black-box attack [Papernot et al. 2016]}
 
   \framesubtitle{Transferability of adversarial samples}
 
@@ -394,9 +394,9 @@
   \begin{itemize}
   \item \textcolor{green}{Works against FGSM}
   \item \textcolor{red}{Expensive}
-  \item \textcolor{red}{Does not defend more complicated white box
+  \item \textcolor{red}{Does not defend more subtle white-box
     attacks (\textit{e.g.} iterative FGSM or RAND+FGSM)}
-  \item \textcolor{red}{Does not defend against \underline{black box attack}}
+  \item \textcolor{red}{Does not defend against \underline{black-box attack}}
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
