@@ -193,6 +193,8 @@
 \begin{frame}
   \frametitle{Random noise perturbation}
 
+  \framesubtitle{Do we really need to do that?}
+
   \begin{center}
     \includegraphics[width = 0.7 \linewidth]{images/wait-a-minute.jpg}
   \end{center}
@@ -203,7 +205,7 @@
 \begin{frame}
   \frametitle{Random noise perturbation}
 
-  \framesubtitle{Nope.}
+  \framesubtitle{Yep}
 
   \begin{center}
     \includegraphics[width = \linewidth]{images/random_perturbation.png}
@@ -359,21 +361,40 @@
 \section{Defense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Defenses}
+%% \begin{frame}
+%%   \frametitle{Defenses}
 
-  \begin{description}
-  \item[Adversarial sample detection] We try to detect whether an
-    input sample is adversarial or not before classifying it.
-  \item[Regularization] Training with an adversarial objective
-    function is an effective regularizer (from [explaining and
-      harnessing]).
-  \item[Gradient masking] The goal of gradient masking is to leave the
-    decision boundaries untouched but damage the gradient used in
-    white-box attacks.
-  \item[Distillation and network saturation] These methods are used to
-    introduce numerical instabilities in gradient computations.
-  \end{description}
+%%   \begin{description}
+%%   \item[Adversarial sample detection] We try to detect whether an
+%%     input sample is adversarial or not before classifying it.
+%%   \item[Regularization] Training with an adversarial objective
+%%     function is an effective regularizer (from [explaining and
+%%       harnessing]).
+%%   \item[Gradient masking] The goal of gradient masking is to leave the
+%%     decision boundaries untouched but damage the gradient used in
+%%     white-box attacks.
+%%   \item[Distillation and network saturation] These methods are used to
+%%     introduce numerical instabilities in gradient computations.
+%%   \end{description}
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Defense}
+
+  \framesubtitle{Adversarial training}
+
+  We can generate adversarial samples, and train the network to
+  produce the correct classification.
+
+  \begin{itemize}
+  \item \textcolor{green}{Works against FGSM}
+  \item \textcolor{red}{Expensive}
+  \item \textcolor{red}{does not defend more complicated white box
+    attacks (\textit{e.g.} iterative FGSM or RAND+FGSM)}
+  \item \textcolor{red}{does not defend against \underline{black box attack}}
+  \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
