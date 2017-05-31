@@ -394,9 +394,27 @@
   \begin{itemize}
   \item \textcolor{green}{Works against FGSM}
   \item \textcolor{red}{Expensive}
-  \item \textcolor{red}{does not defend more complicated white box
+  \item \textcolor{red}{Does not defend more complicated white box
     attacks (\textit{e.g.} iterative FGSM or RAND+FGSM)}
-  \item \textcolor{red}{does not defend against \underline{black box attack}}
+  \item \textcolor{red}{Does not defend against \underline{black box attack}}
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Defense}
+
+  \framesubtitle{Ensemble adversarial training [Tramèr et al. May 2017]}
+
+  Augment training data with adversarial inputs from a number of fixed
+  pre-trained models.
+
+  \medskip
+
+  \begin{itemize}
+  \item \textcolor{green}{Best defense so far against black-box adversary}
+  \item \textcolor{red}{Does not defend white-box attack}
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -405,6 +423,8 @@
 \begin{frame}
 
   \frametitle{Defending machine learning}
+
+  \framesubtitle{Wide open problem}
 
   ``Most defenses against adversarial examples that have been proposed
   so far just do not work very well at all, but the ones that do work
