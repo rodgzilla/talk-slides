@@ -2,6 +2,7 @@
 
 \input{packages.tex}
 \input{colors.tex}
+\input{commands.tex}
 
 \usetheme{Boadilla}
 \title{Adversarial examples in deep learning}
@@ -95,12 +96,12 @@
   We compute how the loss is affected by small changes of $a$ and $b$.
 
   \[
-  \frac{\mathrm{d}L}{\mathrm{d}a} = 2 x (ax + b - y) \qquad \qquad
-  \frac{\mathrm{d}L}{\mathrm{d}b} = 2 (ax + b - y)
+  \frac{\d L}{\d a} = 2 x (ax + b - y) \qquad \qquad
+  \frac{\d L}{\d b} = 2 (ax + b - y)
   \]
 
   And we update $a$ and $b$ iteratively until we reach a satisfying
-  result (the average loss for our data points is low enough).
+  result (\textit{i.e.} average loss low enough for our data points).
 
 %  a = -0.08 \quad b = 0.68
 \end{frame}
@@ -143,7 +144,7 @@
   changes of the input.
 
   \[
-  \frac{\mathrm{d}L}{\mathrm{d}x} = 2 a (ax + b - y)
+  \frac{\d L}{\d x} = 2 a (ax + b - y)
   \]
 
   We can now make \emph{imperceptible} changes to an input that will
@@ -220,7 +221,7 @@
   \frametitle{Fast Gradient Sign Method [Goodfellow et al. 2015]}
 
   Let $x$ be the original image, $\theta$ the parameters of the model,
-  $y$ the target associated with $x$ and $J(\theta, x, y)$ the loss
+  $y$ the target associated with $x$ and $L(\theta, x, y)$ the loss
   function.
 
   \bigskip
@@ -257,8 +258,7 @@
 \begin{frame}
   \frametitle{Fast Gradient Sign Method}
 
-  \framesubtitle{Using the \textbf{VGG16} network with imagenet
-    weights}
+  \framesubtitle{\textbf{VGG16} network}
 
   \begin{center}
     \input{figures/FGSM.tex}
@@ -352,8 +352,8 @@
 
   \framesubtitle{Adversarial training}
 
-  We can generate adversarial samples, and train the network to
-  produce the correct classification.
+  We can generate adversarial samples and train the network to produce
+  the correct classification.
 
   \medskip
 
@@ -413,13 +413,6 @@
     \item Goodfellow, I. J., Shlens, J., \& Szegedy,
       C. (2014). Explaining and harnessing adversarial
       examples. arXiv preprint arXiv:1412.6572.
-    \item Papernot, N., McDaniel, P., Wu, X., Jha, S., \& Swami,
-      A. (2016). Distillation as a defense to adversarial
-      perturbations against deep neural networks. In Security and
-      Privacy (SP), 2016 IEEE Symposium on (pp. 582-597). IEEE.
-    \item Kurakin, A., Goodfellow, I., \& Bengio,
-      S. (2016). Adversarial examples in the physical world. arXiv
-      preprint arXiv:1607.02533.
     \item Papernot, N., McDaniel, P., Goodfellow, I., Jha, S., Celik,
       Z. B., \& Swami, A. (2016). Practical black-box attacks against
       deep learning systems using adversarial examples. arXiv preprint
@@ -463,6 +456,66 @@
   \smallskip
 
   - Kurakin et al.
+
+  \smallskip
+
+  {\scriptsize Kurakin, A., Goodfellow, I., \& Bengio,
+    S. (2016). Adversarial examples in the physical world. arXiv
+    preprint arXiv:1607.02533.}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Targeted perturbation}
+
+  \framesubtitle{Papernot algorithm}
+
+  This algorithm iteratively computes the adversarial saliency value
+  $S(x, t)[i]$ of pixel $i$
+
+  \medskip
+
+  \[
+  S(x, t)[i] =
+  \begin{cases}
+    0 \text{\quad if \quad} \frac{\d L_{t}}{\d x_{i}}(x) < 0
+    \text{\quad or \quad} \sum_{j \neq t} \frac{\d L_{j}}{\d x_{i}}(x)
+    > 0 \\[0.3cm]
+    \frac{\d L_{t}}{\d x_{i}}(x) \, \lvert \sum_{j \neq
+      t} \frac{\d L_{j}}{\d x_{i}}(x) \rvert \text{ otherwise.}
+  \end{cases}
+  \]
+
+  \medskip
+
+  and use it iteratively to produce $x_{adv}$ classified as $t$ by the
+  network.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Defensive distillation}
+
+  \begin{center}
+    \includegraphics[width = 0.9\linewidth]{images/distillation.png}
+  \end{center}
+
+  \medskip
+
+  Training a network with explicit relative information about classes
+  prevents models from fitting too tightly to the data.
+
+  \medskip
+
+  {\scriptsize Papernot, N., McDaniel, P., Wu, X., Jha, S., \& Swami,
+    A. (2016). Distillation as a defense to adversarial perturbations
+    against deep neural networks. In Security and Privacy (SP), 2016
+    IEEE Symposium on (pp. 582-597). IEEE.}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
