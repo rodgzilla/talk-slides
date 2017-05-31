@@ -324,40 +324,6 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Adversarial examples in the physical world [Kurakin et
-      al. 2017]}
-
-  \framesubtitle{Being evil, for real}
-
-  In real world scenarios, the target network does not take our image
-  files as input. It acquires the data by the network's system
-  (\textit{e.g.} a camera).
-
-  \pause
-
-  \medskip
-
-  It also works, for free.
-
-  \begin{center}
-    \includegraphics[width = 7cm]{images/physical_adversarial_sample.png}
-  \end{center}
-
-%  \bigskip
-
-  \textit{``We used images taken from a cell-phone camera as a input
-    to an Inception v3 image classification neural network. We showed
-    that in such a set-up, a significant fraction of adversarial
-    images crafted using the original network are misclassified even
-    when fed to the classifier through the camera.''}
-
-  \smallskip
-
-  - Kurakin et al.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Defense}
 
@@ -394,7 +360,7 @@
   \begin{itemize}
   \item \textcolor{green}{Works against FGSM}
   \item \textcolor{red}{Expensive}
-  \item \textcolor{red}{Does not defend more subtle white-box
+  \item \textcolor{red}{Does not defend subtler white-box
     attacks (\textit{e.g.} iterative FGSM or RAND+FGSM)}
   \item \textcolor{red}{Does not defend against \underline{black-box attack}}
   \end{itemize}
@@ -464,6 +430,39 @@
     \end{enumerate}
   }
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial examples in the physical world [Kurakin et
+      al. 2017]}
+
+  In real world scenarios, the target network does not take our image
+  files as input. It acquires the data by the network's system
+  (\textit{e.g.} a camera).
+
+  \medskip
+
+  It also works, for free.
+
+  \begin{center}
+    \includegraphics[width = 7cm]{images/physical_adversarial_sample.png}
+  \end{center}
+
+%  \bigskip
+
+  \textit{``We used images taken from a cell-phone camera as a input
+    to an Inception v3 image classification neural network. We showed
+    that in such a set-up, a significant fraction of adversarial
+    images crafted using the original network are misclassified even
+    when fed to the classifier through the camera.''}
+
+  \smallskip
+
+  - Kurakin et al.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
