@@ -322,6 +322,37 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial examples in the physical world [Kurakin et
+      al. 2017]}
+
+  In real world scenarios, the target network does not take our image
+  files as input. It acquires the data by the network's system
+  (\textit{e.g.} a camera).
+
+  \medskip
+
+  It also works, for free.
+
+  \begin{center}
+    \includegraphics[width = 7cm]{images/physical_adversarial_sample.png}
+  \end{center}
+
+%  \bigskip
+
+  \textit{``We used images taken from a cell-phone camera as a input
+    to an Inception v3 image classification neural network. We showed
+    that in such a set-up, a significant fraction of adversarial
+    images crafted using the original network are misclassified even
+    when fed to the classifier through the camera.''}
+
+  \smallskip
+
+  - Kurakin et al.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Defense}
 
@@ -346,12 +377,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Defense}
+  \frametitle{White-box defense}
 
   \framesubtitle{Adversarial training}
 
   We can generate adversarial samples and train the network to produce
-  the correct classification.
+  the correct classification on these new data points.
 
   \medskip
 
@@ -359,15 +390,16 @@
   \item \textcolor{green}{Works against FGSM}
   \item \textcolor{red}{Expensive}
   \item \textcolor{red}{Does not defend subtler white-box
-    attacks (\textit{e.g.} iterative FGSM or RAND+FGSM)}
-  \item \textcolor{red}{Does not defend against \underline{black-box attack}}
+    attacks (\textit{e.g.} I-FGSM or RAND+FGSM)}
+  \item \textcolor{red}{Does not defend against \underline{black-box
+      attack}}
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Defense}
+  \frametitle{Black-box defense}
 
   \framesubtitle{Ensemble adversarial training [Tramèr et al. May 2017]}
 
@@ -377,9 +409,15 @@
   \medskip
 
   \begin{itemize}
-  \item \textcolor{green}{Best defense so far against black-box adversary}
-  \item \textcolor{red}{Does not defend white-box attack}
+  \item \textcolor{green}{Best defense so far against black-box
+    adversary}
+  \item \textcolor{red}{Does not defend subtle white-box attacks}
   \end{itemize}
+
+  \medskip
+
+  Error rate from 15.5\% to 3.9\% between adversarial trained and
+  ensemble adversarial trained model on MNIST for a black-box attack.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -415,6 +453,9 @@
       Z. B., \& Swami, A. (2016). Practical black-box attacks against
       deep learning systems using adversarial examples. arXiv preprint
       arXiv:1602.02697.
+    \item Kurakin, A., Goodfellow, I., \& Bengio,
+      S. (2016). Adversarial examples in the physical world. arXiv
+      preprint arXiv:1607.02533.
     \item Tramèr, F., Kurakin, A., Papernot, N., Boneh, D., \&
       McDaniel, P. (2017). Ensemble Adversarial Training: Attacks and
       Defenses. arXiv preprint arXiv:1705.07204.
@@ -425,44 +466,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Adversarial examples in the physical world [Kurakin et
-      al. 2017]}
-
-  In real world scenarios, the target network does not take our image
-  files as input. It acquires the data by the network's system
-  (\textit{e.g.} a camera).
-
-  \medskip
-
-  It also works, for free.
-
-  \begin{center}
-    \includegraphics[width = 7cm]{images/physical_adversarial_sample.png}
-  \end{center}
-
-%  \bigskip
-
-  \textit{``We used images taken from a cell-phone camera as a input
-    to an Inception v3 image classification neural network. We showed
-    that in such a set-up, a significant fraction of adversarial
-    images crafted using the original network are misclassified even
-    when fed to the classifier through the camera.''}
-
-  \smallskip
-
-  - Kurakin et al.
-
-  \smallskip
-
-  {\scriptsize Kurakin, A., Goodfellow, I., \& Bengio,
-    S. (2016). Adversarial examples in the physical world. arXiv
-    preprint arXiv:1607.02533.}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
