@@ -6,7 +6,7 @@
 
 \usetheme{Boadilla}
 \title{Adversarial examples in deep learning}
-\author[G. Châtel]{G. Châtel\\@rodgzilla\\github.com/rodgzilla}
+\author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Datategy\\Intel Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
 \date{06/07/2017}
 
 \begin{document}
@@ -154,8 +154,7 @@
   \frametitle{Neural networks}
 
   Everything works the same way when working with a neural network on
-  an image classification task. We want to modify an input to make it
-  cross the \emph{decision boundary}.
+  an image classification task.
 
   \bigskip
 
@@ -163,6 +162,12 @@
   \textcolor{red}{categorical cross entropy}) and
   \textcolor{blue}{inputs} (\textcolor{blue}{pixel values} in the case
   of images) that we can modify to increase the loss.
+
+  \bigskip
+
+  The ultimate goal is to make our input cross the \emph{decision
+    boundary}.
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -489,7 +494,8 @@
   \framesubtitle{Papernot algorithm}
 
   This algorithm iteratively computes the adversarial saliency value
-  $S(x, t)[i]$ of pixel $i$
+  $S(x, t)[i]$ of pixel $i$ of the image $x$ according to the class
+  $t$.
 
   \medskip
 
