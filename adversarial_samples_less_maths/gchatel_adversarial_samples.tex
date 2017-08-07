@@ -68,111 +68,142 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Gradient descent}
+%% \begin{frame}
+%%   \frametitle{Gradient descent}
 
-  \framesubtitle{Model optimization}
+%%   \framesubtitle{Model optimization}
 
-  \begin{center}
-    \scalebox{0.5}{
-      \input{figures/scatter_01.tex}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.5}{
+%%       \input{figures/scatter_01.tex}
+%%     }
+%%   \end{center}
 
-  We have a set of points that we want to approximate with a line.
+%%   We have a set of points that we want to approximate with a line.
 
-  \[
-  y = ax + b
-  \]
+%%   \[
+%%   y = ax + b
+%%   \]
 
-  \pause
+%%   \pause
 
-  First we choose a loss that measures how good our predictions are.
+%%   First we choose a loss that measures how good our predictions are.
 
-  \[
-  L(x, y, a, b) = (y - (a x + b))^{2}
-  \]
+%%   \[
+%%   L(x, y, a, b) = (y - (a x + b))^{2}
+%%   \]
 
-  \pause
+%%   \pause
 
-  We compute how the loss is affected by small changes of $a$ and $b$.
+%%   We compute how the loss is affected by small changes of $a$ and $b$.
 
-  \[
-  \frac{\d L}{\d a} = 2 x (ax + b - y) \qquad \qquad
-  \frac{\d L}{\d b} = 2 (ax + b - y)
-  \]
+%%   \[
+%%   \frac{\d L}{\d a} = 2 x (ax + b - y) \qquad \qquad
+%%   \frac{\d L}{\d b} = 2 (ax + b - y)
+%%   \]
 
-  And we update $a$ and $b$ iteratively until we reach a satisfying
-  result (\textit{i.e.} average loss low enough for our data points).
+%%   And we update $a$ and $b$ iteratively until we reach a satisfying
+%%   result (\textit{i.e.} average loss low enough for our data points).
 
-%  a = -0.08 \quad b = 0.68
-\end{frame}
+%% %  a = -0.08 \quad b = 0.68
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Gradient descent}
+%% \begin{frame}
+%%   \frametitle{Gradient descent}
 
-  \framesubtitle{Being evil}
+%%   \framesubtitle{Being evil}
 
-  \vspace{-0.5cm}
+%%   \vspace{-0.5cm}
 
-  \begin{center}
-    \scalebox{0.5}{
-      \input{figures/scatter_02.tex}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.5}{
+%%       \input{figures/scatter_02.tex}
+%%     }
+%%   \end{center}
 
-  In our previous example, we have modified \textcolor{red}{the model}
-  in order to minimize the loss.
+%%   In our previous example, we have modified \textcolor{red}{the model}
+%%   in order to minimize the loss.
 
-  \[
-  y = \textcolor{red}{a}x + \textcolor{red}{b}
-  \]
+%%   \[
+%%   y = \textcolor{red}{a}x + \textcolor{red}{b}
+%%   \]
 
-  \pause
+%%   \pause
 
-  Now suppose we are an attacker who wants to maximize the loss of a
-  model, its \textcolor{red}{parameters} being fixed. The only thing
-  we can modify are the \textcolor{blue}{inputs}.
+%%   Now suppose we are an attacker who wants to maximize the loss of a
+%%   model, its \textcolor{red}{parameters} being fixed. The only thing
+%%   we can modify are the \textcolor{blue}{inputs}.
 
-  \[
-  L(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
-  \]
+%%   \[
+%%   L(\textcolor{blue}{x}, y, a, b) = (y - (a \textcolor{blue}{x} + b))^{2}
+%%   \]
 
-  \pause
+%%   \pause
 
-  In order to do this, we compute how the loss is affected by small
-  changes of the input.
+%%   In order to do this, we compute how the loss is affected by small
+%%   changes of the input.
 
-  \[
-  \frac{\d L}{\d x} = 2 a (ax + b - y)
-  \]
+%%   \[
+%%   \frac{\d L}{\d x} = 2 a (ax + b - y)
+%%   \]
 
-  We can now make \emph{imperceptible} changes to an input that will
-  increase the loss value.
-\end{frame}
+%%   We can now make \emph{imperceptible} changes to an input that will
+%%   increase the loss value.
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%%   \frametitle{Neural networks}
+
+%%   Everything works the same way when working with a neural network on
+%%   an image classification task.
+
+%%   \bigskip
+
+%%   We also have a differentiable \emph{loss function} (often
+%%   \emph{categorical cross entropy}), model \emph{parameters} (the
+%%   \emph{weights} of the neural network) and \emph{inputs} (\emph{pixel
+%%     values} in the case of images) that we can modify to increase the
+%%   loss.
+
+%%   \bigskip
+
+%%   The ultimate goal is to make our input cross the \emph{decision
+%%     boundary}.
+
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Neural networks}
 
-  Everything works the same way when working with a neural network on
-  an image classification task.
+  To train and evaluate neural networks, we use a \emph{loss function}
+  $L(\theta, x, y)$ with $\theta$ the parameters of the models, $x$ an input and
+  $y$ the real value corresponding to $x$. This function measures
+  \emph{how good} is the prediction of the model on a specific
+  example.
 
   \bigskip
 
-  We also have a differentiable \emph{loss function} (often
-  \emph{categorical cross entropy}), model \emph{parameters} (the
-  \emph{weights} of the neural network) and \emph{inputs} (\emph{pixel
-    values} in the case of images) that we can modify to increase the
-  loss.
+  \pause
+
+  To \textcolor{blue}{train} a neural network we compute the
+  derivative of $L$ according to $\theta$ and use the result to update $\theta$
+  in order to \textcolor{blue}{decrease} the loss value.
 
   \bigskip
 
-  The ultimate goal is to make our input cross the \emph{decision
-    boundary}.
+  \pause
+
+  To create an \textcolor{red}{adversarial sample}, we compute the
+  derivative of $L$ according to $x$ and use the result to update the
+  pixel values of $x$ in order to \textcolor{red}{increase} the loss
+  value. It happens that very small modifications of $x$ cause the
+  network to misclassify it.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
