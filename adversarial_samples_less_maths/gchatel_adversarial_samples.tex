@@ -202,9 +202,8 @@
   To create an \textcolor{red}{adversarial sample}, we compute the
   derivative of $L$ according to $x$ and use the result to update the
   pixel values of $x$ in order to \textcolor{red}{increase} the loss
-  value. It happens that very small modifications of $x$ cause the
+  value. It happens that such modifications of $x$ often cause the
   network to misclassify it.
-
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -258,7 +257,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Fast Gradient Sign Method [Goodfellow et al. 2015]}
+  \frametitle{Fast Gradient Sign Method [2015]}
 
   Let $x$ be the original image, $\theta$ the parameters of the model,
   $y$ the target associated with $x$ and $L(\theta, x, y)$ the loss
@@ -308,7 +307,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Black-box attack [Papernot et al. 2016]}
+  \frametitle{Black-box attack [2016]}
 
   \framesubtitle{or good luck getting gradients out of your
     self-driving car}
@@ -322,7 +321,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Black-box attack [Papernot et al. 2016]}
+  \frametitle{Black-box attack [2016]}
 
   \framesubtitle{Transferability of adversarial samples}
 
@@ -366,14 +365,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Adversarial examples in the physical world [Kurakin et
-      al. 2017]}
+  \frametitle{Adversarial examples in the physical world [2017]}
 
   \framesubtitle{or good luck attacking a self-driving car with
     your USB flash drive}
 
   \begin{center}
-    \includegraphics[width = 5cm]{images/cool_story_bro_2.jpg}
+    \includegraphics[width = 8cm]{images/cool_story_bro_2.jpg}
   \end{center}
 
 \end{frame}
@@ -381,8 +379,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Adversarial examples in the physical world [Kurakin et
-      al. 2017]}
+  \frametitle{Adversarial examples in the physical world [2017]}
 
   In real world scenarios, the target network does not take our image
   files as input. It acquires the data by the network's system
@@ -408,6 +405,45 @@
 
   - Kurakin et al.
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Robust Physical-World Attacks on Machine Learning Models [2017]}
+
+  \framesubtitle{or good luck perturbating the background in real life}
+
+  \begin{center}
+    \includegraphics[width = 8cm]{images/cool_story_bro_3.jpg}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Robust Physical-World Attacks on Machine Learning Models [2017]}
+
+  Perturbations can also be constrained to mimic vandalism or art in
+  order to go unreported by casual observers.
+
+  \bigskip
+
+  This concept allows the algorithm to create perturbations with much
+  bigger magnitudes since we do not care about being perceived anymore
+
+  \begin{center}
+    \begin{tikzpicture}[xscale = 6]
+      \node(I1) at (0, 0) {
+        \includegraphics[width = 3cm]{images/stop_art_stickers.png}
+      };
+
+      \node(I2) at (1, 0) {
+        \includegraphics[width = 3cm]{images/love_stop_hate.png}
+      };
+    \end{tikzpicture}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -520,6 +556,10 @@
     \item Tramèr, F., Papernot, N., Goodfellow, I., Boneh, D., \&
       McDaniel, P. (2017). The Space of Transferable Adversarial
       Examples. arXiv preprint arXiv:1704.03453.
+    \item Evtimov, I., Eykholt, K., Fernandes, E., Kohno, T., Li, B.,
+      Prakash, A., Rahmati A. \& Song, D. (2017). Robust Physical-World
+      Attacks on Machine Learning Models. arXiv preprint
+      arXiv:1707.08945.
     \end{enumerate}
   }
 
