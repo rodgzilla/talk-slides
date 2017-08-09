@@ -1,3 +1,5 @@
-# Deep-learning-presentation
-Various presentations about deep learning and a few of its applications.
+# Machine learning presentations
 
+Various presentations about the field of machine learning. The deep
+learning folder contains multiple presentations about adversarial
+samples generation.
