@@ -18,4 +18,35 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \begin{center}
+    \includegraphics[width = 7cm]{images/data_science_venn.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \def\firstcircle{(0,0) circle (1)}
+  \def\secondcircle{(0.5,0.866) circle (1)}
+  \def\thirdcircle{(1,0) circle (1)}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=2.5]
+      \begin{scope}[fill opacity = 0.5]
+        \fill[red] \firstcircle;
+        \fill[green] \secondcircle;
+        \fill[blue] \thirdcircle;
+        \draw \firstcircle node[below] {Hacking skills};
+        \draw \secondcircle node [above] {Math \& Statistics Knowledge};
+        \draw \thirdcircle node [below] {Substansive Expertise};
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \end{document}
