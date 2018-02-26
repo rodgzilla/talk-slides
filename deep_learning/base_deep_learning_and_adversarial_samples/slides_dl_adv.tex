@@ -6,8 +6,9 @@
 
 \usetheme{Boadilla}
 \title{Adversarial examples in deep learning}
-\author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Datategy\\Intel Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
-\date{06/07/2017}
+\author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Disaitek\\Intel
+  Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
+\date{28/02/2018}
 
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
@@ -27,6 +28,408 @@
 
   \maketitle
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Machine learning}
+
+  \framesubtitle{Supervised learning}
+
+  Machine learning is a subfield of artificial intelligence.
+
+  \bigskip
+
+  \begin{description}
+    \item[Intuitively] We want to \emph{learn from} and \emph{make predictions
+    on} data.
+
+    \item[Technically] We want to build a model that approximate well
+      (\textit{e.g.} minimize a loss function) an unknown function.
+  \end{description}
+
+  \bigskip
+
+  It is important to note that the function we want to approximate may
+  or may not have a closed form.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Application examples}
+
+  \framesubtitle{Supervised learning}
+
+  \begin{itemize}
+    \item Regression
+
+      \begin{center}
+        \begin{tabular}{cc}
+          \textcolor{blue}{Polynomial} & $(x, y, z) \to f(x, y, z)$ \\[0.5cm]
+          \textcolor{blue}{House price} & (surface, nb rooms, city) $\to$ price \\[0.5cm]
+        \end{tabular}
+      \end{center}
+
+    \item Classification
+
+      \begin{center}
+        \begin{tabular}{cc}
+          \textcolor{blue}{Image classification} & pixel values $\to$ cat or dog \\[0.5cm]
+          \textcolor{blue}{Text classification} & list of words $\to$ spam or valid email
+        \end{tabular}
+      \end{center}
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Deep learning}
+
+  \textcolor{blue}{Deep learning} is a subfield of machine learning in
+  which we use \textcolor{blue}{artificial neural networks} to make
+  predictions.
+
+  \bigskip
+
+  An artificial neural networks is a computation model loosely based
+  on the human brain. It aims to mimic electric signals travelling
+  through neurons in order to make computations.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Artificial neural network}
+
+  \framesubtitle{Neuron}
+
+  \begin{center}
+    \scalebox{0.9}{
+      \input{figures/neuron.tex}
+    }
+  \end{center}
+
+  \[
+  y = w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b
+  \]
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Artificial neural network}
+
+  \framesubtitle{Network}
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/network.tex}
+    }
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Problem with this definition}
+
+  We now have a quite complicated framework to compute
+  \textcolor{blue}{linear functions}.
+
+  \bigskip
+
+  \begin{center}
+    \begin{tabular}{cc}
+      \textcolor{blue}{Neuron} & linear function \\
+      \textcolor{blue}{Neural network} & linear combination of neuron outputs \\
+    \end{tabular}
+  \end{center}
+
+  \bigskip
+
+  To approximate non linear functions, we would like to have a non
+  linear model.
+
+  \bigskip
+
+  \uncover<2->{\textcolor{blue}{Solution}: add nonlinearity to neurons.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neuron with activation}
+
+  \begin{center}
+    \scalebox{0.6}{
+      \input{figures/nonlinear_neuron.tex}
+    }
+  \end{center}
+
+  \uncover<2->{
+    \[
+    A(x) = \begin{cases}
+        0 & \text{if } x < 0 \\
+        1 & \text{otherwise}
+    \end{cases}
+    \]
+  }
+
+  \uncover<3->{
+    \[
+    y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
+    \]
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Computation example}
+
+  \framesubtitle{Binary AND gate}
+
+  \begin{center}
+    \scalebox{1}{
+      \input{figures/and_neuron.tex}
+    }
+  \end{center}
+
+  We want to set $w_{1}, w_{2}$ and $b$ such that:
+
+  \[
+  A(w_{1}x_{1} + w_{2}x_{2} + b) = x_{1} \text{ AND } x_{2}
+  \]
+
+  \uncover<3->{
+    \[
+    x_{0} = 0, x_{1} = 1. \quad y = A(0 + 1 - 1.5) = A(-0.5) = 0
+    \]
+  }
+
+  \uncover<4->{
+    \[
+    x_{0} = 1, x_{1} = 1. \quad y = A(1 + 1 - 1.5) = A(0.5) = 1
+    \]
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Computation example}
+
+  \framesubtitle{Binary XOR gate}
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/xor_neuron.tex}
+    }
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Model complexity}
+
+  One way to measure the complexity of a neural network is its number
+  of parameters.
+
+  \bigskip
+
+  \begin{itemize}
+    \uncover<2->{
+    \item XOR network: 9 parameters
+    }
+    \bigskip
+    \uncover<3->{
+    \item dogs vs cats pictures (VGG16 network): 138,357,544 parameters
+    }
+  \end{itemize}
+
+  \bigskip
+  \uncover<4->{We should probably look for a way to tune these
+    parameters automatically otherwise it is going to get
+    \emph{really} boring \emph{really} quickly.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Parameter tuning}
+
+  \framesubtitle{Line approximation}
+
+  We have a few sample points and we want to find a line that
+  approximate these points.
+
+  \begin{center}
+    \scalebox{0.8}{
+      \input{figures/scatter_01.tex}
+    }
+  \end{center}
+
+  Our model is just a line
+
+  \[
+  y_{pred} = \textcolor{red}{a}x + \textcolor{red}{b}
+  \]
+
+  \bigskip
+
+  We want to find $a$ and $b$ to best match our samples.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Parameter tuning}
+
+  \framesubtitle{Gradient descent concept}
+
+  \begin{center}
+    \scalebox{0.8}{
+      \input{figures/parabola_1.tex}
+    }
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Parameter tuning}
+
+  \framesubtitle{Loss definition}
+
+  First we have a define a \textcolor{blue}{loss} that measures how
+  good our predictions are.
+
+  \[
+  l(x, y, a, b) = (y - y_{pred})^{2} = (y - (a x + b))^{2}
+  \]
+
+  \bigskip
+
+  and now, we compute how the loss is affected by small changes of $a$ and
+  $b$:
+
+  \medskip
+
+  \[
+  \frac{dl}{da} = 2 x (ax + b - y) \qquad \qquad \frac{dl}{db} = 2 (ax + b - y)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Parameter tuning}
+
+  \framesubtitle{Gradient descent application}
+
+  We start with random values: $a = -2$ and $b = 1$
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/scatter_02.tex}
+    }
+  \end{center}
+
+  \[
+  l(x, y, a, b) = (y - y_{pred})^{2} = (y - (a x + b))^{2}
+  \]
+
+
+  Then, we compute the average of the gradient along all $(x, y)$ couples
+
+  \begin{overprint}
+    \onslide<1> \[ a = -2.00 \quad b = 1.00 \quad \overline{\frac{dl}{da}} = -1.07 \quad \overline{\frac{dl}{db}} = -1.37 \quad \overline{l(x, y, a, b)} = 0.860367 \]
+    \onslide<2> \[ a = -1.18 \quad b = 1.30 \quad \overline{\frac{dl}{da}} = -0.17 \quad \overline{\frac{dl}{db}} = 0.09 \quad \overline{l(x, y, a, b)} = 0.159420 \]
+    \onslide<3> \[ a = -0.82 \quad b = 1.10 \quad \overline{\frac{dl}{da}} = -0.13 \quad \overline{\frac{dl}{db}} = 0.07 \quad \overline{l(x, y, a, b)} = 0.088204 \]
+    \onslide<4> \[ a = -0.54 \quad b = 0.94 \quad \overline{\frac{dl}{da}} = -0.09 \quad \overline{\frac{dl}{db}} = 0.05 \quad \overline{l(x, y, a, b)} = 0.048802 \]
+    \onslide<5> \[ a = -0.34 \quad b = 0.83 \quad \overline{\frac{dl}{da}} = -0.07 \quad \overline{\frac{dl}{db}} = 0.04 \quad \overline{l(x, y, a, b)} = 0.027001 \]
+    \onslide<6> \[ a = -0.19 \quad b = 0.75 \quad \overline{\frac{dl}{da}} = -0.05 \quad \overline{\frac{dl}{db}} = 0.03 \quad \overline{l(x, y, a, b)} = 0.014939 \]
+    \onslide<7> \[ a = -0.08 \quad b = 0.68 \quad \overline{\frac{dl}{da}} = -0.04 \quad \overline{\frac{dl}{db}} = 0.02 \quad \overline{l(x, y, a, b)} = 0.008266 \]
+    \onslide<8> \[ a = 0.01 \quad b = 0.64 \quad \overline{\frac{dl}{da}} = -0.03 \quad \overline{\frac{dl}{db}} = 0.02 \quad \overline{l(x, y, a, b)} = 0.004573 \]
+    \onslide<9> \[ a = 0.07 \quad b = 0.60 \quad \overline{\frac{dl}{da}} = -0.02 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.002530 \]
+    \onslide<10> \[ a = 0.12 \quad b = 0.58 \quad \overline{\frac{dl}{da}} = -0.02 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.001400 \]
+    \onslide<11> \[ a = 0.15 \quad b = 0.56 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.000775 \]
+    \onslide<12> \[ a = 0.18 \quad b = 0.54 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000429 \]
+    \onslide<13> \[ a = 0.19 \quad b = 0.53 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000237 \]
+    \onslide<14> \[ a = 0.21 \quad b = 0.52 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000131 \]
+    \onslide<15> \[ a = 0.22 \quad b = 0.52 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000073 \]
+    \onslide<16> \[ a = 0.23 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000040 \]
+    \onslide<17> \[ a = 0.23 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000022 \]
+    \onslide<18> \[ a = 0.24 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000012 \]
+    \onslide<19> \[ a = 0.24 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000007 \]
+    \onslide<20> \[ a = 0.24 \quad b = 0.50 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000004 \]
+  \end{overprint}
+
+  \bigskip
+
+  And update $a$ and $b$ by substracting a small proportion of their
+  gradient.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Parameter tuning}
+
+  \framesubtitle{Problem with ANN}
+
+  Using gradient descent, we know how to minimize (or at least reach a
+  local minima) a differentiable function.
+
+  \pause
+  \bigskip
+
+  \textcolor{red}{Problem}: The function computed by our neural network is not
+  differentiable because of the activation function.
+
+  \[
+  A(x) = \begin{cases}
+    0 & \text{if } x < 0 \\
+    1 & \text{otherwise}
+  \end{cases}
+  \]
+
+  \medskip
+
+  \pause
+
+  \textcolor{blue}{Solution}: We replace it by a differentiable
+  function that does the same job.
+
+  \begin{center}
+    \begin{tikzpicture}[xscale = 4]
+      \node (formula) (0, 0){
+        \scalebox{1.3}{
+          $A(x) = \frac{1}{1 + e^{-x}}$
+        }
+      } ;
+
+      \node (graph) at (1, 0){
+        \scalebox{0.6}{
+          \input{figures/sigmoid.tex}
+        }
+      };
+    \end{tikzpicture}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -60,7 +463,7 @@
 
   \begin{center}
     \scalebox{0.8}{
-      \input{figures/parabola.tex}
+      \input{figures/parabola_2.tex}
     }
   \end{center}
 
@@ -68,46 +471,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Gradient descent}
+%% \begin{frame}
+%%   \frametitle{Gradient descent}
 
-  \framesubtitle{Model optimization}
+%%   \framesubtitle{Model optimization}
 
-  \begin{center}
-    \scalebox{0.5}{
-      \input{figures/scatter_01.tex}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.5}{
+%%       \input{figures/scatter_01.tex}
+%%     }
+%%   \end{center}
 
-  We have a set of points that we want to approximate with a line.
+%%   We have a set of points that we want to approximate with a line.
 
-  \[
-  y = ax + b
-  \]
+%%   \[
+%%   y = ax + b
+%%   \]
 
-  \pause
+%%   \pause
 
-  First we choose a loss that measures how good our predictions are.
+%%   First we choose a loss that measures how good our predictions are.
 
-  \[
-  L(x, y, a, b) = (y - (a x + b))^{2}
-  \]
+%%   \[
+%%   L(x, y, a, b) = (y - (a x + b))^{2}
+%%   \]
 
-  \pause
+%%   \pause
 
-  We compute how the loss is affected by small changes of $a$ and $b$.
+%%   We compute how the loss is affected by small changes of $a$ and $b$.
 
-  \[
-  \frac{\d L}{\d a} = 2 x (ax + b - y) \qquad \qquad
-  \frac{\d L}{\d b} = 2 (ax + b - y)
-  \]
+%%   \[
+%%   \frac{\d L}{\d a} = 2 x (ax + b - y) \qquad \qquad
+%%   \frac{\d L}{\d b} = 2 (ax + b - y)
+%%   \]
 
-  And we update $a$ and $b$ iteratively until we reach a satisfying
-  result (\textit{i.e.} average loss low enough for our data points).
+%%   And we update $a$ and $b$ iteratively until we reach a satisfying
+%%   result (\textit{i.e.} average loss low enough for our data points).
 
-%  a = -0.08 \quad b = 0.68
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %  a = -0.08 \quad b = 0.68
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
