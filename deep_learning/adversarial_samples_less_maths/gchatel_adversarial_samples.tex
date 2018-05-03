@@ -464,6 +464,8 @@
   \frametitle{Adversarial Examples that Fool both Human and Computer
     Vision [2018]}
 
+  What do you see here?
+
   \begin{center}
     \begin{tikzpicture}
       \onslide<1>{
@@ -492,22 +494,35 @@
 \section{Defense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}
-%%   \frametitle{Defenses}
+\begin{frame}
+  \frametitle{Black-box defense}
 
-%%   \begin{description}
-%%   \item[Adversarial sample detection] We try to detect whether an
-%%     input sample is adversarial or not before classifying it.
-%%   \item[Regularization] Training with an adversarial objective
-%%     function is an effective regularizer (from [explaining and
-%%       harnessing]).
-%%   \item[Gradient masking] The goal of gradient masking is to leave the
-%%     decision boundaries untouched but damage the gradient used in
-%%     white-box attacks.
-%%   \item[Distillation and network saturation] These methods are used to
-%%     introduce numerical instabilities in gradient computations.
-%%   \end{description}
-%% \end{frame}
+  \framesubtitle{Denoising strategies}
+
+  Train a neural network to remove adversarial perturbation before
+  using it.
+
+  \medskip
+
+  The winning team of the defense track of NIPS 2017 competition
+  trained a denoising U-net to remove adversarial noise.
+
+  \bigskip
+
+  \begin{center}
+    \includegraphics[width = 10cm]{images/dunet.png}
+  \end{center}
+  %% \begin{itemize}
+  %% \item \textcolor{green}{Best defense so far against black-box
+  %%   adversary}
+  %% \item \textcolor{red}{Does not defend subtle white-box attacks}
+  %% \end{itemize}
+
+  %% \medskip
+
+  %% Error rate from 15.5\% to 3.9\% between adversarial trained and
+  %% ensemble adversarial trained model on MNIST for a black-box attack.
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -534,44 +549,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Black-box defense}
-
-  \framesubtitle{Ensemble adversarial training [Tramèr et al. May 2017]}
-
-  Augment training data with adversarial inputs from a number of fixed
-  pre-trained models.
-
-  \medskip
-
-  \begin{itemize}
-  \item \textcolor{green}{Best defense so far against black-box
-    adversary}
-  \item \textcolor{red}{Does not defend subtle white-box attacks}
-  \end{itemize}
-
-  \medskip
-
-  Error rate from 15.5\% to 3.9\% between adversarial trained and
-  ensemble adversarial trained model on MNIST for a black-box attack.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
 
   \frametitle{Defending machine learning}
 
-  \framesubtitle{Wide open problem}
+  \framesubtitle{Still open problem}
 
-  ``Most defenses against adversarial examples that have been proposed
-  so far just do not work very well at all, but the ones that do work
-  are not adaptive. This means it is like they are playing a game of
-  whack-a-mole: they close some vulnerabilities, but leave others
-  open.''
+  ``No method of defending against adversarial examples is yet
+  completely satisfactory. This remains a rapidly evolving research
+  area.''
 
   \bigskip
 
-  - Ian Goodfellow, Nicolas Papernot, February 2017
+  - Alexey Kurakin, Ian Goodfellow, Samy Bengio et al., March 2018
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -581,7 +570,7 @@
 
   Research papers:
   {\footnotesize
-    \begin{enumerate}
+    \begin{itemize}
     \item Goodfellow, I. J., Shlens, J., \& Szegedy,
       C. (2014). Explaining and harnessing adversarial
       examples. arXiv preprint arXiv:1412.6572.
@@ -602,20 +591,23 @@
       Prakash, A., Rahmati A. \& Song, D. (2017). Robust Physical-World
       Attacks on Machine Learning Models. arXiv preprint
       arXiv:1707.08945.
+    \item Liao, F., Liang, M., Dong, Y., Pang, T., Zhu, J., \& Hu,
+      X. (2017). Defense against Adversarial Attacks Using High-Level
+      Representation Guided Denoiser. arXiv preprint arXiv:1712.02976.
     \item Elsayed, G. F., Shankar, S., Cheung, B., Papernot, N.,
       Kurakin, A., Goodfellow, I., \& Sohl-Dickstein,
       J. (2018). Adversarial Examples that Fool both Human and
       Computer Vision. arXiv preprint arXiv:1802.08195.
-    \end{enumerate}
+    \end{itemize}
   }
 
   \bigskip
 
   Implementations:
-  \begin{enumerate}
+  \begin{itemize}
     \item github.com/tensorflow/cleverhans
     \item github.com/rodgzilla/machine\_learning\_adversarial\_examples
-  \end{enumerate}
+  \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
