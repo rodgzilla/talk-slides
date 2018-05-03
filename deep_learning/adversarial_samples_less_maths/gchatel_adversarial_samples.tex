@@ -447,6 +447,48 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial Examples that Fool both Human and Computer
+    Vision [2018]}
+
+  \begin{center}
+    \includegraphics[width = 8cm]{images/stupid_computer.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial Examples that Fool both Human and Computer
+    Vision [2018]}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \onslide<1>{
+        \node (firstPic) at (0, 0) {
+          \includegraphics[width = 3cm]{images/adv_fool_human_1.png}
+        };
+      }
+
+
+      \onslide<2>{
+        \node (secondPic) at (0, 0) {
+          \includegraphics[width = 6cm]{images/adv_fool_human_2.png}
+        };
+      }
+    \end{tikzpicture}
+  \end{center}
+
+  \onslide<2>
+
+  By building neural network architecture that closely match the human
+  visual system, the authors have manage to create adversarial samples
+  that fool humans.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Defense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -560,6 +602,10 @@
       Prakash, A., Rahmati A. \& Song, D. (2017). Robust Physical-World
       Attacks on Machine Learning Models. arXiv preprint
       arXiv:1707.08945.
+    \item Elsayed, G. F., Shankar, S., Cheung, B., Papernot, N.,
+      Kurakin, A., Goodfellow, I., \& Sohl-Dickstein,
+      J. (2018). Adversarial Examples that Fool both Human and
+      Computer Vision. arXiv preprint arXiv:1802.08195.
     \end{enumerate}
   }
 
@@ -567,8 +613,8 @@
 
   Implementations:
   \begin{enumerate}
-  \item github.com/tensorflow/cleverhans
-  \item github.com/rodgzilla/machine\_learning\_adversarial\_examples
+    \item github.com/tensorflow/cleverhans
+    \item github.com/rodgzilla/machine\_learning\_adversarial\_examples
   \end{enumerate}
 
 \end{frame}
