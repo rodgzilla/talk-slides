@@ -192,18 +192,19 @@
   \pause
 
   To \textcolor{blue}{train} a neural network we compute the
-  derivative of $L$ according to $\theta$ and use the result to update $\theta$
-  in order to \textcolor{blue}{decrease} the loss value.
+  derivative of $L$ according \underline{to the weights} ($\theta$) and use
+  the result to update $\theta$ in order to \textcolor{blue}{decrease} the
+  loss value.
 
   \bigskip
 
   \pause
 
   To create an \textcolor{red}{adversarial sample}, we compute the
-  derivative of $L$ according to $x$ and use the result to update the
-  pixel values of $x$ in order to \textcolor{red}{increase} the loss
-  value. It happens that such modifications of $x$ often cause the
-  network to misclassify it.
+  derivative of $L$ \underline{according to the input} ($x$) and use
+  the result to update the pixel values of $x$ in order to
+  \textcolor{red}{increase} the loss value. It happens that such
+  modifications of $x$ often cause the network to misclassify it.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -447,50 +448,6 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Adversarial Examples that Fool both Human and Computer
-    Vision [2018]}
-
-  \begin{center}
-    \includegraphics[width = 8cm]{images/stupid_computer.png}
-  \end{center}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Adversarial Examples that Fool both Human and Computer
-    Vision [2018]}
-
-  What do you see here?
-
-  \begin{center}
-    \begin{tikzpicture}
-      \onslide<1>{
-        \node (firstPic) at (0, 0) {
-          \includegraphics[width = 3cm]{images/adv_fool_human_1.png}
-        };
-      }
-
-
-      \onslide<2>{
-        \node (secondPic) at (0, 0) {
-          \includegraphics[width = 6cm]{images/adv_fool_human_2.png}
-        };
-      }
-    \end{tikzpicture}
-  \end{center}
-
-  \onslide<2>
-
-  By building neural network architecture that closely match the human
-  visual system, the authors have manage to create adversarial samples
-  that fool humans.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Defense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -524,16 +481,6 @@
   \begin{center}
     \includegraphics[width = 10cm]{images/dunet.png}
   \end{center}
-  %% \begin{itemize}
-  %% \item \textcolor{green}{Best defense so far against black-box
-  %%   adversary}
-  %% \item \textcolor{red}{Does not defend subtle white-box attacks}
-  %% \end{itemize}
-
-  %% \medskip
-
-  %% Error rate from 15.5\% to 3.9\% between adversarial trained and
-  %% ensemble adversarial trained model on MNIST for a black-box attack.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -543,18 +490,20 @@
 
   \framesubtitle{Adversarial training}
 
+  White-box defense is a much harder problem.
+
+
+
   We can generate adversarial samples and train the network to produce
   the correct classification on these new data points.
 
   \medskip
 
   \begin{itemize}
-  \item \textcolor{green}{Works against FGSM}
-  \item \textcolor{red}{Expensive}
-  \item \textcolor{red}{Does not defend subtler white-box
-    attacks (\textit{e.g.} I-FGSM or RAND+FGSM)}
-  \item \textcolor{red}{Does not defend against \underline{black-box
-      attack}}
+    \item \textcolor{green}{Works well against FGSM}
+    \item \textcolor{red}{Expensive in training time}
+    \item \textcolor{red}{Tends to overfit the attack used during the training}
+    \item \textcolor{red}{Does not defend subtler white-box attacks like RAND+FGSM}
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -644,6 +593,50 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \frametitle{Adversarial Examples that Fool both Human and Computer
+    Vision [2018]}
+
+  \begin{center}
+    \includegraphics[width = 8cm]{images/stupid_computer.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial Examples that Fool both Human and Computer
+    Vision [2018]}
+
+  What do you see here?
+
+  \begin{center}
+    \begin{tikzpicture}
+      \onslide<1>{
+        \node (firstPic) at (0, 0) {
+          \includegraphics[width = 3cm]{images/adv_fool_human_1.png}
+        };
+      }
+
+
+      \onslide<2>{
+        \node (secondPic) at (0, 0) {
+          \includegraphics[width = 6cm]{images/adv_fool_human_2.png}
+        };
+      }
+    \end{tikzpicture}
+  \end{center}
+
+  \onslide<2>
+
+  By building neural network architecture that closely match the human
+  visual system, the authors have manage to create adversarial samples
+  that fool humans.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
   \frametitle{References}
 
   Research papers:
@@ -686,6 +679,10 @@
       Kurakin, A., Goodfellow, I., \& Sohl-Dickstein,
       J. (2018). Adversarial Examples that Fool both Human and
       Computer Vision. arXiv preprint arXiv:1802.08195.
+    \item Kurakin, A., Goodfellow, I., Bengio, S., Dong, Y., Liao, F.,
+      Liang, M., ... \& Wang, J. (2018). Adversarial Attacks and
+      Defences Competition. arXiv preprint
+      arXiv:1804.00097.
     \end{itemize}
   }
 
