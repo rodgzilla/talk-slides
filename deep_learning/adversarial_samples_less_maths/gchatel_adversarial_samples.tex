@@ -580,19 +580,79 @@
 \begin{frame}
   \frametitle{Use of adversarial examples}
 
-  What adversarial samples can be used for besides this?
+  What adversarial samples can be used for?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Use of adversarial examples}
+
+  \framesubtitle{Make jokes}
 
   \begin{center}
     \includegraphics[width = 8cm]{images/car_crash.jpg}
   \end{center}
+  \bigskip
+  OK, but besides this?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \pause
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
 
-  \begin{itemize}
-  \item Exploring the biases of a neural network
-  \item Create an harder task for semi-supervised learning
-  \end{itemize}
+  \frametitle{Use of adversarial examples}
 
+  \framesubtitle{ConvNets and ImageNet Beyond Accuracy: Explanations,
+    Bias Detection, Adversarial Examples and Model Criticism [2017]}
+
+  \begin{center}
+    \includegraphics[width = 10cm]{images/imagenet_bias.png}
+  \end{center}
+
+  \bigskip
+  Explore the biases of a neural network by analysing the distance
+  of samples to the decision boundary using adversarial samples.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Use of adversarial examples}
+
+  \bigskip
+
+  \begin{overprint}
+    \only<2>{
+
+      \begin{center}
+        \includegraphics[width = 8cm]{images/car_crash.jpg}
+      \end{center}
+      \bigskip
+      besides this?
+    }
+
+    \only<3>{
+      \bigskip
+      \begin{center}
+        \includegraphics[width = 10cm]{images/imagenet_bias.png}
+      \end{center}
+
+      \bigskip
+      Explore the biases of a neural network by analysing the distance
+      of samples to the decision boundary using adversarial samples.
+    }
+
+    \only<4>{
+      Make the task of a student harder in a semi-supervised learning setup.
+    }
+
+    %% \begin{itemize}
+    %%   \onslide<3->{\item Exploring the biases of a neural network}
+    %%   \onslide<4->{\item Create an harder task for semi-supervised learning}
+    %% \end{itemize}
+  \end{overprint}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -613,16 +673,23 @@
     \item Kurakin, A., Goodfellow, I., \& Bengio,
       S. (2016). Adversarial examples in the physical world. arXiv
       preprint arXiv:1607.02533.
-    \item Tramèr, F., Kurakin, A., Papernot, N., Boneh, D., \&
-      McDaniel, P. (2017). Ensemble Adversarial Training: Attacks and
-      Defenses. arXiv preprint arXiv:1705.07204.
     \item Tramèr, F., Papernot, N., Goodfellow, I., Boneh, D., \&
       McDaniel, P. (2017). The Space of Transferable Adversarial
       Examples. arXiv preprint arXiv:1704.03453.
+    \item Miyato, T., Maeda, S. I., Koyama, M., \& Ishii,
+      S. (2017). Virtual adversarial training: a regularization method
+      for supervised and semi-supervised learning. arXiv preprint
+      arXiv:1704.03976.
+    \item Tramèr, F., Kurakin, A., Papernot, N., Boneh, D., \&
+      McDaniel, P. (2017). Ensemble Adversarial Training: Attacks and
+      Defenses. arXiv preprint arXiv:1705.07204.
     \item Evtimov, I., Eykholt, K., Fernandes, E., Kohno, T., Li, B.,
       Prakash, A., Rahmati A. \& Song, D. (2017). Robust Physical-World
       Attacks on Machine Learning Models. arXiv preprint
       arXiv:1707.08945.
+    \item Stock, P., \& Cisse, M. (2017). ConvNets and ImageNet Beyond
+      Accuracy: Explanations, Bias Detection, Adversarial Examples and
+      Model Criticism. arXiv preprint arXiv:1711.11443.
     \item Liao, F., Liang, M., Dong, Y., Pang, T., Zhu, J., \& Hu,
       X. (2017). Defense against Adversarial Attacks Using High-Level
       Representation Guided Denoiser. arXiv preprint arXiv:1712.02976.
@@ -630,12 +697,10 @@
       Kurakin, A., Goodfellow, I., \& Sohl-Dickstein,
       J. (2018). Adversarial Examples that Fool both Human and
       Computer Vision. arXiv preprint arXiv:1802.08195.
-    \item add ref biases
-    \item add ref VAT.
     \end{itemize}
   }
 
-  \bigskip
+  \medskip
 
   Implementations:
   \begin{itemize}
