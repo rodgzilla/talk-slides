@@ -448,6 +448,50 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial Examples that Fool both Human and Computer
+    Vision [2018]}
+
+  \begin{center}
+    \includegraphics[width = 8cm]{images/stupid_computer.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adversarial Examples that Fool both Human and Computer
+    Vision [2018]}
+
+  What do you see here?
+
+  \begin{center}
+    \begin{tikzpicture}
+      \onslide<1>{
+        \node (firstPic) at (0, 0) {
+          \includegraphics[width = 3cm]{images/adv_fool_human_1.png}
+        };
+      }
+
+
+      \onslide<2>{
+        \node (secondPic) at (0, 0) {
+          \includegraphics[width = 6cm]{images/adv_fool_human_2.png}
+        };
+      }
+    \end{tikzpicture}
+  \end{center}
+
+  \onslide<2>
+
+  By building neural network architecture that closely match the human
+  visual system, the authors have manage to create adversarial samples
+  that fool humans.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Defense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -481,6 +525,16 @@
   \begin{center}
     \includegraphics[width = 10cm]{images/dunet.png}
   \end{center}
+  %% \begin{itemize}
+  %% \item \textcolor{green}{Best defense so far against black-box
+  %%   adversary}
+  %% \item \textcolor{red}{Does not defend subtle white-box attacks}
+  %% \end{itemize}
+
+  %% \medskip
+
+  %% Error rate from 15.5\% to 3.9\% between adversarial trained and
+  %% ensemble adversarial trained model on MNIST for a black-box attack.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -593,50 +647,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Adversarial Examples that Fool both Human and Computer
-    Vision [2018]}
-
-  \begin{center}
-    \includegraphics[width = 8cm]{images/stupid_computer.png}
-  \end{center}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Adversarial Examples that Fool both Human and Computer
-    Vision [2018]}
-
-  What do you see here?
-
-  \begin{center}
-    \begin{tikzpicture}
-      \onslide<1>{
-        \node (firstPic) at (0, 0) {
-          \includegraphics[width = 3cm]{images/adv_fool_human_1.png}
-        };
-      }
-
-
-      \onslide<2>{
-        \node (secondPic) at (0, 0) {
-          \includegraphics[width = 6cm]{images/adv_fool_human_2.png}
-        };
-      }
-    \end{tikzpicture}
-  \end{center}
-
-  \onslide<2>
-
-  By building neural network architecture that closely match the human
-  visual system, the authors have manage to create adversarial samples
-  that fool humans.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
   \frametitle{References}
 
   Research papers:
@@ -679,10 +689,6 @@
       Kurakin, A., Goodfellow, I., \& Sohl-Dickstein,
       J. (2018). Adversarial Examples that Fool both Human and
       Computer Vision. arXiv preprint arXiv:1802.08195.
-    \item Kurakin, A., Goodfellow, I., Bengio, S., Dong, Y., Liao, F.,
-      Liang, M., ... \& Wang, J. (2018). Adversarial Attacks and
-      Defences Competition. arXiv preprint
-      arXiv:1804.00097.
     \end{itemize}
   }
 
