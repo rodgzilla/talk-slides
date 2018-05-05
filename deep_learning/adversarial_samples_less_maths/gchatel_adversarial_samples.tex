@@ -616,43 +616,27 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+
   \frametitle{Use of adversarial examples}
+
+  \framesubtitle{Virtual adversarial training: a regularization method
+    for supervised and semi-supervised learning. [2017]}
+
+  \vspace{1cm}
+
+  \begin{center}
+    \includegraphics[width = 3cm]{images/vat.png}
+  \end{center}
 
   \bigskip
 
-  \begin{overprint}
-    \only<2>{
+  Use unlabelled data to regularize neural network by training it to
+  make the same prediction on a unlabelled image and its adversarial
+  counterpart.  \\[1.5cm]
 
-      \begin{center}
-        \includegraphics[width = 8cm]{images/car_crash.jpg}
-      \end{center}
-      \bigskip
-      besides this?
-    }
-
-    \only<3>{
-      \bigskip
-      \begin{center}
-        \includegraphics[width = 10cm]{images/imagenet_bias.png}
-      \end{center}
-
-      \bigskip
-      Explore the biases of a neural network by analysing the distance
-      of samples to the decision boundary using adversarial samples.
-    }
-
-    \only<4>{
-      Make the task of a student harder in a semi-supervised learning setup.
-    }
-
-    %% \begin{itemize}
-    %%   \onslide<3->{\item Exploring the biases of a neural network}
-    %%   \onslide<4->{\item Create an harder task for semi-supervised learning}
-    %% \end{itemize}
-  \end{overprint}
+  {\footnotesize Image from https://thecuriousaicompany.com/mean-teacher/}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
