@@ -6,7 +6,7 @@
 \usetheme{Boadilla}
 \title{Deep learning basics}
 \author{G. Châtel}
-\date{3 mars 2017}
+\date{June 4th, 2018}
 
 \begin{document}
 
@@ -33,14 +33,11 @@
     \item[Intuitively] We want to \emph{learn from} and \emph{make predictions
     on} data.
 
+    \medskip
+
     \item[Technically] We want to build a model that approximate well
       (\textit{e.g.} minimize a loss function) an unknown function.
   \end{description}
-
-  \bigskip 
-
-  It is important to note that the function we want to approximate may
-  or may not have a closed form.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -53,7 +50,9 @@
 
   \begin{itemize}
     \item Regression
-      
+
+      \smallskip
+
       \begin{center}
         \begin{tabular}{cc}
           \textcolor{blue}{Polynomial} & $(x, y, z) \to f(x, y, z)$ \\[0.5cm]
@@ -62,7 +61,9 @@
       \end{center}
 
     \item Classification
-      
+
+      \smallskip
+
       \begin{center}
         \begin{tabular}{cc}
           \textcolor{blue}{Image classification} & pixel values $\to$ cat or dog \\[0.5cm]
@@ -83,7 +84,7 @@
   which we use \textcolor{blue}{artificial neural networks} to make
   predictions.
 
-  \bigskip 
+  \bigskip
 
   An artificial neural networks is a computation model loosely based
   on the human brain. It aims to mimic electric signals travelling
@@ -99,15 +100,25 @@
   \framesubtitle{Neuron}
 
   \begin{center}
-    \scalebox{0.9}{
-      \input{figures/neuron.tex}
+    \scalebox{0.6}{
+      \input{figures/nonlinear_neuron.tex}
     }
   \end{center}
 
-  \[
-  y = w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b
-  \]
+  \uncover<1->{
+    \[
+    A(x) = \begin{cases}
+        0 & \text{if } x < 0 \\
+        1 & \text{otherwise}
+    \end{cases}
+    \]
+  }
 
+  \uncover<2->{
+    \[
+    y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
+    \]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -126,57 +137,57 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{``Problem'' with this definition}
+%% \begin{frame}
+%%   \frametitle{``Problem'' with this definition}
 
-  We now have a quite complicated framework to compute
-  \textcolor{blue}{linear functions}. 
+%%   We now have a quite complicated framework to compute
+%%   \textcolor{blue}{linear functions}.
 
-  \bigskip
+%%   \bigskip
 
-  \begin{center}
-    \begin{tabular}{cc}
-      \textcolor{blue}{Neuron} & linear function \\
-      \textcolor{blue}{Neural network} & linear combination of neuron outputs \\
-    \end{tabular}
-  \end{center}
+%%   \begin{center}
+%%     \begin{tabular}{cc}
+%%       \textcolor{blue}{Neuron} & linear function \\
+%%       \textcolor{blue}{Neural network} & linear combination of neuron outputs \\
+%%     \end{tabular}
+%%   \end{center}
 
-  \bigskip
+%%   \bigskip
 
-  To approximate non linear functions, we would like to have a non
-  linear model.
+%%   To approximate non linear functions, we would like to have a non
+%%   linear model.
 
-  \bigskip
+%%   \bigskip
 
-  \uncover<2->{\textcolor{blue}{Solution}: add nonlinearity to neurons.}
-\end{frame}
+%%   \uncover<2->{\textcolor{blue}{Solution}: add nonlinearity to neurons.}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Neuron with activation}
+%% \begin{frame}
+%%   \frametitle{Neuron with activation}
 
-  \begin{center}
-    \scalebox{0.6}{
-      \input{figures/nonlinear_neuron.tex}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.6}{
+%%       \input{figures/nonlinear_neuron.tex}
+%%     }
+%%   \end{center}
 
-  \uncover<2->{
-    \[
-    A(x) = \begin{cases}
-        0 & \text{if } x < 0 \\
-        1 & \text{otherwise}
-    \end{cases}
-    \]
-  }
+%%   \uncover<2->{
+%%     \[
+%%     A(x) = \begin{cases}
+%%         0 & \text{if } x < 0 \\
+%%         1 & \text{otherwise}
+%%     \end{cases}
+%%     \]
+%%   }
 
-  \uncover<3->{
-    \[
-    y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
-    \]
-  }
-\end{frame}
+%%   \uncover<3->{
+%%     \[
+%%     y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
+%%     \]
+%%   }
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +203,7 @@
   \end{center}
 
   We want to set $w_{1}, w_{2}$ and $b$ such that:
-  
+
   \[
   A(w_{1}x_{1} + w_{2}x_{2} + b) = x_{1} \text{ AND } x_{2}
   \]
@@ -212,17 +223,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Computation example}
+%% \begin{frame}
+%%   \frametitle{Computation example}
 
-  \framesubtitle{Binary XOR gate}
+%%   \framesubtitle{Binary XOR gate}
 
-  \begin{center}
-    \scalebox{0.7}{
-      \input{figures/xor_neuron.tex}
-    }
-  \end{center}
-\end{frame}
+%%   \begin{center}
+%%     \scalebox{0.7}{
+%%       \input{figures/xor_neuron.tex}
+%%     }
+%%   \end{center}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -233,278 +244,278 @@
   of parameters.
 
   \bigskip
-  
+
   \begin{itemize}
     \uncover<2->{
-    \item XOR network: 9 parameters
+    \item AND network: 3 parameters
     }
     \bigskip
     \uncover<3->{
-    \item dogs vs cats pictures (VGG16 network): 138,357,544 parameters 
+    \item dogs vs cats pictures (VGG16 network): 138,357,544 parameters
     }
   \end{itemize}
-  
-  \bigskip
-  \uncover<4->{We should probably look for a way to tune these
-    parameters automatically otherwise it is going to get
-    \emph{really} boring \emph{really} quickly.}
+
+  %% \bigskip
+  %% \uncover<4->{We should probably look for a way to tune these
+  %%   parameters automatically otherwise it is going to get
+  %%   \emph{really} boring \emph{really} quickly.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Parameter tuning}
+%% \begin{frame}
+%%   \frametitle{Parameter tuning}
 
-  \framesubtitle{Line approximation}
+%%   \framesubtitle{Line approximation}
 
-  We have a few sample points and we want to find a line that
-  approximate these points. 
+%%   We have a few sample points and we want to find a line that
+%%   approximate these points.
 
-  \begin{center}
-    \scalebox{0.8}{
-      \input{figures/scatter_01.tex}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.8}{
+%%       \input{figures/scatter_01.tex}
+%%     }
+%%   \end{center}
 
-  Our model is just a line
+%%   Our model is just a line
 
-  \[
-  y_{pred} = \textcolor{red}{a}x + \textcolor{red}{b}
-  \]
+%%   \[
+%%   y_{pred} = \textcolor{red}{a}x + \textcolor{red}{b}
+%%   \]
 
-  \bigskip
+%%   \bigskip
 
-  We want to find $a$ and $b$ to best match our samples.
+%%   We want to find $a$ and $b$ to best match our samples.
 
-\end{frame}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Parameter tuning}
+%% \begin{frame}
+%%   \frametitle{Parameter tuning}
 
-  \framesubtitle{Gradient descent}
+%%   \framesubtitle{Gradient descent}
 
-  First we have a define a \textcolor{blue}{loss} that measures how
-  good our predictions are.
+%%   First we have a define a \textcolor{blue}{loss} that measures how
+%%   good our predictions are.
 
-  \[
-  l(x, y, a, b) = (y - y_{pred})^{2} = (y - (a x + b))^{2}
-  \]
+%%   \[
+%%   l(x, y, a, b) = (y - y_{pred})^{2} = (y - (a x + b))^{2}
+%%   \]
 
-  \bigskip
+%%   \bigskip
 
-  and now, we compute how the loss is affected by small changes of $a$ and
-  $b$:
+%%   and now, we compute how the loss is affected by small changes of $a$ and
+%%   $b$:
 
-  \medskip
+%%   \medskip
 
-  \[
-  \frac{dl}{da} = 2 x (ax + b - y) \qquad \qquad \frac{dl}{db} = 2 (ax + b - y)
-  \]
-\end{frame}
+%%   \[
+%%   \frac{dl}{da} = 2 x (ax + b - y) \qquad \qquad \frac{dl}{db} = 2 (ax + b - y)
+%%   \]
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Parameter tuning}
+%% \begin{frame}
+%%   \frametitle{Parameter tuning}
 
-  \framesubtitle{Gradient descent}
+%%   \framesubtitle{Gradient descent}
 
-  We start with random values: $a = -2$ and $b = 1$
+%%   We start with random values: $a = -2$ and $b = 1$
 
-  \begin{center}
-    \scalebox{0.7}{
-      \input{figures/scatter_02.tex}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.7}{
+%%       \input{figures/scatter_02.tex}
+%%     }
+%%   \end{center}
 
-  Then, we compute the average of the gradient along all $(x, y)$ couples
+%%   Then, we compute the average of the gradient along all $(x, y)$ couples
 
-  \begin{overprint}
-    \onslide<1> \[ a = -2.00 \quad b = 1.00 \quad \overline{\frac{dl}{da}} = -1.07 \quad \overline{\frac{dl}{db}} = -1.37 \quad \overline{l(x, y, a, b)} = 0.860367 \]
-    \onslide<2> \[ a = -1.18 \quad b = 1.30 \quad \overline{\frac{dl}{da}} = -0.17 \quad \overline{\frac{dl}{db}} = 0.09 \quad \overline{l(x, y, a, b)} = 0.159420 \]
-    \onslide<3> \[ a = -0.82 \quad b = 1.10 \quad \overline{\frac{dl}{da}} = -0.13 \quad \overline{\frac{dl}{db}} = 0.07 \quad \overline{l(x, y, a, b)} = 0.088204 \]
-    \onslide<4> \[ a = -0.54 \quad b = 0.94 \quad \overline{\frac{dl}{da}} = -0.09 \quad \overline{\frac{dl}{db}} = 0.05 \quad \overline{l(x, y, a, b)} = 0.048802 \]
-    \onslide<5> \[ a = -0.34 \quad b = 0.83 \quad \overline{\frac{dl}{da}} = -0.07 \quad \overline{\frac{dl}{db}} = 0.04 \quad \overline{l(x, y, a, b)} = 0.027001 \]
-    \onslide<6> \[ a = -0.19 \quad b = 0.75 \quad \overline{\frac{dl}{da}} = -0.05 \quad \overline{\frac{dl}{db}} = 0.03 \quad \overline{l(x, y, a, b)} = 0.014939 \]
-    \onslide<7> \[ a = -0.08 \quad b = 0.68 \quad \overline{\frac{dl}{da}} = -0.04 \quad \overline{\frac{dl}{db}} = 0.02 \quad \overline{l(x, y, a, b)} = 0.008266 \]
-    \onslide<8> \[ a = 0.01 \quad b = 0.64 \quad \overline{\frac{dl}{da}} = -0.03 \quad \overline{\frac{dl}{db}} = 0.02 \quad \overline{l(x, y, a, b)} = 0.004573 \]
-    \onslide<9> \[ a = 0.07 \quad b = 0.60 \quad \overline{\frac{dl}{da}} = -0.02 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.002530 \]
-    \onslide<10> \[ a = 0.12 \quad b = 0.58 \quad \overline{\frac{dl}{da}} = -0.02 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.001400 \]
-    \onslide<11> \[ a = 0.15 \quad b = 0.56 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.000775 \]
-    \onslide<12> \[ a = 0.18 \quad b = 0.54 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000429 \]
-    \onslide<13> \[ a = 0.19 \quad b = 0.53 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000237 \]
-    \onslide<14> \[ a = 0.21 \quad b = 0.52 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000131 \]
-    \onslide<15> \[ a = 0.22 \quad b = 0.52 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000073 \]
-    \onslide<16> \[ a = 0.23 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000040 \]
-    \onslide<17> \[ a = 0.23 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000022 \]
-    \onslide<18> \[ a = 0.24 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000012 \]
-    \onslide<19> \[ a = 0.24 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000007 \]
-    \onslide<20> \[ a = 0.24 \quad b = 0.50 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000004 \]
-  \end{overprint}
-  
-  \bigskip
+%%   \begin{overprint}
+%%     \onslide<1> \[ a = -2.00 \quad b = 1.00 \quad \overline{\frac{dl}{da}} = -1.07 \quad \overline{\frac{dl}{db}} = -1.37 \quad \overline{l(x, y, a, b)} = 0.860367 \]
+%%     \onslide<2> \[ a = -1.18 \quad b = 1.30 \quad \overline{\frac{dl}{da}} = -0.17 \quad \overline{\frac{dl}{db}} = 0.09 \quad \overline{l(x, y, a, b)} = 0.159420 \]
+%%     \onslide<3> \[ a = -0.82 \quad b = 1.10 \quad \overline{\frac{dl}{da}} = -0.13 \quad \overline{\frac{dl}{db}} = 0.07 \quad \overline{l(x, y, a, b)} = 0.088204 \]
+%%     \onslide<4> \[ a = -0.54 \quad b = 0.94 \quad \overline{\frac{dl}{da}} = -0.09 \quad \overline{\frac{dl}{db}} = 0.05 \quad \overline{l(x, y, a, b)} = 0.048802 \]
+%%     \onslide<5> \[ a = -0.34 \quad b = 0.83 \quad \overline{\frac{dl}{da}} = -0.07 \quad \overline{\frac{dl}{db}} = 0.04 \quad \overline{l(x, y, a, b)} = 0.027001 \]
+%%     \onslide<6> \[ a = -0.19 \quad b = 0.75 \quad \overline{\frac{dl}{da}} = -0.05 \quad \overline{\frac{dl}{db}} = 0.03 \quad \overline{l(x, y, a, b)} = 0.014939 \]
+%%     \onslide<7> \[ a = -0.08 \quad b = 0.68 \quad \overline{\frac{dl}{da}} = -0.04 \quad \overline{\frac{dl}{db}} = 0.02 \quad \overline{l(x, y, a, b)} = 0.008266 \]
+%%     \onslide<8> \[ a = 0.01 \quad b = 0.64 \quad \overline{\frac{dl}{da}} = -0.03 \quad \overline{\frac{dl}{db}} = 0.02 \quad \overline{l(x, y, a, b)} = 0.004573 \]
+%%     \onslide<9> \[ a = 0.07 \quad b = 0.60 \quad \overline{\frac{dl}{da}} = -0.02 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.002530 \]
+%%     \onslide<10> \[ a = 0.12 \quad b = 0.58 \quad \overline{\frac{dl}{da}} = -0.02 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.001400 \]
+%%     \onslide<11> \[ a = 0.15 \quad b = 0.56 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.01 \quad \overline{l(x, y, a, b)} = 0.000775 \]
+%%     \onslide<12> \[ a = 0.18 \quad b = 0.54 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000429 \]
+%%     \onslide<13> \[ a = 0.19 \quad b = 0.53 \quad \overline{\frac{dl}{da}} = -0.01 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000237 \]
+%%     \onslide<14> \[ a = 0.21 \quad b = 0.52 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000131 \]
+%%     \onslide<15> \[ a = 0.22 \quad b = 0.52 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000073 \]
+%%     \onslide<16> \[ a = 0.23 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000040 \]
+%%     \onslide<17> \[ a = 0.23 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000022 \]
+%%     \onslide<18> \[ a = 0.24 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000012 \]
+%%     \onslide<19> \[ a = 0.24 \quad b = 0.51 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000007 \]
+%%     \onslide<20> \[ a = 0.24 \quad b = 0.50 \quad \overline{\frac{dl}{da}} = 0.00 \quad \overline{\frac{dl}{db}} = 0.00 \quad \overline{l(x, y, a, b)} = 0.000004 \]
+%%   \end{overprint}
 
-  And update $a$ and $b$ by substracting a small proportion of their
-  gradient.
+%%   \bigskip
 
-\end{frame}
+%%   And update $a$ and $b$ by substracting a small proportion of their
+%%   gradient.
+
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+%% \begin{frame}
 
-  \frametitle{Parameter tuning}
+%%   \frametitle{Parameter tuning}
 
-  \framesubtitle{Problem with ANN}
+%%   \framesubtitle{Problem with ANN}
 
-  Using gradient descent, we know how to minimize (or at least reach a
-  local minima) a differentiable function.
+%%   Using gradient descent, we know how to minimize (or at least reach a
+%%   local minima) a differentiable function.
 
-  \pause
-  \bigskip
+%%   \pause
+%%   \bigskip
 
-  \textcolor{red}{Problem}: The function computed by our neural network is not
-  differentiable because of the activation function.
-  
-  \[
-  A(x) = \begin{cases}
-    0 & \text{if } x < 0 \\
-    1 & \text{otherwise}
-  \end{cases}
-  \]
-  
-  \medskip
+%%   \textcolor{red}{Problem}: The function computed by our neural network is not
+%%   differentiable because of the activation function.
 
-  \pause
+%%   \[
+%%   A(x) = \begin{cases}
+%%     0 & \text{if } x < 0 \\
+%%     1 & \text{otherwise}
+%%   \end{cases}
+%%   \]
 
-  \textcolor{blue}{Solution}: We replace it by a differentiable
-  function that does the same job.
+%%   \medskip
 
-  \begin{center}
-    \begin{tikzpicture}[xscale = 4]
-      \node (formula) (0, 0){
-        \scalebox{1.3}{
-          $A(x) = \frac{1}{1 + e^{-x}}$
-        }
-      } ;
-      
-      \node (graph) at (1, 0){
-        \scalebox{0.6}{
-          \input{figures/sigmoid.tex}
-        }
-      };
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
+%%   \pause
+
+%%   \textcolor{blue}{Solution}: We replace it by a differentiable
+%%   function that does the same job.
+
+%%   \begin{center}
+%%     \begin{tikzpicture}[xscale = 4]
+%%       \node (formula) (0, 0){
+%%         \scalebox{1.3}{
+%%           $A(x) = \frac{1}{1 + e^{-x}}$
+%%         }
+%%       } ;
+
+%%       \node (graph) at (1, 0){
+%%         \scalebox{0.6}{
+%%           \input{figures/sigmoid.tex}
+%%         }
+%%       };
+%%     \end{tikzpicture}
+%%   \end{center}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Convolution}
+%% \begin{frame}
+%%   \frametitle{Convolution}
 
-  \framesubtitle{Motivation}
+%%   \framesubtitle{Motivation}
 
-  For now, our networks computes a nonlinear function of the
-  inputs. If we work with images, it has to learn the \emph{spacial
-    structure} of the data by itself, which takes a long time.
+%%   For now, our networks computes a nonlinear function of the
+%%   inputs. If we work with images, it has to learn the \emph{spacial
+%%     structure} of the data by itself, which takes a long time.
 
-  \bigskip 
+%%   \bigskip
 
-  A nice way to help it is to build \textcolor{blue}{convolution
-    layers} into the network.
-\end{frame}
+%%   A nice way to help it is to build \textcolor{blue}{convolution
+%%     layers} into the network.
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+%% \begin{frame}
 
-  \frametitle{Convolution}
+%%   \frametitle{Convolution}
 
-  \framesubtitle{Kernel}
+%%   \framesubtitle{Kernel}
 
-  \begin{center}
-    \scalebox{0.55}{
-      \includegraphics{images/kernel.jpg}
-    }
-  \end{center}
+%%   \begin{center}
+%%     \scalebox{0.55}{
+%%       \includegraphics{images/kernel.jpg}
+%%     }
+%%   \end{center}
 
-  {\small Image from \url{http://stats.stackexchange.com/}}
+%%   {\small Image from \url{http://stats.stackexchange.com/}}
 
-\end{frame}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+%% \begin{frame}
 
-  \frametitle{Convolution}
+%%   \frametitle{Convolution}
 
-  \framesubtitle{Example: Sobel operators}
+%%   \framesubtitle{Example: Sobel operators}
 
-  \begin{center}
-    \scalebox{0.9}{
-      \input{figures/convolutions_examples.tex}
-    }
-  \end{center}
-  
-  {\small Image from \url{http://www.reddit.com/}}
-\end{frame}
+%%   \begin{center}
+%%     \scalebox{0.9}{
+%%       \input{figures/convolutions_examples.tex}
+%%     }
+%%   \end{center}
+
+%%   {\small Image from \url{http://www.reddit.com/}}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+%% \begin{frame}
 
-  \frametitle{Convolutional neural network}
-  
-  \framesubtitle{VGG network (2014)}
+%%   \frametitle{Convolutional neural network}
 
-  \begin{center}
-    \scalebox{0.6}{
-      \includegraphics{images/vgg16_architecture.png}
-    }
-  \end{center}
+%%   \framesubtitle{VGG network (2014)}
 
-  {\small Image from \url{https://www.cs.toronto.edu/~frossard/post/vgg16/}}
-\end{frame}
+%%   \begin{center}
+%%     \scalebox{0.6}{
+%%       \includegraphics{images/vgg16_architecture.png}
+%%     }
+%%   \end{center}
+
+%%   {\small Image from \url{https://www.cs.toronto.edu/~frossard/post/vgg16/}}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Convolution}
+%% \begin{frame}
+%%   \frametitle{Convolution}
 
-  \framesubtitle{What do filter recognize?}
-  
-  {\small Image from \url{http://www.matthewzeiler.com/pubs/arxive2013/eccv2014.pdf}}
+%%   \framesubtitle{What do filter recognize?}
 
-  \begin{center}
-    \begin{overprint}
-      \onslide<1> \includegraphics[width = 4cm]{images/cnn_vizu_l1.jpg}
-      \onslide<2> \includegraphics[width = 11cm]{images/cnn_vizu_l2.jpg}
-      \onslide<3> \includegraphics[width = 11cm]{images/cnn_vizu_l3.jpg}
-      \onslide<4> \includegraphics[width = 9cm]{images/cnn_vizu_l4.jpg}
-      \onslide<5> \includegraphics[width = 9cm]{images/cnn_vizu_l5.jpg}
-    \end{overprint}
-  \end{center}
+%%   {\small Image from \url{http://www.matthewzeiler.com/pubs/arxive2013/eccv2014.pdf}}
 
-\end{frame}
+%%   \begin{center}
+%%     \begin{overprint}
+%%       \onslide<1> \includegraphics[width = 4cm]{images/cnn_vizu_l1.jpg}
+%%       \onslide<2> \includegraphics[width = 11cm]{images/cnn_vizu_l2.jpg}
+%%       \onslide<3> \includegraphics[width = 11cm]{images/cnn_vizu_l3.jpg}
+%%       \onslide<4> \includegraphics[width = 9cm]{images/cnn_vizu_l4.jpg}
+%%       \onslide<5> \includegraphics[width = 9cm]{images/cnn_vizu_l5.jpg}
+%%     \end{overprint}
+%%   \end{center}
+
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+%% \begin{frame}
 
-  \frametitle{Convolutional neural network}
-  
-  \framesubtitle{VGG network (2014)}
+%%   \frametitle{Convolutional neural network}
 
-  \begin{center}
-    \scalebox{0.6}{
-      \includegraphics{images/vgg16_architecture.png}
-    }
-  \end{center}
+%%   \framesubtitle{VGG network (2014)}
 
-  {\small Image from \url{https://www.cs.toronto.edu/~frossard/post/vgg16/}}
-\end{frame}
+%%   \begin{center}
+%%     \scalebox{0.6}{
+%%       \includegraphics{images/vgg16_architecture.png}
+%%     }
+%%   \end{center}
+
+%%   {\small Image from \url{https://www.cs.toronto.edu/~frossard/post/vgg16/}}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -565,7 +576,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   Consider an image $I$ and its image by the convolution layers of the
   VGG network $Conv(I)$.
 
@@ -589,7 +600,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   Gatys, Ecker and Bethge built a formula to extract the
   \textit{style} of an image using the convolutional layers of the VGG
   network (2015).
@@ -617,7 +628,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   Let's take a random image from the internet.
 
   \begin{center}
@@ -633,7 +644,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   \begin{center}
     \begin{tikzpicture}
       \node (coefface) at (-1.7, 0) {
@@ -651,7 +662,7 @@
       \node (vangogh) at (4.3, 0) {
         \includegraphics[width = 2.5cm]{images/van_gogh.jpg}
       };
-      
+
       \node (eq) at (6, 0){
         $) =$
       };
@@ -671,7 +682,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   \begin{center}
     \begin{tikzpicture}
       \node (coefface) at (-1.7, 0) {
@@ -689,7 +700,7 @@
       \node (lines) at (4.3, 0) {
         \includegraphics[width = 2.5cm]{images/lines.jpg}
       };
-      
+
       \node (eq) at (6, 0){
         $) =$
       };
@@ -709,7 +720,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   \begin{center}
     \begin{tikzpicture}
       \node (coefface) at (-1.7, 0) {
@@ -727,7 +738,7 @@
       \node (vangogh) at (4.3, 0) {
         \includegraphics[width = 2.5cm]{images/flowers.jpg}
       };
-      
+
       \node (eq) at (6, 0){
         $) =$
       };
@@ -747,7 +758,7 @@
   \frametitle{Architecture examples}
 
   \framesubtitle{Neural style}
-  
+
   \begin{center}
     \begin{tikzpicture}
       \node (coefface) at (-1.7, 0) {
@@ -765,7 +776,7 @@
       \node (vangogh) at (4.3, 0) {
         \includegraphics[width = 2.5cm]{images/greg_face}
       };
-      
+
       \node (eq) at (6, 0){
         $) =$
       };
@@ -825,7 +836,7 @@
   \end{center}
 
   {\small Image from \url{https://colah.github.io}}
-  
+
   \bigskip
 
   Google, September 2016: ``The Google Translate mobile and web apps
