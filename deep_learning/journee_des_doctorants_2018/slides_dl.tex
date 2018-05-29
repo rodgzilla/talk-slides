@@ -518,12 +518,15 @@
 %% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Autoencoder: data encoding}
+  \framesubtitle{Autoencoder}
 
   \begin{center}
     \scalebox{0.6}{
@@ -547,87 +550,117 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
+  \framesubtitle{Autoencoder: Compression}
+
+  \begin{center}
+    \scalebox{0.3}{
+      \includegraphics{images/generative_compression.png}
+    }
+  \end{center}
+
+  \medskip
+
+  If we force the output image to be realistic, we lose
+  \emph{semantic information} rather than resolution.
+
+  \bigskip
+
+  {\footnotesize Santurkar, S., Budden, D., \& Shavit,
+    N. (2017). Generative compression. arXiv preprint
+    arXiv:1703.01467.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Architecture examples}
+
   \framesubtitle{CNN + Autoencoder network: drawing simplification}
 
   \begin{center}
     \includegraphics[width = \linewidth]{images/drawing_simplification_example.png}
   \end{center}
 
-  Simo-Serra, Iizuka, Sasaki, Ishikawa (2016)
+  \bigskip
+
+  {\footnotesize Simo-Serra, E., Iizuka, S., Sasaki, K., \& Ishikawa,
+    H. (2016). Learning to simplify: fully convolutional networks for
+    rough sketch cleanup. ACM Transactions on Graphics (TOG), 35(4),
+    121.}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%%   \frametitle{Architecture examples}
+
+%%   \framesubtitle{CNN + Autoencoder network: drawing simplification}
+
+%%   \begin{center}
+%%     \includegraphics[width=\linewidth]{images/drawing_simplification.png}
+%%   \end{center}
+
+%%   Simo-Serra, Iizuka, Sasaki, Ishikawa (2016)
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%%   \frametitle{Architecture examples}
+
+%%   \framesubtitle{Neural style}
+
+%%   Consider an image $I$ and its image by the convolution layers of the
+%%   VGG network $Conv(I)$.
+
+%%   \pause
+%%   \bigskip
+
+%%   We can reconstruct a picture $I'$ with the same content as $I$ by
+%%   applying gradient descent on the pixels in order to obtain $Conv(I)$
+%%   as output, starting with white noise.
+
+%%   \begin{center}
+%%     \scalebox{0.6}{
+%%       \input{figures/nonlinear_neuron_animation.tex}
+%%     }
+%%   \end{center}
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%%   \frametitle{Architecture examples}
+
+%%   \framesubtitle{Neural style}
+
+%%   Gatys, Ecker and Bethge built a formula to extract the
+%%   \textit{style} of an image using the convolutional layers of the VGG
+%%   network (2015).
+
+%%   \bigskip
+
+%%   They build the following Gram matrix:
+
+%%   \bigskip
+
+%%   \[
+%%   G_{ij}^{l} = \sum_{k} F_{ik}^{l} F_{jk}^{l}
+%%   \]
+
+%%   \bigskip
+
+%%   where $F_{ij}^{l}$ is the $j$-th output of the $i$-th filter of the
+%%   $l$-th convolutional layer.
+
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{CNN + Autoencoder network: drawing simplification}
-
-  \begin{center}
-    \includegraphics[width=\linewidth]{images/drawing_simplification.png}
-  \end{center}
-
-  Simo-Serra, Iizuka, Sasaki, Ishikawa (2016)
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Architecture examples}
-
-  \framesubtitle{Neural style}
-
-  Consider an image $I$ and its image by the convolution layers of the
-  VGG network $Conv(I)$.
-
-  \pause
-  \bigskip
-
-  We can reconstruct a picture $I'$ with the same content as $I$ by
-  applying gradient descent on the pixels in order to obtain $Conv(I)$
-  as output, starting with white noise.
-
-  \begin{center}
-    \scalebox{0.6}{
-      \input{figures/nonlinear_neuron_animation.tex}
-    }
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Architecture examples}
-
-  \framesubtitle{Neural style}
-
-  Gatys, Ecker and Bethge built a formula to extract the
-  \textit{style} of an image using the convolutional layers of the VGG
-  network (2015).
-
-  \bigskip
-
-  They build the following Gram matrix:
-
-  \bigskip
-
-  \[
-  G_{ij}^{l} = \sum_{k} F_{ik}^{l} F_{jk}^{l}
-  \]
-
-  \bigskip
-
-  where $F_{ij}^{l}$ is the $j$-th output of the $i$-th filter of the
-  $l$-th convolutional layer.
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Architecture examples}
-
-  \framesubtitle{Neural style}
+  \framesubtitle{Neural style transfer}
 
   Let's take a random image from the internet.
 
@@ -643,7 +676,7 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Neural style}
+  \framesubtitle{Neural style transfer}
 
   \begin{center}
     \begin{tikzpicture}
@@ -674,6 +707,12 @@
       };
     \end{tikzpicture}
   \end{center}
+
+  \bigskip
+
+  {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
+    neural algorithm of artistic style. arXiv preprint
+    arXiv:1508.06576.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -681,7 +720,7 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Neural style}
+  \framesubtitle{Neural style transfer}
 
   \begin{center}
     \begin{tikzpicture}
@@ -712,6 +751,13 @@
       };
     \end{tikzpicture}
   \end{center}
+
+  \bigskip
+
+  {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
+    neural algorithm of artistic style. arXiv preprint
+    arXiv:1508.06576.}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -719,7 +765,7 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Neural style}
+  \framesubtitle{Neural style transfer}
 
   \begin{center}
     \begin{tikzpicture}
@@ -750,6 +796,13 @@
       };
     \end{tikzpicture}
   \end{center}
+
+  \bigskip
+
+  {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
+    neural algorithm of artistic style. arXiv preprint
+    arXiv:1508.06576.}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -757,7 +810,7 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Neural style}
+  \framesubtitle{Neural style transfer}
 
   \begin{center}
     \begin{tikzpicture}
@@ -788,6 +841,13 @@
       };
     \end{tikzpicture}
   \end{center}
+
+  \bigskip
+
+  {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
+    neural algorithm of artistic style. arXiv preprint
+    arXiv:1508.06576.}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
