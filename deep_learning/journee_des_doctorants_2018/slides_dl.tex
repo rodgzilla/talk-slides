@@ -86,9 +86,9 @@
 
   \bigskip
 
-  An artificial neural networks is a computation model loosely based
-  on the human brain. It aims to mimic electric signals travelling
-  through neurons in order to make computations.
+  An artificial neural networks is a computation model \emph{loosely}
+  based on the human brain. It aims to mimic electric signals
+  travelling through neurons in order to make computations.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -464,20 +464,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}
+\begin{frame}
 
-%%   \frametitle{Convolutional neural network}
+  \frametitle{Convolutional neural network}
 
-%%   \framesubtitle{VGG network (2014)}
+  \framesubtitle{VGG network (2014)}
 
-%%   \begin{center}
-%%     \scalebox{0.6}{
-%%       \includegraphics{images/vgg16_architecture.png}
-%%     }
-%%   \end{center}
+  \begin{center}
+    \scalebox{0.5}{
+      \includegraphics{images/vgg16_architecture.png}
+    }
+  \end{center}
 
-%%   {\small Image from \url{https://www.cs.toronto.edu/~frossard/post/vgg16/}}
-%% \end{frame}
+  Classify natural images into 1000 categories. (92.7\% top-5
+  accuracy).
+
+  \medskip
+
+  {\footnotesize Image from
+    \url{https://www.cs.toronto.edu/~frossard/post/vgg16/}}
+
+  \smallskip
+
+  {\footnotesize Simonyan, K., \& Zisserman, A. (2014). Very deep
+    convolutional networks for large-scale image recognition. arXiv
+    preprint arXiv:1409.1556.}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -526,7 +538,7 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Autoencoder}
+  \framesubtitle{Deep autoencoder}
 
   \begin{center}
     \scalebox{0.6}{
@@ -534,15 +546,17 @@
     }
   \end{center}
 
-  Hinton, Salakhutdinov (2006)
-
-  \pause
-
-  \bigskip
+  \medskip
 
   If we cut this autoencoder at the bottleneck, we get two parts: an
   encoder and a decoder. The encoder is an encoder highly specific to
   the content the network has been trained with.
+
+  \bigskip
+
+  {\footnotesize Hinton, G. E., \& Salakhutdinov,
+    R. R. (2006). Reducing the dimensionality of data with neural
+    networks. science, 313(5786), 504-507.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -550,7 +564,7 @@
 \begin{frame}
   \frametitle{Architecture examples}
 
-  \framesubtitle{Autoencoder: Compression}
+  \framesubtitle{Deep autoencoder: Compression}
 
   \begin{center}
     \scalebox{0.3}{
@@ -707,8 +721,12 @@
       };
     \end{tikzpicture}
   \end{center}
-
+  
   \bigskip
+
+  {\footnotesize Image created using \url{https://deepart.io}}
+
+  \medskip
 
   {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
     neural algorithm of artistic style. arXiv preprint
@@ -753,6 +771,10 @@
   \end{center}
 
   \bigskip
+
+  {\footnotesize Image created using \url{https://deepart.io}}
+
+  \medskip
 
   {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
     neural algorithm of artistic style. arXiv preprint
@@ -799,6 +821,10 @@
 
   \bigskip
 
+  {\footnotesize Image created using \url{https://deepart.io}}
+
+  \medskip
+
   {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
     neural algorithm of artistic style. arXiv preprint
     arXiv:1508.06576.}
@@ -843,6 +869,10 @@
   \end{center}
 
   \bigskip
+
+  {\footnotesize Image created using \url{https://deepart.io}}
+
+  \medskip
 
   {\footnotesize Gatys, L. A., Ecker, A. S., \& Bethge, M. (2015). A
     neural algorithm of artistic style. arXiv preprint
@@ -981,7 +1011,7 @@
   \begin{center}
     \includegraphics[width=0.7\linewidth]{images/progan.png}
   \end{center}
-  
+
   \bigskip
 
   {\footnotesize Karras, T., Aila, T., Laine, S., \& Lehtinen,
