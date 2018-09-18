@@ -1,4 +1,4 @@
-\documentclass[9pt]{beamer}
+\documentclass[10pt]{beamer}
 
 \input{packages.tex}
 \input{colors.tex}
@@ -87,11 +87,11 @@
 
   \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
     \setlength{\itemsep}{8pt}
-    \item[1990, Statlog] $\sim$2k outdoor images
-    \item[1998, MNIST] 60k B&W images of handwritten digits
-    \item[2005, LabelMe] $\sim$187k scenes images
-    \item[2009, ImageNet] $\sim$14M color images
-    \item[2017, JFT-300M] $\sim$300M color images (internal dataset @ Google)
+    \item[1997, Car evaluation dataset] $\sim$2k car evaluations
+    \item[2005, Stanford Sentiment Treebank] $\sim$11k movie reviews
+    \item[2011, IMDB Reviews] $\sim$50k movie reviews
+    \item[2012, Youtube Comedy Slam] $\sim$1.1M pairs of video metadata
+    \item[2015, Amazon reviews] $\sim$82m product reviews
   \end{description}
 
 \end{frame}
@@ -132,10 +132,19 @@
   Knowing that data is so important and hard to produce, it is
   important to squeeze every last bit of value out of it.
 
+  \bigskip
+
+  To do this, three ideas are explored:
+  \begin{itemize}
+    \item Transfer learning
+    \item Multi-task learning
+    \item Semi supervision
+  \end{itemize}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Model pre-training}
+\subsection{Transfer learning}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -151,8 +160,8 @@
 
   Transfer learning consists in taking an artificial neural network
   that has been trained on a \textcolor{blue}{\emph{generic}} task and
-  \textcolor{blue}{\emph{transferring}} its knowledge (retraining it) to perform a new
-  task.
+  \textcolor{blue}{\emph{transferring}} its knowledge (retraining it)
+  to perform a new task.
 
   \bigskip
 
@@ -179,6 +188,40 @@
 
   \frametitle{Pre-training in NLP}
 
+  Language modeling as a generic task
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Multi-task learning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task learning}
+
+  \begin{displayquote}[Rich Caruana, 1997]
+    Multitask Learning is an approach to inductive transfer that
+    improves generalization by using the domain information contained
+    in the training signals of related tasks as an inductive bias. It
+    does this by learning tasks in parallel while using a shared
+    representation; what is learned for each task can help other tasks
+    be learned better.
+  \end{displayquote}
+
+  \bigskip
+
+  Instead of just training the network to perform the desired task, we
+  also optimize it to perform \textcolor{blue}{\emph{auxiliary
+      tasks}}.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task learning in computer vision}
+
+  \textbf{Find ref for the research paper that predicts gender from
+    eye picture as auxiliary task for diabetic retinopathy detection.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -186,6 +229,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+
+  \frametitle{Semi supervision}
+
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
