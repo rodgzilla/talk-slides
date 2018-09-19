@@ -98,29 +98,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
+  \frametitle{Creating dataset}
+
+  Creating new high quality datasets is both hard and expensive.
+
+  \bigskip
+
+  Some researchers experiment with training models using low quality
+  data (weakly supervised learning)
+
+  \bigskip
+
+  \textbf{TODO: AMT}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% \section{Specific problem of dataset for NLP tasks}
-
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}
-
-%%   \frametitle{NLP tasks specificity}
-
-%% \end{frame}
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}
-
-%%   \frametitle{NLP tasks bias}
-
-%%   There are problems with using services such AMT (Amazon Mechanical
-%%   Turk) to annotate NLP dataset.
-
-%% \end{frame}
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Data efficiency}
 
@@ -128,16 +120,17 @@
 \begin{frame}
   \frametitle{Data efficiency}
 
-  Knowing that data is so important and hard to produce, it is
-  important to squeeze every last bit of value out of it.
+  Knowing that datasets are so important and hard to create, it is
+  important to squeeze every last bit of value out of them.
 
   \bigskip
 
   To do this, three ideas are explored:
+
   \begin{itemize}
     \item Transfer learning
     \item Multi-task learning
-    \item Semi supervision
+    \item Semi-supervised learning
   \end{itemize}
 
 \end{frame}
@@ -164,9 +157,14 @@
 
   \bigskip
 
-  The idea behind the method is that the information learned on a
+  The idea behind this method is that the information learned on a
   generic task will probably be useful for a new task of the same
   domain.
+
+  \bigskip
+
+  Transfer learning is actually the base of the
+  \textcolor{blue}{Google Cloud AutoML service}.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -174,7 +172,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
-  \frametitle{Pre-training in computer vision}
+  \frametitle{Transfer learning in computer vision}
 
   Finetuning an ImageNet model (1000 categories classification) to
   easily perform cats vs dogs classification.
@@ -185,7 +183,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
-  \frametitle{Pre-training in NLP}
+  \frametitle{Transfer learning in NLP}
 
   Language modeling as a generic task
 
@@ -212,6 +210,23 @@
   Instead of just training the network to perform the desired task, we
   also optimize it to perform \textcolor{blue}{\emph{auxiliary
       tasks}}.
+
+  \begin{center}
+    \includegraphics[width = 4.5cm]{images/multi_task_learning.png}
+  \end{center}
+
+  {\scriptsize \textit{Image from http://ruder.io/multi-task/}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task as a regularization technique}
+
+  Informally, the goal of the multi-task learning is to force the
+  model to use its \textcolor{blue}{computing power} to perform
+  something \textcolor{blue}{meaningful} instead of using it to learn
+  the \textcolor{blue}{noise} of the data (overfitting).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -219,17 +234,34 @@
 \begin{frame}
   \frametitle{Multi-task learning in computer vision}
 
+  Some researchers noticed that by asking the model to predict the
+  gender and age of patient in addition to detect \emph{diabetic
+    retinopathy} they got strong performance improvements.
+
   \textbf{Find ref for the research paper that predicts gender from
     eye picture as auxiliary task for diabetic retinopathy detection.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Semi supervision}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task learning in NLP}
+
+  Language modeling (ref OpenAI paper)
+
+  \bigskip
+
+  Translation for PoS tagging (syntactic tree?) (ref ``one model to
+  learn them all'' for an extreme example).
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Semi-supervised learning}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
-  \frametitle{Semi-supervision}
+  \frametitle{Semi-supervised learning}
 
   \begin{center}
     \includegraphics[width=4cm]{images/semi_supervised_learning.png}
@@ -239,14 +271,55 @@
 
   The idea of semi-supervised learning is to use
   \textcolor{blue}{\emph{unlabelled data}} to improve our model.
+
+  \bigskip
+
+  {\scriptsize \textit{Image from https://en.wikipedia.org/wiki/Semi-supervised\_learning}}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Rappel des fondamentaux (optimisation du fonction de perte qui nécessite de confronter des données labelées avec les prédictions des modèles).
-%% Présentation de la taille et de la qualité des jeux de données pour les disciplines classiques du machine learning.
-%% Problématique en NLP pour la qualité et la quantité de données labelées
-%% Solution : Utilisation des données non labelées pour améliorer les modèles
-%% Pré-entrainement des modèles sur des tâches non-supervisées
-%%  Semi-supervision en utilisant les données non labelées
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Ideas of semi-supervised learning}
+
+  The main concept of semi-supervised learning is to train a
+  \textcolor{blue}{weaker student} to imitate a
+  \textcolor{blue}{stronger teacher}.
+
+  \bigskip
+
+  Technically, we apply \emph{mean-squared error} or a
+  \emph{Kullback-Liebler divergence} between the logits output by the
+  student and the teacher. We typically alternate between supervised
+  and semi-supervised steps of training.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Semi-supervised learning in practice}
+
+  To do this, we can for example take the model we are training and
+  train it to make the same prediction on a clean and noisy version of
+  a same image. In this case, the prediction on the \emph{noisy image}
+  (resp.\ \emph{clean image}) is the one of the
+  \textcolor{blue}{student model} (resp.\ teacher model)
+
+  \bigskip
+
+  To apply this algorithm, we do not need the real label of the image,
+  we just assume that the model is already giving the right one and
+  improve it by forcing it to acquire \textcolor{red}{noise
+    invariance}.
+
+  \bigskip
+
+  \textbf{TODO: Find the correct ref and a picture from the curious
+    company blog post about mean teachers}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
