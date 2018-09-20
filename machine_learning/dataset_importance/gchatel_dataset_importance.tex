@@ -69,7 +69,7 @@
   \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
     \setlength{\itemsep}{8pt}
     \item[1990, Statlog] $\sim$2k outdoor images
-    \item[1998, MNIST] 60k B&W images of handwritten digits
+    \item[1998, MNIST] 60k B\&W images of handwritten digits
     \item[2005, LabelMe] $\sim$187k scenes images
     \item[2009, ImageNet] $\sim$14M color images
     \item[2017, JFT-300M] $\sim$300M color images (internal dataset @ Google)
@@ -89,7 +89,7 @@
     \item[2005, Stanford Sentiment Treebank] $\sim$11k movie reviews
     \item[2011, IMDB Reviews] $\sim$50k movie reviews
     \item[2012, Youtube Comedy Slam] $\sim$1.1M pairs of video metadata
-    \item[2015, Amazon reviews] $\sim$82m product reviews
+    \item[2015, Amazon reviews] $\sim$82M product reviews
   \end{description}
 
 \end{frame}
@@ -196,6 +196,8 @@
 \begin{frame}
   \frametitle{Multi-task learning}
 
+  \bigskip
+
   \begin{displayquote}[Rich Caruana, 1997]
     Multitask Learning is an approach to inductive transfer that
     improves generalization by using the domain information contained
@@ -223,10 +225,19 @@
 \begin{frame}
   \frametitle{Multi-task as a regularization technique}
 
+  \begin{center}
+    \includegraphics[width = 8cm]{images/overfitting.png}
+  \end{center}
+
   Informally, the goal of the multi-task learning is to force the
   model to use its \textcolor{blue}{computing power} to perform
   something \textcolor{blue}{meaningful} instead of using it to learn
   the \textcolor{blue}{noise} of the data (overfitting).
+
+  \bigskip
+
+  {\scriptsize \textit{Image from
+      https://hackernoon.com/memorizing-is-not-learning-6-tricks-to-prevent-overfitting-in-machine-learning-820b091dc42}}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -235,11 +246,18 @@
   \frametitle{Multi-task learning in computer vision}
 
   Some researchers noticed that by asking the model to predict the
-  gender and age of patient in addition to detect \emph{diabetic
-    retinopathy} they got strong performance improvements.
+  gender and age of patient in addition to detect \emph{cardiovascular
+    diseases} they got strong performance improvements.
 
-  \textbf{Find ref for the research paper that predicts gender from
-    eye picture as auxiliary task for diabetic retinopathy detection.}
+  \medskip
+
+  \begin{center}
+    \includegraphics[width = 5.5cm]{images/multi_task_medecine.png}
+  \end{center}
+
+  {\scriptsize Poplin, Ryan, et al. "Predicting cardiovascular risk
+    factors from retinal fundus photographs using deep learning."
+    arXiv preprint arXiv:1708.09843 (2017).}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
