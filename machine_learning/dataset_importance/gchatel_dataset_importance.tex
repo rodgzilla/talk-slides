@@ -241,19 +241,21 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Multi-task learning in computer vision}
+
+  \begin{center}
+    \includegraphics[width = 5.5cm]{images/multi_task_medecine.png}
+  \end{center}
+
+  \medskip
 
   Some researchers noticed that by asking the model to predict the
   gender and age of patient in addition to detect \emph{cardiovascular
     diseases} they got strong performance improvements.
 
   \medskip
-
-  \begin{center}
-    \includegraphics[width = 5.5cm]{images/multi_task_medecine.png}
-  \end{center}
 
   {\scriptsize Poplin, Ryan, et al. "Predicting cardiovascular risk
     factors from retinal fundus photographs using deep learning."
@@ -265,12 +267,24 @@
 \begin{frame}
   \frametitle{Multi-task learning in NLP}
 
-  Language modeling (ref OpenAI paper)
+  \begin{center}
+    \includegraphics[width = 4cm]{images/multi_task_nlp.png}
+  \end{center}
+
+  In NLP, translation can be used as an auxiliary task to improve
+  models that perform tasks that have relatively small datasets such
+  as sentence parsing.
 
   \bigskip
 
-  Translation for PoS tagging (syntactic tree?) (ref ``one model to
-  learn them all'' for an extreme example).
+  By making the model perform translation, we allow it to gain access
+  to a much richer \textcolor{blue}{structure of the language}.
+
+  \bigskip
+
+  {\scriptsize Kaiser, Lukasz, et al. "One model to learn them all."
+    arXiv preprint arXiv:1706.05137 (2017).}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
