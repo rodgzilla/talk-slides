@@ -206,9 +206,6 @@
     data}.
 
   \bigskip
-\end{frame}
-
-\begin{frame}
 
   The knowledge about \textcolor{blue}{basic shapes and textures} that
   has been learned on ImageNet will be useful to almost all task
@@ -222,7 +219,27 @@
 
   \frametitle{Transfer learning in NLP}
 
-  Language modeling as a generic task
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/language_modeling.tex}
+    }
+  \end{center}
+
+  The \textcolor{blue}{language modeling task} is currently the most
+  generic task that NLP researcher have found to perform transfer
+  learning.
+
+  \bigskip
+
+  Knowing how to predict the most probable word after a sequence
+  requires to understand, to some extent, the \textcolor{blue}{meaning
+    of words}, \textcolor{blue}{the syntax of the language} and
+  \textcolor{blue}{the way concepts interact}.
+
+  \bigskip
+
+  Typical language models are trained on Wikipedia content or Internet
+  Common Crawl.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -235,10 +252,18 @@
 
   \bigskip
 
+  %% \begin{displayquote}[Rich Caruana, 1997]
+  %%   Multitask Learning is an approach to inductive transfer that
+  %%   improves generalization by using the domain information contained
+  %%   in the training signals of related tasks as an inductive bias. It
+  %%   does this by learning tasks in parallel while using a shared
+  %%   representation; what is learned for each task can help other tasks
+  %%   be learned better.
+  %% \end{displayquote}
+
   \begin{displayquote}[Rich Caruana, 1997]
     Multitask Learning is an approach to inductive transfer that
-    improves generalization by using the domain information contained
-    in the training signals of related tasks as an inductive bias. It
+    improves generalization [...] It
     does this by learning tasks in parallel while using a shared
     representation; what is learned for each task can help other tasks
     be learned better.
