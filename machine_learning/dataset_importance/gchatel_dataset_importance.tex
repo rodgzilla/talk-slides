@@ -19,7 +19,9 @@
   \rule{-4.5cm}{\paperheight}
   \hspace*{\paperwidth}
   \makebox[0pt][r]{
-    \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+    %% \scalebox{0.7}{
+      \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+    %% }
   }
 }
 
@@ -195,12 +197,22 @@
 
   \frametitle{Transfer learning in computer vision}
 
-  Finetuning an ImageNet model (1000 categories classification) to
-  easily perform cats vs dogs classification.
+  \begin{center}
+    \includegraphics[width = 7cm]{images/alexnet_architecture.png}
+  \end{center}
 
-  The knowledge about basic shapes and textures that has been learned
-  on ImageNet will be usefull to almost all task involving real world
-  pictures.
+  Using this trained model as a base to build a dogs vs cats picture
+  classifier \textcolor{blue}{greatly reduce the need of labelled
+    data}.
+
+  \bigskip
+\end{frame}
+
+\begin{frame}
+
+  The knowledge about \textcolor{blue}{basic shapes and textures} that
+  has been learned on ImageNet will be useful to almost all task
+  involving real world images.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
