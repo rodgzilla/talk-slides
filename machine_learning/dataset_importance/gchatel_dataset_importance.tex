@@ -11,6 +11,18 @@
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
 
+%% \usebackgroundtemplate{
+%%   \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+%% }
+
+\usebackgroundtemplate{
+  \rule{-4.5cm}{\paperheight}
+  \hspace*{\paperwidth}
+  \makebox[0pt][r]{
+    \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+  }
+}
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,7 +71,7 @@
 
   \bigskip
 
-  To do this, we usually need a lot of \emph{data}.
+  To do this, we usually need \emph{a lot of data}.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o
@@ -77,8 +89,8 @@
     \item[1990, Statlog] $\sim$2k outdoor images
     \item[1998, MNIST] 60k B\&W images of handwritten digits
     \item[2005, LabelMe] $\sim$187k scenes images
-    \item[2009, ImageNet] $\sim$14M color images
-    \item[2017, JFT-300M] $\sim$300M color images (internal dataset @ Google)
+    \item[2009, ImageNet] $\sim$14M images with 1000 different categories
+    \item[2017, JFT-300M] $\sim$300M RGB images $\sim$18k categories (internal dataset @ Google)
   \end{description}
 
 \end{frame}
@@ -91,7 +103,7 @@
 
   \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
     \setlength{\itemsep}{8pt}
-    \item[1997, Car evaluation dataset] $\sim$2k car evaluations
+    \item[1997, Car evaluation dataset] $\sim$2k textual car evaluations
     \item[2005, Stanford Sentiment Treebank] $\sim$11k movie reviews
     \item[2011, IMDB Reviews] $\sim$50k movie reviews
     \item[2012, Youtube Comedy Slam] $\sim$1.1M pairs of video metadata
@@ -106,16 +118,19 @@
 
   \frametitle{Creating dataset}
 
-  Creating new high quality datasets is both hard and expensive.
+  Creating new high quality datasets is both \textcolor{blue}{hard}
+  and \textcolor{blue}{expensive}.
 
   \bigskip
 
-  Some researchers experiment with training models using low quality
-  data (weakly supervised learning)
+  Some researchers experiment with training models using
+  \textcolor{blue}{low quality data} (weakly supervised learning)
 
   \bigskip
 
-  \textbf{TODO: AMT}
+  Amazon offers a \textcolor{blue}{dataset creation service} (Amazon
+  Mechanical Turk) where you can pay to get your dataset labelled by
+  humans.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +142,7 @@
   \frametitle{Data efficiency}
 
   Knowing that datasets are so important and hard to create, it is
-  important to squeeze every last bit of value out of them.
+  important to squeeze \emph{every last bit of value} out of them.
 
   \bigskip
 
@@ -182,6 +197,10 @@
 
   Finetuning an ImageNet model (1000 categories classification) to
   easily perform cats vs dogs classification.
+
+  The knowledge about basic shapes and textures that has been learned
+  on ImageNet will be usefull to almost all task involving real world
+  pictures.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
