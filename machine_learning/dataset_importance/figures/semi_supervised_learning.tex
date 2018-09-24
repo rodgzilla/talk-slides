@@ -20,13 +20,15 @@
   };
 
   \node (predTeacher) at (10, 2) {
-    \scalebox{0.1}{
+    \scalebox{0.25}{
       \input{figures/teacher_pred.tex}
     }
   };
 
   \node (predStudent) at (10, -2) {
-    Student prediction
+    \scalebox{0.25}{
+      \input{figures/student_pred.tex}
+    }
   };
 
   \draw[->, thick] (cleanImage) -- node [below = 0.05cm] {\rotatebox{-35}{\tiny pertubation}} (perturbedImage);
