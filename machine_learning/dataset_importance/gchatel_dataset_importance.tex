@@ -15,15 +15,15 @@
 %%   \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
 %% }
 
-\usebackgroundtemplate{
-  \rule{-4.5cm}{\paperheight}
-  \hspace*{\paperwidth}
-  \makebox[0pt][r]{
-    %% \scalebox{0.7}{
-      \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
-    %% }
-  }
-}
+%% \usebackgroundtemplate{
+%%   \rule{-4.5cm}{\paperheight}
+%%   \hspace*{\paperwidth}
+%%   \makebox[0pt][r]{
+%%     %% \scalebox{0.7}{
+%%       \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+%%     %% }
+%%   }
+%% }
 
 \begin{document}
 
@@ -231,15 +231,15 @@
 
   \bigskip
 
-  Knowing how to predict the most probable word after a sequence
-  requires to understand, to some extent, the \textcolor{blue}{meaning
-    of words}, \textcolor{blue}{the syntax of the language} and
+  Knowing how to predict the most likely following word requires to
+  understand, to some extent, the \textcolor{blue}{meaning of words},
+  \textcolor{blue}{the syntax of the language} and
   \textcolor{blue}{the way concepts interact}.
 
   \bigskip
 
-  Typical language models are trained on Wikipedia content or Internet
-  Common Crawl.
+  Typical language models are trained on Wikipedia content, books or
+  Internet Common Crawl.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -313,7 +313,7 @@
 
   \medskip
 
-  Some researchers discovered that by asking the model to predict the
+  Some researchers discovered that by asking a model to predict the
   gender and age of patient in addition to detect \emph{cardiovascular
     diseases} they got strong performance improvements.
 
@@ -397,7 +397,7 @@
   \frametitle{Semi-supervised learning in practice}
 
   To do this, we can for example take the model we are training and
-  train it to make the same prediction on a clean and noisy version of
+  teach it to make the same prediction on a clean and noisy version of
   a same image. In this case, the prediction on the \emph{noisy image}
   (resp.\ \emph{clean image}) is the one of the
   \textcolor{blue}{student model} (resp.\ teacher model)
@@ -411,8 +411,12 @@
 
   \bigskip
 
-  \textbf{TODO: Find the correct ref and a picture from the curious
-    company blog post about mean teachers}
+  \begin{center}
+    \input{figures/semi_supervised_learning.tex}
+  \end{center}
+
+  %% \textbf{TODO: Find the correct ref and a picture from the curious
+  %%   company blog post about mean teachers}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

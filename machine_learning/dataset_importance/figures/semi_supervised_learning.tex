@@ -1,0 +1,31 @@
+\begin{tikzpicture}
+  \node (cleanImage) at (0, 0) {
+    \includegraphics[width = 1cm]{images/dog_clean.jpg}
+  };
+
+  \node (perturbedImage) at (2.5, -2) {
+    \includegraphics[width = 1cm]{images/dog_perturbation.jpg}
+  };
+
+  \node (teacher) at (5, 2) {
+    Teacher
+  };
+
+  \node (student) at (5, -2){
+    Student
+  };
+
+  \node (predTeacher) at (10, 2) {
+    Teacher prediction
+  };
+
+  \node (predStudent) at (10, -2) {
+    Student prediction
+  };
+
+  \draw[->, thick] (cleanImage) -- node [below = 0.05cm] {\rotatebox{-35}{\tiny pertubation}} (perturbedImage);
+  \draw[->, thick] (cleanImage) -- (teacher);
+  \draw[->, thick] (perturbedImage) -- (student);
+  \draw[->, thick] (teacher) -- (predTeacher);
+  \draw[->, thick] (student) -- (predStudent);
+\end{tikzpicture}
