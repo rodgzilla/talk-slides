@@ -396,11 +396,9 @@
 \begin{frame}
   \frametitle{Semi-supervised learning in practice}
 
-  To do this, we can for example take the model we are training and
-  teach it to make the same prediction on a clean and noisy version of
-  a same image. In this case, the prediction on the \emph{noisy image}
-  (resp.\ \emph{clean image}) is the one of the
-  \textcolor{blue}{student model} (resp.\ teacher model)
+  \begin{center}
+    \input{figures/semi_supervised_learning.tex}
+  \end{center}
 
   \bigskip
 
@@ -408,12 +406,6 @@
   image, we just assume that the model is already giving the right one
   and improve it by forcing it to acquire \textcolor{red}{noise
     invariance}.
-
-  \bigskip
-
-  \begin{center}
-    \input{figures/semi_supervised_learning.tex}
-  \end{center}
 
   %% \textbf{TODO: Find the correct ref and a picture from the curious
   %%   company blog post about mean teachers}

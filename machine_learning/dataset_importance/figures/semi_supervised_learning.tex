@@ -28,4 +28,5 @@
   \draw[->, thick] (perturbedImage) -- (student);
   \draw[->, thick] (teacher) -- (predTeacher);
   \draw[->, thick] (student) -- (predStudent);
+  \draw[<->, thick] (predTeacher) -- node [left = 0.3cm] {\small Consistency loss (MSE, KL div)} (predStudent);
 \end{tikzpicture}
