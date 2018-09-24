@@ -1,18 +1,22 @@
 \begin{tikzpicture}
   \node (cleanImage) at (0, 0) {
-    \includegraphics[width = 1cm]{images/dog_clean.jpg}
+    \includegraphics[width = 1.4cm]{images/dog_clean.jpg}
   };
 
   \node (perturbedImage) at (2.5, -2) {
-    \includegraphics[width = 1cm]{images/dog_perturbation.jpg}
+    \includegraphics[width = 1.4cm]{images/dog_perturbation.jpg}
   };
 
   \node (teacher) at (5, 2) {
-    Teacher
+    \scalebox{0.15}{
+      \input{figures/network.tex}
+    }
   };
 
   \node (student) at (5, -2){
-    Student
+    \scalebox{0.15}{
+      \input{figures/network.tex}
+    }
   };
 
   \node (predTeacher) at (10, 2) {
