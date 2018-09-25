@@ -88,11 +88,11 @@
 
   \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
     \setlength{\itemsep}{8pt}
-    \item[1990, Statlog] $\sim$2k outdoor images
-    \item[1998, MNIST] 60k B\&W images of handwritten digits
-    \item[2005, LabelMe] $\sim$187k scenes images
-    \item[2009, ImageNet] $\sim$14M images with 1000 different categories
-    \item[2017, JFT-300M] $\sim$300M RGB images $\sim$18k categories (internal dataset @ Google)
+    \item[1990, Statlog] $\sim$2k outdoor images,
+    \item[1998, MNIST] 60k B\&W images of handwritten digits,
+    \item[2005, LabelMe] $\sim$187k scenes images,
+    \item[2009, ImageNet] $\sim$14M images with 1000 different categories,
+    \item[2017, JFT-300M] $\sim$300M RGB images $\sim$18k categories (internal dataset @ Google).
   \end{description}
 
 \end{frame}
@@ -105,11 +105,11 @@
 
   \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
     \setlength{\itemsep}{8pt}
-    \item[1997, Car evaluation dataset] $\sim$2k textual car evaluations
-    \item[2005, Stanford Sentiment Treebank] $\sim$11k movie reviews
-    \item[2011, IMDB Reviews] $\sim$50k movie reviews
-    \item[2012, Youtube Comedy Slam] $\sim$1.1M pairs of video metadata
-    \item[2015, Amazon reviews] $\sim$82M product reviews
+    \item[1997, Car evaluation dataset] $\sim$2k textual car evaluations,
+    \item[2005, Stanford Sentiment Treebank] $\sim$11k movie reviews,
+    \item[2011, IMDB Reviews] $\sim$50k movie reviews,
+    \item[2012, Youtube Comedy Slam] $\sim$1.1M pairs of video metadata,
+    \item[2015, Amazon reviews] $\sim$82M product reviews.
   \end{description}
 
 \end{frame}
@@ -126,7 +126,7 @@
   \bigskip
 
   Some researchers experiment with training models using
-  \textcolor{blue}{low quality data} (weakly supervised learning)
+  \textcolor{blue}{low quality data} (weakly supervised learning).
 
   \bigskip
 
@@ -151,9 +151,9 @@
   To do this, three ideas are explored:
 
   \begin{itemize}
-    \item Transfer learning
-    \item Multi-task learning
-    \item Semi-supervised learning
+    \item Transfer learning,
+    \item Multi-task learning,
+    \item Semi-supervised learning.
   \end{itemize}
 
 \end{frame}
@@ -412,17 +412,12 @@
 \begin{frame}
   \frametitle{Conclusion}
 
-  Once decided on a model, a very effective sequence of actions is the
-  following one:
-
-  \bigskip
-
   \begin{enumerate}
     \item Establish a baseline using basic algorithms (logistic
       regression, random forest, etc.)
     \item Choose a model architecture (MLP, CNN, RNN, Transformer)
-    \item Try to find a pre-trained version of this model that
-      performs a related task (\emph{transfer learning})
+    \item Try to find (or build) a pre-trained version of this model
+      that performs a related task (\emph{transfer learning})
     \item Try to find a related auxiliary task to regularize and
       improve the model learning abilities. (\emph{multi-task
         learning})
