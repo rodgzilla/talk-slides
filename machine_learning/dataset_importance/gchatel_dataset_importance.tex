@@ -403,7 +403,7 @@
   \bigskip
 
   We do not need a label for the clean image, we want to teach the
-  model to \textcolor{blue}{ignore noise} and
+  model to be \textcolor{blue}{noise invariant}.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -412,7 +412,24 @@
 \begin{frame}
   \frametitle{Conclusion}
 
+  Once decided on a model, a very effective sequence of actions is the
+  following one:
 
+  \bigskip
+
+  \begin{enumerate}
+    \item Establish a baseline using basic algorithms (logistic
+      regression, random forest, etc.)
+    \item Choose a model architecture (MLP, CNN, RNN, Transformer)
+    \item Try to find a pre-trained version of this model that
+      performs a related task (\emph{transfer learning})
+    \item Try to find a related auxiliary task to regularize and
+      improve the model learning abilities. (\emph{multi-task
+        learning})
+    \item Once the performance of the model is relatively good, try to
+      use unlabelled data to improve noise invariance
+      (\emph{semi-supervised learning})
+  \end{enumerate}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
