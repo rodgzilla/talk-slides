@@ -13,10 +13,18 @@
     }
   };
 
+  \node (teacherLabel) at (5, 3.1) {
+    \small Teacher
+  };
+
   \node (student) at (5, -2){
     \scalebox{0.15}{
       \input{figures/network.tex}
     }
+  };
+
+  \node (studentLabel) at (5, -3.1) {
+    \small student
   };
 
   \node (predTeacher) at (10, 2) {
@@ -34,7 +42,8 @@
   \draw[->, thick] (cleanImage) -- node [below = 0.05cm] {\rotatebox{-35}{\tiny pertubation}} (perturbedImage);
   \draw[->, thick] (cleanImage) -- (teacher);
   \draw[->, thick] (perturbedImage) -- (student);
+  \draw[dashed, <->] (teacher) -- node [left] {\scriptsize \textit{same model}} (student);
   \draw[->, thick] (teacher) -- (predTeacher);
   \draw[->, thick] (student) -- (predStudent);
-  \draw[<->, thick] (predTeacher) -- node [left = 0.3cm] {\small Consistency loss (MSE, KL div)} (predStudent);
+  \draw[<->, thick] (predTeacher) -- node [left] {\small Consistency loss (MSE, KL div)} (predStudent);
 \end{tikzpicture}
