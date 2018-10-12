@@ -1,5 +1,9 @@
 # Machine learning presentations
 
-Various presentations about the field of machine learning. The deep
-learning folder contains multiple presentations about adversarial
-samples generation.
+Slides of the various presentations I give.
+
+Subjects are:
+ - Basic introduction to deep learning
+ - Adversarial examples in deep learning
+ - Data efficiency optimization
+ - Creative coding (fractal animations)
