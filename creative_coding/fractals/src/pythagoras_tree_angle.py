@@ -43,7 +43,8 @@ if __name__ == '__main__':
     pygame.init()
     delay              = 0.01
     scaling_step       = 0.01
-    width, height      = 1000, 1000
+    # width, height      = 1000, 1000
+    width, height      = 1920, 1080
     size               = 45
     x_center, y_center = width // 2, height // 2
     x1, y1             = x_center - (size // 2), y_center + 4 * size

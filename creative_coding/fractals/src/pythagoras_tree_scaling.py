@@ -40,11 +40,12 @@ if __name__ == '__main__':
     pygame.init()
     delay              = 0.002
     scaling_step       = 0.005
-    width, height      = 1000, 1000
-    size               = 60
+    # width, height      = 1000, 1000
+    width, height      = 1920, 1080
+    size               = 150
     x_center, y_center = width // 2, height // 2
-    x1, y1             = x_center - (size // 2), y_center + 4 * size
-    x2, y2             = x_center + (size // 2), y_center + 4 * size
+    x1, y1             = x_center - (size // 2), y_center + 3 * size
+    x2, y2             = x_center + (size // 2), y_center + 3 * size
     window             = pygame.display.set_mode((width, height))
 
     scalings = np.concatenate(
