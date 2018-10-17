@@ -69,7 +69,7 @@ def draw_tree_scaling_image(image, window, x1, y1, x2, y2, scaling, depth):
 if __name__ == '__main__':
     pygame.init()
     delay              = 0.002
-    scaling_step       = 0.005
+    scaling_step       = 0.02
     # width, height      = 1000, 1000
     width, height      = 900, 900
     size               = 125
@@ -85,16 +85,18 @@ if __name__ == '__main__':
             np.arange(1, 0, -scaling_step)
         )
     )
-    while True:
-        for scaling in scalings:
-            # draw_tree_scaling(window, x1, y1, x2, y2, scaling, 9)
-            draw_tree_scaling_image(image, window, x1, y1, x2, y2, scaling, 8)
-            pygame.display.flip()
-            time.sleep(delay)
-            window.fill((0, 0, 0))
+    # while True:
+    for i, scaling in enumerate(scalings):
+        # draw_tree_scaling(window, x1, y1, x2, y2, scaling, 9)
+        draw_tree_scaling_image(image, window, x1, y1, x2, y2, scaling, 8)
+        pygame.display.flip()
+        time.sleep(delay)
+        pygame.image.save(window, f'renders/step_{i:04d}.png')
+        window.fill((0, 0, 0))
 
-    draw_tree_scaling_image(image, window, x1, y1, x2, y2, math.sqrt(2) / 2, 7)
-    pygame.display.flip()
+
+    # draw_tree_scaling_image(image, window, x1, y1, x2, y2, math.sqrt(2) / 2, 7)
+    # pygame.display.flip()
 
     # # We save the picture.
     # pygame.image.save(window, 'render.png')
