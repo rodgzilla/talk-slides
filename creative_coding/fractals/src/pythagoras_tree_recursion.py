@@ -50,11 +50,10 @@ def draw_tree_scaling_image(image, window, x1, y1, x2, y2, scaling, depth):
         # scale(Surface, (width, height), DestSurface = None) -> Surface
         # angle_rad = math.atan((x3 - x1) / (y3 - y1)) if y3 != y1 else 0
         # swap      = 1 if y3 <= y1 else -1
-        if y3 <= y1:
-            angle_rad = math.asin((x3 - x1) / new_size)
-        else:
-            angle_rad = math.asin((y3 - y1) / new_size) 
+        angle_rad = math.asin((x3 - x1) / new_size)
         angle     = angle_rad * 180 / math.pi
+        if y3 > y1:
+            angle = 180 - angle
         if depth == 1:
             print('##############')
             print(f'(x1, y1) = {(x1, y1)}')
@@ -116,7 +115,7 @@ if __name__ == '__main__':
     #         time.sleep(delay)
     #         window.fill((0, 0, 0))
 
-    draw_tree_scaling_image(image, window, x1, y1, x2, y2, math.sqrt(2) / 2, 4)
+    draw_tree_scaling_image(image, window, x1, y1, x2, y2, math.sqrt(2) / 2, 7)
     pygame.display.flip()
 
     # # We save the picture.
