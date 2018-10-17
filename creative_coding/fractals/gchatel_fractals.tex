@@ -51,6 +51,84 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Complex numbers and complex plane}
 
+  \begin{align*}
+    c &= ai + b\\
+    i^{2} &= -1
+  \end{align*}
+
+  The \emph{norm} of a complex number is its euclidiean distance to 0:
+
+  \begin{align*}
+    c &= ai + b \\
+    %% \(\lvert c \lvert\) &= \sqrt{a^{2] + b^{2}}
+  \end{align*}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Mandelbrot set}
+
+  \framesubtitle{Function to iterate}
+
+  The formula that generates everything is the following one:
+
+  \begin{align*}
+    z_{0} &= c \\
+    z_{n} &= z_{n}^{2} + c
+  \end{align*}
+
+  For each pixel $(x, y)$ of the screen, we compute the corresponding
+  complex number $c_{x,y}$.
+
+  \medskip
+
+  Now we compute a fixed number of terms of the sequence above
+  starting with $z_{0} = c_{x,y}$.
+
+  \begin{align*}
+    z_{0} &= c_{x, y} \\
+    z_{1} &= c_{x, y}^{2} + c_{x, y} \\
+    z_{2} &= z_{1}^{2} + c_{x, y} = (c_{x, y}^{2} + c_{x, y})^{2} + c_{x, y} \\
+    \dots \\
+    z_{100} &= z_{99}^{2} + c_{x, y}
+  \end{align*}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Function interpolation with Python}
+
+%% \begin{verbatim}
+%% f_square = lambda x: x ** 2
+%% f_cube   = lambda x: x ** 3
+%% \end{verbatim}
+
+%% \begin{verbatim}
+%% 5
+%% \end{verbatim}
+
+  \begin{center}
+    \includegraphics[width = 6cm]{images/two_functions.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Mandelbrot set}
+
+  mandelbrot image.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
