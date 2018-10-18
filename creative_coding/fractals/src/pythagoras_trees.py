@@ -66,7 +66,7 @@ def draw(size, depth, replace_top = True):
 
 if __name__ == '__main__':
     # speed(0)
-    speed(9)
+    speed(10)
     color('red', 'black')
     left(90)
     draw(100, 6)

@@ -76,7 +76,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
-  \frametitle{Complex numbers and complex plane}
+  \frametitle{Mandelbrot set}
+
+  \framesubtitle{Complex numbers and complex plane}
 
   \begin{align*}
     c &= ai + b\\
@@ -107,7 +109,7 @@ Out[4]: (-3+4j)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Mandelbrot set}
 
   \framesubtitle{Function to iterate}
@@ -135,22 +137,29 @@ Out[4]: (-3+4j)
     z_{100} &= z_{99}^{2} + c_{x, y}
   \end{align*}
 
+  In Python:
+
+  \begin{lstlisting}
+    mandelbrot_function = lambda z, c: z ** 2 + c
+  \end{lstlisting}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]
-  \frametitle{Function interpolation with Python}
+\begin{frame}
+  \frametitle{Mandelbrot set}
+
+  \framesubtitle{From the formula to the drawing}
+
+  While we are iterating the formula for a pixel $(x, y)$, if we find
+  a step $i$ for which $|z_{i}| > 2$ then we draw the $(x, y)$ pixel
+  black, otherwise we draw it white.
+
+  \bigskip
 
   \begin{center}
-    \begin{lstlisting}
-f_square = lambda x: x ** 2
-f_cube   = lambda x: x ** 3
-    \end{lstlisting}
-  \end{center}
-
-  \begin{center}
-    \includegraphics[width = 6cm]{images/two_functions.png}
+    \includegraphics[width = 4cm]{images/mandelbrot_simple.png}
   \end{center}
 
 \end{frame}
@@ -160,8 +169,71 @@ f_cube   = lambda x: x ** 3
 \begin{frame}
   \frametitle{Mandelbrot set}
 
-  mandelbrot image.
+  \framesubtitle{Animation}
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Function interpolation with Python}
+
+  \begin{lstlisting}
+f_square = lambda x: x ** 2
+f_cube   = lambda x: x ** 3
+  \end{lstlisting}
+
+  \begin{center}
+    \includegraphics[width = 6cm]{images/two_functions.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Function interpolation with Python}
+
+  \begin{lstlisting}
+f_square = lambda x: x ** 2
+f_cube   = lambda x: x ** 3
+f_inter  = lambda x: (f_square(x) + f_cube(x)) / 2
+  \end{lstlisting}
+
+  \begin{center}
+    \includegraphics[width = 6cm]{images/single_interpolation.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Function interpolation with Python}
+
+  \begin{lstlisting}
+n_int   = 5
+int_fns = []
+for i in range(n_int):
+    new_fn = lambda x, i = i, n_int = n_int: (
+        (n_int - i) * f_square(x) +
+        i * f_cube(x)
+    ) / n_int
+    int_fns.append(new_fn)
+  \end{lstlisting}
+
+  \begin{center}
+    \includegraphics[width = 6cm]{images/interpolations.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{center}
+    {\Huge \bf{Mandelbrot set animations}}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
