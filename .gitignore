@@ -4,3 +4,5 @@
 *.out
 *.snm
 *.toc
+/creative_coding/fractals/videos/01.mp4
+/*.mp4
