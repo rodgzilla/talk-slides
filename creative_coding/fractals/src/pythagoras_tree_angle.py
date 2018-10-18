@@ -42,7 +42,7 @@ def draw_tree_angle(window, x1, y1, x2, y2, depth, angle):
 if __name__ == '__main__':
     pygame.init()
     delay              = 0.01
-    scaling_step       = 0.01
+    scaling_step       = 0.005
     # width, height      = 1000, 1000
     width, height      = 1920, 1080
     size               = 45
