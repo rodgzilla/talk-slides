@@ -34,6 +34,7 @@ if __name__ == '__main__':
     mandelbrot_functions = [
         lambda z, c: z ** 2 + c,
         lambda z, c: z ** 3 + c,
+        lambda z, c: z + c,
         lambda z, c: z ** 3 + z ** 2 + c,
         lambda z, c: z ** 2 + cmath.sin(c),
         lambda z, c: z ** 2 + cmath.sin(c) - cmath.cos((c + z) ** 2),
