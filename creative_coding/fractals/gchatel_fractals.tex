@@ -1,11 +1,11 @@
-\documentclass[10pt]{beamer}
+\documentclass[9pt]{beamer}
 
 \input{packages.tex}
 \input{colors.tex}
 
 \usetheme{Boadilla}
-\title{Fractals introduction}
-\author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Disaitek\\Intel AI Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
+\title{Fractal animation introduction}
+\author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
 \date{October 18th, 2018}
 
 \setbeamertemplate{footline}[frame number]{}
@@ -41,18 +41,41 @@
 \begin{frame}
   \frametitle{Koch snowflake}
 
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{center}
+    \includegraphics[width = 8cm]{images/koch_building.png}
+  \end{center}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Pythagora tree}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%%   \frametitle{Pythagora tree}
+
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \begin{center}
+    {\Huge \bf{Pythagora's tree demo}}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Mandelbrot set}
+
+  \begin{center}
+    \includegraphics[width = 4cm]{images/mandelbrot_simple.png}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
   \frametitle{Complex numbers and complex plane}
 
   \begin{align*}
@@ -64,8 +87,21 @@
 
   \begin{align*}
     c &= ai + b \\
-    %% \(\lvert c \lvert\) &= \sqrt{a^{2] + b^{2}}
+    |c| &= \sqrt{a^{2}+b^{2}} \\
   \end{align*}
+
+  \begin{verbatim}
+In [1]: c = complex(1, 2)
+
+In [2]: c
+Out[2]: (1+2j)
+
+In [3]: c + complex(0,3)
+Out[3]: (1+5j)
+
+In [4]: c * c
+Out[4]: (-3+4j)
+  \end{verbatim}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,13 +116,13 @@
 
   \begin{align*}
     z_{0} &= c \\
-    z_{n} &= z_{n}^{2} + c
+    z_{n + 1} &= z_{n}^{2} + c
   \end{align*}
 
   For each pixel $(x, y)$ of the screen, we compute the corresponding
   complex number $c_{x,y}$.
 
-  \medskip
+  \bigskip
 
   Now we compute a fixed number of terms of the sequence above
   starting with $z_{0} = c_{x,y}$.
@@ -103,17 +139,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Function interpolation with Python}
 
-%% \begin{verbatim}
-%% f_square = lambda x: x ** 2
-%% f_cube   = lambda x: x ** 3
-%% \end{verbatim}
-
-%% \begin{verbatim}
-%% 5
-%% \end{verbatim}
+  \begin{center}
+    \begin{lstlisting}
+f_square = lambda x: x ** 2
+f_cube   = lambda x: x ** 3
+    \end{lstlisting}
+  \end{center}
 
   \begin{center}
     \includegraphics[width = 6cm]{images/two_functions.png}
