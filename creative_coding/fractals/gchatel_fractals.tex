@@ -4,7 +4,7 @@
 \input{colors.tex}
 
 \usetheme{Boadilla}
-\title{Fractal animation introduction}
+\title{Fractal animation}
 \author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
 \date{October 18th, 2018}
 
@@ -47,13 +47,6 @@
 
 
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}
-%%   \frametitle{Pythagora tree}
-
-%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -162,6 +155,31 @@ Out[4]: (-3+4j)
     \includegraphics[width = 6cm]{images/mandelbrot_simple.png}
   \end{center}
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Mandelbrot set}
+
+  \framesubtitle{Source code}
+
+  \begin{lstlisting}
+def draw_mandelbrot(f, max_iter, width, height):
+    for y in range(height):
+        for x in range(width):
+            real = 3 * x / width - 2
+            imag = 2 * y / height - 1
+            c = complex(real, imag)
+            z = c
+            for i in range(max_iter):
+                z = f(z, c)
+                if z.real ** 2 + z.imag ** 2 > 4:
+                    pixel(x, y, 'white')
+                    break
+            else:
+                pixel(x, y, 'black')
+  \end{lstlisting}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
