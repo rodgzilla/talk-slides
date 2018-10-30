@@ -4,7 +4,7 @@
 \input{colors.tex}
 
 \usetheme{Boadilla}
-\title{Fractal animation introduction}
+\title{Fractal animation}
 \author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
 \date{October 18th, 2018}
 
@@ -50,13 +50,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}
-%%   \frametitle{Pythagora tree}
-
-%% \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \begin{center}
     {\Huge \bf{Pythagora's tree demo}}
@@ -69,7 +62,7 @@
   \frametitle{Mandelbrot set}
 
   \begin{center}
-    \includegraphics[width = 4cm]{images/mandelbrot_simple.png}
+    \includegraphics[width = 7cm]{images/mandelbrot_simple.png}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,7 +78,7 @@
     i^{2} &= -1
   \end{align*}
 
-  The \emph{norm} of a complex number is its euclidiean distance to 0:
+  The \emph{modulus} of a complex number is its euclidiean distance to 0:
 
   \begin{align*}
     c &= ai + b \\
@@ -154,23 +147,47 @@ Out[4]: (-3+4j)
 
   While we are iterating the formula for a pixel $(x, y)$, if we find
   a step $i$ for which $|z_{i}| > 2$ then we draw the $(x, y)$ pixel
-  black, otherwise we draw it white.
+  white, otherwise we draw it black.
 
   \bigskip
 
   \begin{center}
-    \includegraphics[width = 4cm]{images/mandelbrot_simple.png}
+    \includegraphics[width = 6cm]{images/mandelbrot_simple.png}
   \end{center}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Mandelbrot set}
 
-  \framesubtitle{Animation}
+  \framesubtitle{Source code}
 
+  \begin{lstlisting}
+def draw_mandelbrot(f, max_iter, width, height):
+    for y in range(height):
+        for x in range(width):
+            real = 3 * x / width - 2
+            imag = 2 * y / height - 1
+            c = complex(real, imag)
+            z = c
+            for i in range(max_iter):
+                z = f(z, c)
+                if z.real ** 2 + z.imag ** 2 > 4:
+                    pixel(x, y, 'white')
+                    break
+            else:
+                pixel(x, y, 'black')
+  \end{lstlisting}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{center}
+    {\Huge \bf{Mandelbrot set zoom animation}}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -232,7 +249,7 @@ for i in range(n_int):
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \begin{center}
-    {\Huge \bf{Mandelbrot set animations}}
+    {\Huge \bf{Mandelbrot set formula animations}}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

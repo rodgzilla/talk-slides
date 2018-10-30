@@ -69,5 +69,5 @@ if __name__ == '__main__':
     speed(10)
     color('red', 'black')
     left(90)
-    draw(100, 6)
+    draw(150, 6)
     done()

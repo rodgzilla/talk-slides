@@ -6,3 +6,6 @@
 *.toc
 /creative_coding/fractals/gchatel_fractals.vrb
 /creative_coding/fractals/src/renders/*
+/creative_coding/fractals/videos/01.mp4
+/creative_coding/fractals/videos/*
+/*.mp4
