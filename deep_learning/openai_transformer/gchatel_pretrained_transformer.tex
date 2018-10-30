@@ -24,4 +24,178 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Neural network architectures for NLP}
+
+
+  MLP, CNN, dilated CNN, RNN (LSTM / GRU), Tranformer
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Attention mechanisms}
+
+  \framesubtitle{Scaled Dot-Product Attention}
+
+  \begin{figure}
+    \includegraphics[height = 3.5cm]{images/dot_product_attention.png}
+  \end{figure}
+
+  \medskip
+
+  $Q$ is the query vector, $K$ is the key vector and $V$ value vector.
+
+  \bigskip
+
+  \[
+  \text{Attention}(Q, K, V) = \text{softmax}(\frac{QK^{T}}{\sqrt{d_{k}}}) V.
+  \]
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Attention mechanisms}
+
+  \framesubtitle{Multi-Head Attention}
+
+  \begin{figure}
+    \includegraphics[height = 4cm]{images/multi_head_attention.png}
+  \end{figure}
+
+  \begin{align*}
+    \text{MultiHead}(Q, K, V) &= \text{Concat}(\text{head}_{1}, \dots, \text{head}_{h}) \\
+    \text{where} \quad \text{head}_{i} &= \text{Attention}(QW^{Q}_{i}, KW^{K}_{i},
+  VW^{V}_{i})
+  \end{align*}
+
+  \bigskip
+
+  where the projections $W^{Q}_{i}$, $W^{K}_{i}$ and $W^{V}_{i}$ are
+  parameter matrices.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Transformer network}
+
+  \framesubtitle{Original transformer}
+
+  \begin{figure}
+    \includegraphics[width = 5cm]{images/base_transformer.png}
+  \end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Transformer network}
+
+  \framesubtitle{OpenAI multi-layer decoder}
+
+  \begin{figure}
+    \includegraphics[width = 3cm]{images/openai_transformer.png}
+  \end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Pre-training task}
+
+  \framesubtitle{Language modeling}
+
+  \begin{figure}
+    \input{figures/language_modeling.tex}
+  \end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Results on standard datasets}
+
+  New state of the art on the following tasks:
+
+  \bigskip
+
+  \begin{itemize}
+  \item Textual Entailment
+    \begin{itemize}
+      \footnotesize
+    \item SNLI $89.3 \rightarrow 89.9$
+    \item MNLI Matched $80.6 \rightarrow 82.1$
+    \item MNLI Mismatched $80.1 \rightarrow 81.4$
+    \item SciTail $83.3 \rightarrow 88.3$
+    \item QNLI $82.3 \rightarrow 88.1 $
+    \end{itemize}
+    \smallskip
+  \item Semantic Similarity
+    \begin{itemize}
+      \footnotesize
+    \item STS-B $81.0 \rightarrow 82.0$
+    \item QQP $66.1 \rightarrow 70.3$
+    \end{itemize}
+    \smallskip
+  \item Reading Comprehension
+    \begin{itemize}
+      \footnotesize
+    \item RACE $53.3 \rightarrow 59.0$
+    \end{itemize}
+    \smallskip
+  \item Commonsense Reasoning
+    \begin{itemize}
+      \footnotesize
+    \item ROCStories $77.6 \rightarrow 86.5$
+    \item COPA $71.2 \rightarrow 78.6$
+    \end{itemize}
+    \smallskip
+  \item Linguistic Acceptability
+    \begin{itemize}
+      \footnotesize
+      \item CoLA $35.0 \rightarrow 45.4$
+    \end{itemize}
+    \smallskip
+  \item Multi-Task Benchmark
+    \begin{itemize}
+      \footnotesize
+      \item GLUE $68.9 \rightarrow 72.8$
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{References}
+
+  \begin{itemize}
+  \item Vaswani, Ashish, et al. "Attention is all you need." Advances in Neural Information Processing Systems. 2017.
+
+  \item Radford, Alec, et al. "Improving language understanding by generative pre-training." URL
+    \href{https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf}{Article pdf link}
+    \href{https://blog.openai.com/language-unsupervised/}{Blog post} (2018).
+
+  \item Devlin, Jacob, et al. "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding." arXiv preprint arXiv:1810.04805 (2018).
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \end{document}
