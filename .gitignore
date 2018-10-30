@@ -5,3 +5,4 @@
 *.snm
 *.toc
 /creative_coding/fractals/gchatel_fractals.vrb
+/creative_coding/fractals/src/renders/*
