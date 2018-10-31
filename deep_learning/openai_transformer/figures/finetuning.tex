@@ -1,0 +1,29 @@
+\begin{tikzpicture}[xscale = 4.5]
+  \node (TNFigure) at (0, 0) {
+    \includegraphics[width = 2.5cm]{images/openai_transformer.png}
+  };
+
+  \node(LMText) at (2, 1) {
+    Language modeling loss
+  };
+
+  \node(CLFText) at (2, 0) {
+    Classification loss
+  };
+
+  \node(FText) at (2, -1) {
+    Final loss
+  };
+
+  \node (LMLoss) at (1, 1){
+    $L_{1}(\mathcal{U}) = \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)$
+  };
+
+  \node (CLFLoss) at (1, 0){
+    $L_{2}(\mathcal{C}) = \sum_{(x, y)} P(y|x^{1}, \dots, x^{m})$
+  };
+
+  \node (FLoss) at (1, -1){
+    $L_{3}(\mathcal{C}) = L_{2}(\mathcal{C}) + \lambda * L_{1}(\mathcal{C})$
+  };
+\end{tikzpicture}

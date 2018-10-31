@@ -140,19 +140,55 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{frame}
+%% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+
+  \frametitle{Unsupervised pre-training task}
+
+  \framesubtitle{Language modeling}
+
+  \begin{figure}
+    \scalebox{0.8}{
+      \input{figures/language_modeling.tex}
+    }
+  \end{figure}
+
+  \bigskip
+
+  \[
+  L_{1}(\mathcal{U}) = \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)
+  \]
+
+  %% \begin{align*}
+  %%   h_{0} &= UW_{e} + W_{p} \\
+  %%   h_{l} &= \text{transformer\_block}(h_{l - 1}) \forall i \in [1, n] \\
+  %%   P(u) &= \text{softmax}(h_{n}W_{e}^{T})
+  %% \end{align*}
+
+  \bigskip
+
+  \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Hardware}]
+  \item[Dataset] BooksCorpus (7000 books, $\sim$ 5GB of text),
+  \item[Duration] 1 month,
+  \item[Hardware] 8 GPUs.
+  \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \frametitle{Supervised fine-tuning}
 
-  \frametitle{Pre-training task}
+  \framesubtitle{Multitask learning}
 
-  \framesubtitle{Language modeling}
+  \fontsize{8pt}{7.2}\selectfont
 
   \begin{figure}
-    \input{figures/language_modeling.tex}
+    \input{figures/finetuning.tex}
   \end{figure}
 
 \end{frame}
@@ -211,6 +247,56 @@
     \end{itemize}
   \end{itemize}
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Input formatting}
+
+  \begin{figure}
+    \includegraphics[width = 8cm]{images/input_formatting.png}
+  \end{figure}
+
+  Two possible input shape:
+
+  \begin{itemize}
+  \item (batch\_idx, token\_idx, 2)
+  \item (batch\_idx, sequence\_idx, token\_idx, 2)
+  \end{itemize}
+
+  \bigskip
+
+  The 2 is there to select either the token embedding or its
+  corresponding position embedding.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Input formatting}
+
+  \begin{lstlisting}
+def transform_imdb(X, encoder, max_len, n_vocab, n_special,
+                   n_ctx):
+    n_batch   = len(X)
+    xmb       = np.zeros((n_batch, n_ctx, 2), dtype = np.int32)
+    mmb       = np.zeros((n_batch, n_ctx), dtype = np.float32)
+    start     = encoder['_start_']
+    clf_token = encoder['_classify_']
+    for i, x in enumerate(X):
+        x_with_tokens   = [start] + x[:max_len] + [clf_token]
+        l_x             = len(x_with_tokens)
+        xmb[i, :l_x, 0] = x_with_tokens
+        mmb[i, :l_x]    = 1
+    pos_emb_start = n_vocab + n_special
+    xmb[:, :, 1]  = np.arange(
+        pos_emb_start,
+        pos_emb_start + n_ctx
+    )
+
+    return xmb, mmb
+  \end{lstlisting}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
