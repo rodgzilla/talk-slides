@@ -41,6 +41,7 @@ if __name__ == '__main__':
         lambda z, c: z ** 2 + c * cmath.sin(cmath.cos(c)) + 1,
         lambda z, c: z ** 2 + c + 0.5,
         lambda z, c: z ** 2 + c / 2,
+        lambda z, c: z ** 2 + cmath.sin(z ** 2) + c,
     ]
     draw_mandelbrot(
         window,
