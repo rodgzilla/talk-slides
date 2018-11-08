@@ -65,6 +65,29 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \frametitle{Attention mechanisms}
+
+  \framesubtitle{Concept}
+
+  \begin{figure}
+    \begin{tikzpicture}[xscale = 6]
+      \node (f1) at (0, 0) {
+        \includegraphics[angle = -90, width = 4.5cm]{images/attention_1.png}
+      };
+
+      \node (f2) at (1, 0) {
+        \includegraphics[angle = -90, width = 4.5cm]{images/attention_2.png}
+      };
+    \end{tikzpicture}
+
+  \end{figure}
+
+  {\tiny Image from https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
 
   \frametitle{Attention mechanisms}
 
@@ -165,7 +188,7 @@
   \end{align*}
 
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Hardware}]
-  \item[Dataset] BooksCorpus (7000 books, $\sim$ 5GB of text),
+  \item[Dataset] BooksCorpus (7000 books, $\sim$ 800M words, $\sim$ 5GB of text),
   \item[Duration] 1 month,
   \item[Hardware] 8 GPUs.
   \end{description}
