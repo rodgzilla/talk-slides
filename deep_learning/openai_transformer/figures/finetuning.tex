@@ -1,4 +1,4 @@
-\begin{tikzpicture}[xscale = 4.5]
+\begin{tikzpicture}[xscale = 4.5, yscale = 1.8]
   \node (TNFigure) at (0, 0) {
     \includegraphics[width = 2.5cm]{images/openai_transformer.png}
   };
@@ -16,11 +16,17 @@
   };
 
   \node (LMLoss) at (1, 1){
-    $L_{1}(\mathcal{U}) = \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)$
+    $\begin{aligned}
+      P(u) &= \text{softmax}(h_{n}W_{e}^{T})\\
+      L_{1}(\mathcal{U}) &= \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)
+    \end{aligned}$
   };
 
   \node (CLFLoss) at (1, 0){
-    $L_{2}(\mathcal{C}) = \sum_{(x, y)} P(y|x^{1}, \dots, x^{m})$
+    $\begin{aligned}
+      P(y|x^{1}, \dots, x^{m}) &= \text{softmax}(h_{n}^{m}W_{y})\\
+      L_{2}(\mathcal{C}) &= \sum_{(x, y)} P(y|x^{1}, \dots, x^{m})
+    \end{aligned}$
   };
 
   \node (FLoss) at (1, -1){

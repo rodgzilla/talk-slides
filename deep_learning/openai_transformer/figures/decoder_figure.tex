@@ -1,0 +1,20 @@
+\begin{tikzpicture}[xscale = 5]
+  \node (picture) at (0, 0) {
+    \includegraphics[width = 3cm]{images/openai_transformer.png}
+  };
+
+  \node (tokenMatrixDefinition) at (1, 2) {
+    $W_{e}$ is the token embedding matrix
+  };
+
+  \node (positionMatrixDefinition) at (1, 1) {
+    $W_{p}$ is the position embedding matrix
+  };
+
+  \node (networkEquations) at (1, -1) {
+    $\begin{aligned}
+      h_{0} &= UW_{e} + W_{p} \\
+      h_{l} &= \text{transformer\_block}(h_{l - 1}) \forall i \in [1, n] \\
+    \end{aligned}$
+  };
+\end{tikzpicture}

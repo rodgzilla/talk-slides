@@ -133,9 +133,11 @@
   \framesubtitle{OpenAI multi-layer decoder}
 
   \begin{figure}
-    \includegraphics[width = 3cm]{images/openai_transformer.png}
+    \input{figures/decoder_figure.tex}
   \end{figure}
 
+  The \emph{Text Prediction} and \emph{Task classifier} heads take
+  $h_{n}$ as input.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -157,19 +159,10 @@
     }
   \end{figure}
 
-  \bigskip
-
-  \[
-  L_{1}(\mathcal{U}) = \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)
-  \]
-
-  %% \begin{align*}
-  %%   h_{0} &= UW_{e} + W_{p} \\
-  %%   h_{l} &= \text{transformer\_block}(h_{l - 1}) \forall i \in [1, n] \\
-  %%   P(u) &= \text{softmax}(h_{n}W_{e}^{T})
-  %% \end{align*}
-
-  \bigskip
+  \begin{align*}
+    P(u) &= \text{softmax}(h_{n}W_{e}^{T})\\
+    L_{1}(\mathcal{U}) &= \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)
+  \end{align*}
 
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Hardware}]
   \item[Dataset] BooksCorpus (7000 books, $\sim$ 5GB of text),
@@ -185,7 +178,7 @@
 
   \framesubtitle{Multitask learning}
 
-  \fontsize{8pt}{7.2}\selectfont
+  \fontsize{7.5pt}{7.2}\selectfont
 
   \begin{figure}
     \input{figures/finetuning.tex}
