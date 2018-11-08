@@ -295,6 +295,30 @@ def transform_imdb(X, encoder, max_len, n_vocab, n_special,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \frametitle{BERT: Pre-training of Deep Bidirectional Transformers
+    for Language Understanding}
+
+  \begin{figure}
+    \includegraphics[width = 8cm]{images/bert.png}
+  \end{figure}
+
+  \emph{BERT} is an improvement on the GPT. The main differences are:
+  \begin{itemize}
+  \item Bidirectional training,
+  \item Different pre-training tasks (masked language model and next
+    sentence prediction),
+  \item Trained on a much bigger corpus (BookCorpus \textbf{+
+    Wikipedia}),
+  \item 3 $\times$ as many parameters for the large version,
+  \item Pre-trained model for 102 languages.
+  \end{itemize}
+
+  BERT produces 11 new states of the art.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
   \frametitle{References}
 
   \begin{itemize}
