@@ -5,15 +5,27 @@
 \input{commands.tex}
 
 \usetheme{Boadilla}
-\title{Transfer learning with Transformer networks}
+\title{Generative pre-training of transformer networks}
 \author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Disaitek\\Intel Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
-\date{11/28/2018}
+\date{11/17/2018}
 
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
 %% \setbeamertemplate{footline}[frame number]{}
 
+%% In this talk, I will present two recent research articles from openAI
+%% and Google AI Language about transfer learning in NLP and their
+%% implementation.
 
+%% Historically, transfer learning for NLP neural networks has been
+%% limited to reusing pre-computed word embeddings. Recently, a new trend
+%% appeared, much closer to what transfer learning looks like in computer
+%% vision, consisting in reusing a much larger part of a pre-trained
+%% network. This approach allows to reach state of the art results on
+%% many NLP tasks with minimal code modification and training time. In
+%% this presentation, I will present the underlying architectures of
+%% these models, the generic pre-training tasks and an example of using
+%% such network to complete a NLP task.
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
