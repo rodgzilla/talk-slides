@@ -1,0 +1,129 @@
+\begin{tikzpicture}
+  \node (frenchSentence) at (0, 0) {
+    \begin{tikzpicture}[framed,xscale = 1.8]
+      \node (text) at (-1, 0) {
+        \textcolor{blue}{\textbf{Input sentence}}
+      };
+
+      \node (key) at (-1, -1) {
+        \textcolor{blue}{\textbf{Key}}
+      };
+
+      \node (value) at (-1, -2) {
+        \textcolor{blue}{\textbf{Value}}
+      };
+
+      \node (elle) at (0, 0) {
+        \textcolor{red}{elle}
+      };
+
+      \node (elleKey) at (0, -1) {
+        subject
+      };
+
+      \node (elleValue) at (0, -2) {
+        \textit{she}
+      };
+
+      \node (alla) at (1, 0) {
+        \textcolor{red}{alla}
+      };
+
+      \node (allaKey) at (1, -1) {
+        verb
+      };
+
+      \node (allaValue) at (1, -2) {
+        \textit{go, past tense}
+      };
+
+      \node (a) at (2, 0) {
+        \textcolor{red}{à}
+      };
+
+      \node (aKey) at (2, -1) {
+        filler
+      };
+
+      \node (aValue) at (2, -2) {
+        -
+      };
+
+      \node (la) at (3, 0) {
+        \textcolor{red}{la}
+      };
+
+      \node (laKey) at (3, -1) {
+        filler
+      };
+
+      \node (laValue) at (3, -2) {
+        -
+      };
+
+      \node (plage) at (4, 0) {
+        \textcolor{red}{plage}
+      };
+
+      \node (plageKey) at (4, -1) {
+        location
+      };
+
+      \node (plageValue) at (4, -2) {
+        \textit{beach}
+      };
+    \end{tikzpicture}
+  };
+
+  \node (englishSentence) at (0, -2.8) {
+    \begin{tikzpicture}[framed, xscale = 1.8]
+      \node (text) at (-1, 0) {
+        \textcolor{blue}{\textbf{Output sentence}}
+      };
+
+      \node (query) at (-1, -1) {
+        \textcolor{blue}{\textbf{Query}}
+      };
+
+      \node (she) at (0, 0) {
+        \textcolor{purple}{she}
+      };
+
+      \node (sheQuery) at (0, -1) {
+        subject
+      };
+
+      \node (went) at (1, 0) {
+        \textcolor{purple}{went}
+      };
+
+      \node (wentQuery) at (1, -1) {
+        verb
+      };
+
+      \node (to) at (2, 0) {
+        \textcolor{purple}{to}
+      };
+
+      \node (toQuery) at (2, -1) {
+        filler
+      };
+
+      \node (the) at (3, 0) {
+        \textcolor{purple}{the}
+      };
+
+      \node (theQuery) at (3, -1) {
+        filler
+      };
+
+      \node (beach) at (4, 0) {
+        \textcolor{purple}{\textbf{?????}}
+      };
+
+      \node (beachQuery) at (4, -1) {
+        location
+      };
+    \end{tikzpicture}
+  };
+\end{tikzpicture}

@@ -106,12 +106,20 @@
   \framesubtitle{Scaled Dot-Product Attention}
 
   \begin{figure}
-    \includegraphics[height = 3.5cm]{images/dot_product_attention.png}
+    \scalebox{0.85}{
+      \input{figures/attention_translation.tex}
+    }
   \end{figure}
 
   \medskip
 
-  $Q$ is the query vector, $K$ is the key vector and $V$ value vector.
+  To compute the next word in the translation, the attention mechanism
+  creates a vector using the source sentence and what has been
+  generated so far.
+
+  \medskip
+
+  $Q$, $K$ and $V$ are respectively the query, key and value vectors.
 
   \bigskip
 
