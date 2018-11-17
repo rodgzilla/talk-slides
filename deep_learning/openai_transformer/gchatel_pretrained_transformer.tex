@@ -204,7 +204,7 @@
 
   \begin{align*}
     P(u) &= \text{softmax}(h_{n}W_{e}^{T})\\
-    L_{1}(\mathcal{U}) &= \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{u - 1}; \Theta)
+    L_{1}(\mathcal{U}) &= \sum_{i} \text{log} \,P(u_{i} | u_{i - k}, \dots, u_{i - 1}; \Theta)
   \end{align*}
 
   \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Hardware}]
@@ -364,14 +364,34 @@ def transform_imdb(X, encoder, max_len, n_vocab, n_special,
 \begin{frame}
   \frametitle{References}
 
+  \fontsize{6pt}{7.2}\selectfont
+
   \begin{itemize}
-  \item Vaswani, Ashish, et al. "Attention is all you need." Advances in Neural Information Processing Systems. 2017.
+  \item Tensorflow GPT: \href{https://github.com/openai/finetune-transformer-lm}{https://github.com/openai/finetune-transformer-lm}
+
+  \item Tensorflow BERT: \href{https://github.com/google-research/bert}{https://github.com/google-research/bert}
+
+  \item PyTorch GPT: \href{https://github.com/huggingface/pytorch-openai-transformer-lm}{https://github.com/huggingface/pytorch-openai-transformer-lm}
+
+  \item PyTorch BERT: \href{https://github.com/huggingface/pytorch-pretrained-BERT}{https://github.com/huggingface/pytorch-pretrained-BERT}
+
+  \item IMDB movie review classification: \href{https://github.com/rodgzilla/pytorch-openai-transformer-lm/tree/movie_reviews_classification}{https://github.com/rodgzilla/pytorch-openai-transformer-lm/tree/movie\_reviews\_classification}
+
+  \item Bai, Shaojie, J. Zico Kolter, and Vladlen Koltun. "An
+    empirical evaluation of generic convolutional and recurrent
+    networks for sequence modeling." arXiv preprint arXiv:1803.01271
+    (2018).
+
+  \item Vaswani, Ashish, et al. "Attention is all you need." Advances
+    in Neural Information Processing Systems. 2017.
 
   \item Radford, Alec, et al. "Improving language understanding by generative pre-training." URL
     \href{https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf}{Article pdf link}
     \href{https://blog.openai.com/language-unsupervised/}{Blog post} (2018).
 
-  \item Devlin, Jacob, et al. "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding." arXiv preprint arXiv:1810.04805 (2018).
+  \item Devlin, Jacob, et al. "BERT: Pre-training of Deep
+    Bidirectional Transformers for Language Understanding." arXiv
+    preprint arXiv:1810.04805 (2018).
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
