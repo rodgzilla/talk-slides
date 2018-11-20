@@ -43,6 +43,8 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Introduction}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
@@ -78,6 +80,43 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neural network}
+
+  \framesubtitle{Neuron with activation}
+
+  \begin{center}
+    \scalebox{0.6}{
+      \input{figures/nonlinear_neuron.tex}
+    }
+  \end{center}
+
+  \begin{center}
+    \scalebox{0.8}{
+      \begin{tikzpicture}[xscale = 4]
+        \node (formula) (0, 0){
+          \scalebox{1.3}{
+            $A(x) = \frac{1}{1 + e^{-x}}$
+          }
+        } ;
+
+        \node (graph) at (1, 0){
+          \scalebox{0.6}{
+            \input{figures/sigmoid.tex}
+          }
+        };
+      \end{tikzpicture}
+    }
+  \end{center}
+
+  \vspace{-0.5cm}
+
+  \[
+  y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Popular ML tasks and their dataset}
 
