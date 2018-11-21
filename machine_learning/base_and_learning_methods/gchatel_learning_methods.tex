@@ -153,7 +153,7 @@
   \medskip
 
   We then update the weights to make the value of the loss function
-  decrease using this formula:
+  decrease by iterating this formula:
 
   \[
   \theta_{t + 1} = \theta_{t} - \alpha \nabla_{\theta_{t}} L(\theta_{t}, x, y).
@@ -187,7 +187,7 @@
 
   \frametitle{Popular datasets}
 
-  \framesubtitle{Natural language processing (NLP})
+  \framesubtitle{Natural language processing (NLP)}
 
   \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
     \setlength{\itemsep}{8pt}
@@ -356,7 +356,7 @@
   %% \end{displayquote}
 
   \begin{displayquote}[Rich Caruana, 1997]
-    Multitask Learning is an approach to inductive transfer that
+    Multi-task learning is an approach to inductive transfer that
     improves generalization [...] It
     does this by learning tasks in parallel while using a shared
     representation; what is learned for each task can help other tasks
@@ -493,6 +493,11 @@
   student and the teacher. We typically alternate between supervised
   and semi-supervised steps of training.
 
+  \bigskip
+
+  The goal of this method is to \textcolor{blue}{propagate labels} and
+  improve \textcolor{blue}{noise invariance}.
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -519,17 +524,22 @@
   \frametitle{Conclusion}
 
   \begin{enumerate}
-    \item Establish a baseline using basic algorithms (logistic
-      regression, random forest, etc.)
-    \item Choose a model architecture (MLP, CNN, RNN, Transformer)
+    \item Establish a baseline using basic algorithms (naive Bayes,
+      logistic regression, random forest, etc.).
+      \medskip
+    \item Choose a model architecture (MLP, CNN, RNN, Transformer).
+      \medskip
     \item Try to find (or build) a pre-trained version of this model
-      that performs a related task (\emph{transfer learning})
-    \item Try to find a related auxiliary task to regularize and
+      that performs a related task and retrain it to your
+      problem (\emph{transfer learning}).
+      \medskip
+    \item Try to find a related auxiliary task to regularize to
       improve the model learning abilities. (\emph{multi-task
-        learning})
+        learning}).
+      \medskip
     \item Once the performance of the model is relatively good, try to
-      use unlabelled data to improve noise invariance
-      (\emph{semi-supervised learning})
+      use unlabelled data to improve performances
+      (\emph{semi-supervised learning}).
   \end{enumerate}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -553,6 +563,10 @@
     preprint arXiv:1708.09843 (2017).
   \item Kaiser, Lukasz, et al. "One model to learn them all."  arXiv
     preprint arXiv:1706.05137 (2017).
+  \item Tarvainen, Antti, et al. "Mean teachers are better
+    role models: Weight-averaged consistency targets improve
+    semi-supervised deep learning results." Advances in neural
+    information processing systems (2017).
   \item Miyato, Takeru, et al. "Virtual adversarial training: a
     regularization method for supervised and semi-supervised
     learning." IEEE transactions on pattern analysis and machine
