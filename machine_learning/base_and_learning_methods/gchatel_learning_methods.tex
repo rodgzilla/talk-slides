@@ -132,6 +132,35 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neural network}
+
+  \framesubtitle{Training}
+
+  \begin{center}
+    \scalebox{0.5}{
+      \input{figures/parabola.tex}
+    }
+  \end{center}
+
+  \smallskip
+
+  A differentiable loss function $L(\theta, x, y)$ tells us how well
+  the model is performing. We compute how parameters changes influence
+  the loss by taking its gradient $\nabla_{\theta} L(\theta, x, y)$.
+
+  \medskip
+
+  We then update the weights to make the value of the loss function
+  decrease using this formula:
+
+  \[
+  \theta_{t + 1} = \theta_{t} - \alpha \nabla_{\theta_{t}} L(\theta_{t}, x, y).
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Popular ML tasks and their dataset}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
