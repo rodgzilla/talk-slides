@@ -295,13 +295,13 @@
   Two possible input shape:
 
   \begin{itemize}
-  \item (batch\_idx, token\_idx, 2)
-  \item (batch\_idx, sequence\_idx, token\_idx, 2)
+  \item \texttt{(batch\_idx, token\_idx, 2)}
+  \item \texttt{(batch\_idx, sequence\_idx, token\_idx, 2)}
   \end{itemize}
 
   \bigskip
 
-  The 2 is there to select either the token embedding or its
+  The \texttt{2} is there to select either the token embedding or its
   corresponding position embedding.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -354,7 +354,7 @@ def transform_imdb(X, encoder, max_len, n_vocab, n_special,
   \item Pre-trained model for 102 languages.
   \end{itemize}
 
-  BERT produces 11 new states of the art.
+  Google's BERT produces 11 new SOTAs on top of the 9 of OpenAI's GPT.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
