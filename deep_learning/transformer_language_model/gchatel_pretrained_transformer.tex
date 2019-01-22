@@ -329,31 +329,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]
-  \frametitle{Input formatting}
+%% \begin{frame}[fragile]
+%%   \frametitle{Input formatting}
 
-  \begin{lstlisting}
-def transform_imdb(X, encoder, max_len, n_vocab, n_special,
-                   n_ctx):
-    n_batch   = len(X)
-    xmb       = np.zeros((n_batch, n_ctx, 2), dtype = np.int32)
-    mmb       = np.zeros((n_batch, n_ctx), dtype = np.float32)
-    start     = encoder['_start_']
-    clf_token = encoder['_classify_']
-    for i, x in enumerate(X):
-        x_with_tokens   = [start] + x[:max_len] + [clf_token]
-        l_x             = len(x_with_tokens)
-        xmb[i, :l_x, 0] = x_with_tokens
-        mmb[i, :l_x]    = 1
-    pos_emb_start = n_vocab + n_special
-    xmb[:, :, 1]  = np.arange(
-        pos_emb_start,
-        pos_emb_start + n_ctx
-    )
+%%   \begin{lstlisting}
+%% def transform_imdb(X, encoder, max_len, n_vocab, n_special,
+%%                    n_ctx):
+%%     n_batch   = len(X)
+%%     xmb       = np.zeros((n_batch, n_ctx, 2), dtype = np.int32)
+%%     mmb       = np.zeros((n_batch, n_ctx), dtype = np.float32)
+%%     start     = encoder['_start_']
+%%     clf_token = encoder['_classify_']
+%%     for i, x in enumerate(X):
+%%         x_with_tokens   = [start] + x[:max_len] + [clf_token]
+%%         l_x             = len(x_with_tokens)
+%%         xmb[i, :l_x, 0] = x_with_tokens
+%%         mmb[i, :l_x]    = 1
+%%     pos_emb_start = n_vocab + n_special
+%%     xmb[:, :, 1]  = np.arange(
+%%         pos_emb_start,
+%%         pos_emb_start + n_ctx
+%%     )
 
-    return xmb, mmb
-  \end{lstlisting}
-\end{frame}
+%%     return xmb, mmb
+%%   \end{lstlisting}
+%% \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
