@@ -25,7 +25,7 @@
   \node (CLFLoss) at (1, 0){
     $\begin{aligned}
       P(y|x^{1}, \dots, x^{m}) &= \text{softmax}(h_{n}^{m}W_{y})\\
-      L_{2}(\mathcal{C}) &= \sum_{(x, y)} P(y|x^{1}, \dots, x^{m})
+      L_{2}(\mathcal{C}) &= \sum_{(x, y)} \text{log} \,P(y|x^{1}, \dots, x^{m})
     \end{aligned}$
   };
 

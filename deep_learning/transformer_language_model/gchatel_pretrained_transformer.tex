@@ -41,7 +41,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
-  \frametitle{Traditional architectures for NLP}
+  \frametitle{Traditional DL architectures for NLP}
 
   \begin{figure}
     \begin{tikzpicture}[xscale = 5, yscale = 2.7]
@@ -314,17 +314,17 @@
     \includegraphics[width = 8cm]{images/input_formatting.png}
   \end{figure}
 
-  Two possible input shape:
+  %% Two possible input shape:
 
-  \begin{itemize}
-  \item \texttt{(batch\_idx, token\_idx, 2)}
-  \item \texttt{(batch\_idx, sequence\_idx, token\_idx, 2)}
-  \end{itemize}
+  %% \begin{itemize}
+  %% \item \texttt{(batch\_idx, token\_idx, 2)}
+  %% \item \texttt{(batch\_idx, sequence\_idx, token\_idx, 2)}
+  %% \end{itemize}
 
-  \bigskip
+  %% \bigskip
 
-  The \texttt{2} is there to select either the token embedding or its
-  corresponding position embedding.
+  %% The \texttt{2} is there to select either the token embedding or its
+  %% corresponding position embedding.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
