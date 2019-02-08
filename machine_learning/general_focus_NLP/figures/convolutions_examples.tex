@@ -1,0 +1,17 @@
+\begin{tikzpicture}[xscale = 8, yscale = 2]
+  \node (dog) at (0, 0) {
+    \includegraphics[width = 3cm]{images/pre_kernel.jpg}
+  };
+  
+  \node (hori) at (1, 1) {
+    \includegraphics[width = 3cm]{images/horizontal.jpg}
+  };
+  
+  \node (vert) at (1, -1) {
+    \includegraphics[width = 3cm]{images/vertical.jpg}
+  };
+
+  \draw[thick, ->] (dog) -- node [below]{$\left(\begin{matrix}-1 & 0 & 1\\ -2 & 0 & 2 \\ -1 & 0 & 1\end{matrix}\right)$} (vert);
+
+  \draw[thick, ->] (dog) -- node [above]{$\left(\begin{matrix}-1 & -2 & -1\\ 0 & 0 & 0 \\ 1 & 2 & 1\end{matrix}\right)$} (hori);
+\end{tikzpicture}

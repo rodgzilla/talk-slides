@@ -1,0 +1,192 @@
+\documentclass[9pt]{beamer}
+
+\input{packages.tex}
+\input{colors.tex}
+
+\usetheme{Boadilla}
+\title{Machine learning basics}
+\author{G. Châtel \\ Disaitek}
+\date{2019/02/13}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \maketitle
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Machine learning}
+
+  Machine learning (ML) is a subfield of artificial intelligence.
+
+  \bigskip
+
+  \begin{description}
+    \item[Intuitively] We want to \emph{learn from} and \emph{make predictions
+    on} data.
+
+      \medskip
+
+    \item[Technically] We want to update the parameters of a model to
+      make it describe our training data as well (defined by a
+      \emph{loss function}) as possible.
+  \end{description}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Model example}
+
+  \framesubtitle{Linear regression}
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/scatter_02.tex}
+    }
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Model example}
+
+  \framesubtitle{Decision tree}
+
+  \begin{center}
+    \includegraphics[width = 9cm]{images/decision_tree.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Model example}
+
+  \framesubtitle{Neural network (deep learning)}
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/network.tex}
+    }
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Deep learning architecture}
+
+  \framesubtitle{Image recognition (VGG 16)}
+
+  \begin{center}
+    \includegraphics[width = 9cm]{images/vgg16_architecture.png}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Deep learning architecture}
+
+  \framesubtitle{Hierarchized pattern recognition}
+
+  \begin{center}
+    \begin{tikzpicture}[xscale = 5.5, yscale = 2.5]
+      \onslide<1>{
+        \node (L1) at (0, 0) {
+          \includegraphics[width = 5cm]{images/cnn_vizu_l1.jpg}
+        };
+
+        \node (T1) at (-1, 0.5) {
+          Layer 1
+        };
+      }
+      \onslide<2>{
+        \node (L2) at (0, 0) {
+          \includegraphics[width = 5cm]{images/cnn_vizu_l2.jpg}
+        };
+
+        \node (T2) at (-1, 0.5) {
+          Layer 2
+        };
+            }
+      \onslide<3>{
+        \node (L3) at (0, 0) {
+          \includegraphics[width = 5cm]{images/cnn_vizu_l3.jpg}
+        };
+
+        \node (T3) at (-1, 0.5) {
+          Layer 3
+        };
+            }
+      \onslide<4>{
+        \node (L4) at (0, 0) {
+          \includegraphics[width = 5cm]{images/cnn_vizu_l4.jpg}
+        };
+        \node (T4) at (-1, 0.5) {
+          Layer 4
+        };
+            }
+      \onslide<5>{
+        \node (L5) at (0, 0) {
+          \includegraphics[width = 5cm]{images/cnn_vizu_l5.jpg}
+        };
+
+        \node (T5) at (-1, 0.5) {
+          Layer 5
+        };
+      }
+
+      \node (VGG) at (-1, -0.5) {
+        \includegraphics[width = 6cm]{images/vgg16_architecture.png}
+      };
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Application examples}
+
+  \framesubtitle{Supervised learning}
+
+  \begin{itemize}
+    \item Regression
+
+      \begin{center}
+        \begin{tabular}{cc}
+          \textcolor{blue}{Polynomial} & $(x, y, z) \to f(x, y, z)$ \\[0.5cm]
+          \textcolor{blue}{House price} & (surface, nb rooms, city) $\to$ price \\[0.5cm]
+        \end{tabular}
+      \end{center}
+
+    \item Classification
+
+      \begin{center}
+        \begin{tabular}{cc}
+          \textcolor{blue}{Image classification} & pixel values $\to$ cat or dog \\[0.5cm]
+          \textcolor{blue}{Text classification} & list of words $\to$ spam or valid email
+        \end{tabular}
+      \end{center}
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
