@@ -34,8 +34,8 @@
       \medskip
 
     \item[Technically] We want to update the parameters of a model to
-      make it describe our training data as well (defined by a
-      \emph{loss function}) as possible.
+      make it describe our training data as well as possible (``well''
+      being defined by a \emph{loss function}).
   \end{description}
 
 \end{frame}
@@ -48,7 +48,7 @@
   \framesubtitle{Linear regression}
 
   \begin{center}
-    \scalebox{0.7}{
+    \scalebox{1.3}{
       \input{figures/scatter_02.tex}
     }
   \end{center}
@@ -166,23 +166,38 @@
   \framesubtitle{Supervised learning}
 
   \begin{itemize}
-    \item Regression
+    \item Supervised tasks
+      \begin{itemize}
+      \item Regression
 
-      \begin{center}
-        \begin{tabular}{cc}
-          \textcolor{blue}{Polynomial} & $(x, y, z) \to f(x, y, z)$ \\[0.5cm]
-          \textcolor{blue}{House price} & (surface, nb rooms, city) $\to$ price \\[0.5cm]
+        \begin{center}
+          \begin{tabular}{cc}
+            \textcolor{blue}{Recommender system} & (user, book) $\to$ rating \\[0.2cm]
+            \textcolor{blue}{House price} & (surface, nb rooms, city) $\to$ price \\[0.2cm]
         \end{tabular}
-      \end{center}
+        \end{center}
 
-    \item Classification
+      \item Classification
 
-      \begin{center}
-        \begin{tabular}{cc}
-          \textcolor{blue}{Image classification} & pixel values $\to$ cat or dog \\[0.5cm]
-          \textcolor{blue}{Text classification} & list of words $\to$ spam or valid email
-        \end{tabular}
-      \end{center}
+        \begin{center}
+          \begin{tabular}{cc}
+            \textcolor{blue}{Image classification} & pixel values $\to$ cat or dog \\[0.2cm]
+            \textcolor{blue}{Text classification} & list of words $\to$ spam or valid email
+          \end{tabular}
+        \end{center}
+      \end{itemize}
+    \item Unsupervised taks
+
+      \begin{itemize}
+        \item Clustering
+          \begin{center}
+            \textcolor{blue}{Group clients by interests} \\[.5cm]
+          \end{center}
+        \item Anomaly detection
+          \begin{center}
+            \textcolor{blue}{Detect unusual and strange events}
+          \end{center}
+      \end{itemize}
   \end{itemize}
 
 \end{frame}
