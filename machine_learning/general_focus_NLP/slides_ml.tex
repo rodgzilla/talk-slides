@@ -12,8 +12,6 @@
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
 
-\AtBeginEnvironment{quote}{\singlespacing\small}
-
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,8 +166,6 @@
 \begin{frame}
 
   \frametitle{Application examples}
-
-  \framesubtitle{Supervised learning}
 
   \begin{itemize}
     \item Supervised tasks
@@ -375,7 +371,7 @@
     \item \textcolor{olive}{Cluster 2}: Algorithms To Live By, The Art
       of Computer Programming, \dots
     \item \textcolor{purple}{Cluster 3}: Tofu from Scratch, Okinawa
-      Diet
+      Diet, \dots
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -456,6 +452,8 @@
 
   \frametitle{Language modeling}
 
+  \framesubtitle{Concept}
+
   The goal of language modeling is to predict the word that is
   \textcolor{blue}{most likely} to appear after a given sequence of
   words.
@@ -482,13 +480,44 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+  \frametitle{Language modeling}
+
+  \framesubtitle{Deep Irma}
+
+  We can use a language model to generate large chunks of text by
+  applying it iteratively.
+
+  \bigskip
+
+  Here is an example on horoscope data:
+
+  \vspace{1cm}
+
+  \textbf{Source text}: ``\textcolor{red}{your day will be bad but you
+    should stay optimistic because}''
+
+  \vspace{1cm}
+
+  \textbf{Output}: ``\textcolor{red}{your day will be bad but you
+    should stay optimistic because} \textcolor{blue}{you can see the
+    advantages of being crystal clear to your goals. you may be
+    feeling a bit discouraged today, but you still might be tempted to
+    overindulge on your friends and family. however, you may be so
+    concerned with impressing others that you trample over your
+    current role\dots}''
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
   \frametitle{Google BERT}
 
   The \textbf{B}idirectional \textbf{E}ncoder \textbf{R}epresentations
   for \textbf{T}ransformers model is a language model that has been
-  trained on a massive corpus (7000 books + all Wikipedia pages for
-  102 languages). It is used as a \textcolor{blue}{base} to perform
-  many other linguistic tasks.
+  trained on a \textcolor{blue}{massive corpus} (7000 books + all
+  Wikipedia pages for 102 languages). It is used as a
+  \textcolor{blue}{base} to perform many other linguistic tasks.
 
   \bigskip
 
