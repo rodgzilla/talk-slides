@@ -14,7 +14,7 @@
   }
 
   \uncover<2->{
-    \node[draw, circle, red] (bias) at (1, -1.5){
+    \node[draw, circle, red] (biasVal) at (1, -1.5){
       -1.5
     };
   }
@@ -42,7 +42,7 @@
   }
 
   \uncover<2->{
-    \draw[thick, ->] (bias) -- (sum);
+    \draw[thick, ->] (biasVal) -- (sum);
     \draw[thick, ->] (X1) -- node [above, red]{1} (sum);
     \draw[thick, ->] (X2) -- node [above, red]{1} (sum);
   }
