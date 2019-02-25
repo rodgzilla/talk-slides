@@ -4,26 +4,12 @@
 \input{colors.tex}
 
 \usetheme{Boadilla}
-\title{Importance of dataset for learning algorithms}
+\title{Data efficiency in deep learning}
 \author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Disaitek\\Intel AI Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
 \date{February 26th, 2019}
 
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
-
-%% \usebackgroundtemplate{
-%%   \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
-%% }
-
-%% \usebackgroundtemplate{
-%%   \rule{-4.5cm}{\paperheight}
-%%   \hspace*{\paperwidth}
-%%   \makebox[0pt][r]{
-%%     %% \scalebox{0.7}{
-%%       \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
-%%     %% }
-%%   }
-%% }
 
 \begin{document}
 
@@ -61,11 +47,6 @@
     \item[Technically] We want to build a model that approximate well
       (\textit{e.g.} minimize a loss function) an unknown function.
   \end{description}
-
-  \bigskip
-
-  It is important to note that the function we want to approximate may
-  or may not have a closed form.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -545,10 +526,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Conclusion}
+  \frametitle{Applying deep learning to \emph{small} datasets}
 
   \begin{enumerate}
-    \item Establish a baseline using basic algorithms (logistic
+    \item Establish a strong baseline using basic algorithms (logistic
       regression, random forest, etc.)
     \item Choose a model architecture (MLP, CNN, RNN, Transformer)
     \item Try to find (or build) a pre-trained version of this model

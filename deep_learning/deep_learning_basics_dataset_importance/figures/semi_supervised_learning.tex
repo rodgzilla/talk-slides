@@ -1,4 +1,8 @@
 \begin{tikzpicture}
+  \node(cleanImageLabel) at (0, 2.9) {
+    \textbf{No label}
+  };
+
   \node (cleanImage) at (0, 0) {
     \includegraphics[width = 1.4cm]{images/dog_clean.jpg}
   };
@@ -39,6 +43,7 @@
     }
   };
 
+  \draw[->, dashed] (cleanImageLabel) -- (cleanImage);
   \draw[->, thick] (cleanImage) -- node [below = 0.05cm] {\rotatebox{-35}{\tiny pertubation}} (perturbedImage);
   \draw[->, thick] (cleanImage) -- (teacher);
   \draw[->, thick] (perturbedImage) -- (student);
