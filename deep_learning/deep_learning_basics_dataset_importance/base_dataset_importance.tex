@@ -1,0 +1,494 @@
+\documentclass[10pt]{beamer}
+
+\input{packages.tex}
+\input{colors.tex}
+
+\usetheme{Boadilla}
+\title{Importance of dataset for learning algorithms}
+\author[G. Châtel]{Grégory Châtel\\\vspace{0.3cm}Disaitek\\Intel AI Software Innovator\\\vspace{0.3cm}@rodgzilla\\github.com/rodgzilla}
+\date{February 26th, 2019}
+
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+
+%% \usebackgroundtemplate{
+%%   \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+%% }
+
+%% \usebackgroundtemplate{
+%%   \rule{-4.5cm}{\paperheight}
+%%   \hspace*{\paperwidth}
+%%   \makebox[0pt][r]{
+%%     %% \scalebox{0.7}{
+%%       \includegraphics[width=\paperwidth,height=\paperheight]{images/logo_disaitek.png}
+%%     %% }
+%%   }
+%% }
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \maketitle
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \tableofcontents
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Deep learning basics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Machine learning}
+
+  \framesubtitle{Supervised learning}
+
+  Machine learning is a subfield of artificial intelligence.
+
+  \bigskip
+
+  \begin{description}
+    \item[Intuitively] We want to \emph{learn from} and \emph{make predictions
+    on} data.
+
+    \item[Technically] We want to build a model that approximate well
+      (\textit{e.g.} minimize a loss function) an unknown function.
+  \end{description}
+
+  \bigskip
+
+  It is important to note that the function we want to approximate may
+  or may not have a closed form.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Application examples}
+
+  \framesubtitle{Supervised learning}
+
+  \begin{itemize}
+    \item Regression
+
+      \begin{center}
+        \begin{tabular}{cc}
+          \textcolor{blue}{Polynomial} & $(x, y, z) \to f(x, y, z)$ \\[0.5cm]
+          \textcolor{blue}{House price} & (surface, nb rooms, city) $\to$ price \\[0.5cm]
+        \end{tabular}
+      \end{center}
+
+    \item Classification
+
+      \begin{center}
+        \begin{tabular}{cc}
+          \textcolor{blue}{Image classification} & pixel values $\to$ cat or dog \\[0.5cm]
+          \textcolor{blue}{Text classification} & list of words $\to$ spam or valid email
+        \end{tabular}
+      \end{center}
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Deep learning}
+
+  \textcolor{blue}{Deep learning} is a subfield of machine learning in
+  which we use \textcolor{blue}{artificial neural networks} to make
+  predictions.
+
+  \bigskip
+
+  An artificial neural networks is a computation model loosely based
+  on the human brain. It aims to mimic electric signals travelling
+  through neurons in order to make computations.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neuron with activation}
+
+  \begin{center}
+    \scalebox{0.6}{
+      \input{figures/nonlinear_neuron.tex}
+    }
+  \end{center}
+
+  \[
+  A(x) = \begin{cases}
+    0 & \text{if } x < 0 \\
+    1 & \text{otherwise}
+  \end{cases}
+  \]
+
+  \[
+  y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Popular ML tasks and their dataset}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Popular datasets for computer vision}
+
+  \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
+    \setlength{\itemsep}{8pt}
+    \item[1990, Statlog] $\sim$2k outdoor images,
+    \item[1998, MNIST] 60k B\&W images of handwritten digits,
+    \item[2005, LabelMe] $\sim$187k scenes images,
+    \item[2009, ImageNet] $\sim$14M images with 1000 different categories,
+    \item[2017, JFT-300M] $\sim$300M RGB images $\sim$18k categories (internal dataset @ Google).
+  \end{description}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Popular datasets for Natural Language Processing (NLP)}
+
+  \begin{description}[labelwidth=\widthof{bf series 2017, JFT-300M}]
+    \setlength{\itemsep}{8pt}
+    \item[1997, Car evaluation dataset] $\sim$2k textual car evaluations,
+    \item[2005, Stanford Sentiment Treebank] $\sim$11k movie reviews,
+    \item[2011, IMDB Reviews] $\sim$50k movie reviews,
+    \item[2012, Youtube Comedy Slam] $\sim$1.1M pairs of video metadata,
+    \item[2015, Amazon reviews] $\sim$82M product reviews.
+  \end{description}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Creating dataset}
+
+  Creating new high quality datasets is both \textcolor{blue}{hard}
+  and \textcolor{blue}{expensive}.
+
+  \bigskip
+
+  Some researchers experiment with training models using
+  \textcolor{blue}{low quality data} (weakly supervised learning).
+
+  \bigskip
+
+  Amazon offers a \textcolor{blue}{dataset creation service} (Amazon
+  Mechanical Turk) where you can pay to get your dataset labelled by
+  humans.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Data efficiency}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Data efficiency}
+
+  Knowing that datasets are so important and hard to create, it is
+  important to squeeze \emph{every last bit of value} out of them.
+
+  \bigskip
+
+  To do this, three ideas are explored:
+
+  \begin{itemize}
+    \item Transfer learning,
+    \item Multi-task learning,
+    \item Semi-supervised learning.
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Transfer learning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Transfer learning}
+
+  \begin{displayquote}[Perkins, 1992]
+  The application of skills, knowledge, and/or attitudes that were
+  learned in one situation to another learning situation.
+  \end{displayquote}
+
+  \bigskip
+
+  Transfer learning consists in taking an artificial neural network
+  that has been trained on a \textcolor{blue}{\emph{generic}} task and
+  \textcolor{blue}{\emph{transferring}} its knowledge (retraining it)
+  to perform a new task.
+
+  \bigskip
+
+  The idea behind this method is that the information learned on a
+  generic task will probably be useful for a new task of the same
+  domain.
+
+  \bigskip
+
+  Transfer learning is actually the base of the
+  \textcolor{blue}{Google Cloud AutoML service}.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Transfer learning in computer vision}
+
+  \begin{center}
+    \includegraphics[width = 7cm]{images/alexnet_architecture.png}
+  \end{center}
+
+  Using this trained model as a base to build a dogs vs cats picture
+  classifier \textcolor{blue}{greatly reduce the need of labelled
+    data}.
+
+  \bigskip
+
+  The knowledge about \textcolor{blue}{basic shapes and textures} that
+  has been learned on ImageNet will be useful to almost all task
+  involving real world images.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Transfer learning in NLP}
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/language_modeling.tex}
+    }
+  \end{center}
+
+  The \textcolor{blue}{language modeling task} is currently the most
+  generic task that NLP researcher have found to perform transfer
+  learning.
+
+  \bigskip
+
+  Knowing how to predict the most likely following word requires to
+  understand, to some extent, the \textcolor{blue}{meaning of words},
+  \textcolor{blue}{the syntax of the language} and
+  \textcolor{blue}{the way concepts interact}.
+
+  \bigskip
+
+  Typical language models are trained on Wikipedia content, books or
+  Internet Common Crawl.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Multi-task learning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task learning}
+
+  \bigskip
+
+  %% \begin{displayquote}[Rich Caruana, 1997]
+  %%   Multitask Learning is an approach to inductive transfer that
+  %%   improves generalization by using the domain information contained
+  %%   in the training signals of related tasks as an inductive bias. It
+  %%   does this by learning tasks in parallel while using a shared
+  %%   representation; what is learned for each task can help other tasks
+  %%   be learned better.
+  %% \end{displayquote}
+
+  \begin{displayquote}[Rich Caruana, 1997]
+    Multitask Learning is an approach to inductive transfer that
+    improves generalization [...] It
+    does this by learning tasks in parallel while using a shared
+    representation; what is learned for each task can help other tasks
+    be learned better.
+  \end{displayquote}
+
+  \bigskip
+
+  Instead of just training the network to perform the desired task, we
+  also optimize it to perform \textcolor{blue}{\emph{auxiliary
+      tasks}}.
+
+  \begin{center}
+    \includegraphics[width = 4.5cm]{images/multi_task_learning.png}
+  \end{center}
+
+  {\scriptsize \textit{Image from http://ruder.io/multi-task/}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task as a regularization technique}
+
+  \begin{center}
+    \includegraphics[width = 8cm]{images/overfitting.png}
+  \end{center}
+
+  Informally, the goal of the multi-task learning is to force the
+  model to use its \textcolor{blue}{computing power} to perform
+  something \textcolor{blue}{meaningful} instead of using it to learn
+  the \textcolor{blue}{noise} of the data (overfitting).
+
+  \bigskip
+
+  {\scriptsize \textit{Image from
+      https://hackernoon.com/memorizing-is-not-learning-6-tricks-to-prevent-overfitting-in-machine-learning-820b091dc42}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task learning in computer vision}
+
+  \begin{center}
+    \includegraphics[width = 5.5cm]{images/multi_task_medecine.png}
+  \end{center}
+
+  \medskip
+
+  Some researchers discovered that by asking a model to predict the
+  gender and age of patient in addition to detect \emph{cardiovascular
+    diseases} they got strong performance improvements.
+
+  \medskip
+
+  {\scriptsize Poplin, Ryan, et al. "Predicting cardiovascular risk
+    factors from retinal fundus photographs using deep learning."
+    arXiv preprint arXiv:1708.09843 (2017).}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Multi-task learning in NLP}
+
+  \begin{center}
+    \includegraphics[width = 4cm]{images/multi_task_nlp.png}
+  \end{center}
+
+  In NLP, translation can be used as an auxiliary task to improve
+  models that perform tasks that have relatively small datasets such
+  as sentence parsing.
+
+  \bigskip
+
+  By making the model perform translation, a task with huge datasets,
+  we allow it to gain access to a much richer
+  \textcolor{blue}{structure of the language}.
+
+  \bigskip
+
+  {\scriptsize Kaiser, Lukasz, et al. "One model to learn them all."
+    arXiv preprint arXiv:1706.05137 (2017).}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Semi-supervised learning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Semi-supervised learning}
+
+  \begin{center}
+    \includegraphics[width=4cm]{images/semi_supervised_learning.png}
+  \end{center}
+
+  \bigskip
+
+  The idea of semi-supervised learning is to use
+  \textcolor{blue}{\emph{unlabelled data}} to improve our model.
+
+  \bigskip
+
+  {\scriptsize \textit{Image from https://en.wikipedia.org/wiki/Semi-supervised\_learning}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+  \frametitle{Concepts of semi-supervised learning}
+
+  The main concept of semi-supervised learning is to train a
+  \textcolor{blue}{weaker student} to imitate a
+  \textcolor{blue}{stronger teacher}.
+
+  \bigskip
+
+  Technically, we apply \emph{mean-squared error} or a
+  \emph{Kullback-Liebler divergence} between the logits output by the
+  student and the teacher. We typically alternate between supervised
+  and semi-supervised steps of training.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Semi-supervised learning in practice}
+
+  \begin{center}
+    \input{figures/semi_supervised_learning.tex}
+  \end{center}
+
+  \bigskip
+
+  We do not need a label for the clean image, we want to teach the
+  model to be \textcolor{blue}{noise invariant}.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Conclusion}
+
+  \begin{enumerate}
+    \item Establish a baseline using basic algorithms (logistic
+      regression, random forest, etc.)
+    \item Choose a model architecture (MLP, CNN, RNN, Transformer)
+    \item Try to find (or build) a pre-trained version of this model
+      that performs a related task (\emph{transfer learning})
+    \item Try to find a related auxiliary task to regularize and
+      improve the model learning abilities. (\emph{multi-task
+        learning})
+    \item Once the performance of the model is relatively good, try to
+      use unlabelled data to improve noise invariance
+      (\emph{semi-supervised learning})
+  \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

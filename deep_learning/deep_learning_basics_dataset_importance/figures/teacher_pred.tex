@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  \begin{axis}[
+            area style,
+            ]
+    \addplot+[ybar interval,mark=no] plot coordinates {
+      (0,.3)
+      (1,.5)
+      (2,.6)
+      (3,.5)
+      (4,.25)
+      (5,.1)
+      (6,.5)
+      (7,.25)
+      (8,.1)
+    };
+  \end{axis}
+\end{tikzpicture}
