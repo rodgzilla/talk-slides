@@ -186,6 +186,31 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neural networks}
+
+  \begin{center}
+    \scalebox{0.4}{
+      \input{figures/parabola.tex}
+    }
+  \end{center}
+
+  To train and evaluate neural networks, we use a \textbf{loss
+    function} $L(\theta, x, y)$ with $\theta$ the parameters of the
+  models, $x$ an input and $y$ the target. This function measures
+  \emph{how good} the prediction of the model is on a specific
+  example.
+
+  \bigskip
+
+  To \textcolor{blue}{train} a neural network we compute the
+  derivative of $L$ according to \textbf{the weights} ($\theta$) and
+  use the result to update $\theta$ in order to
+  \textcolor{blue}{decrease} the loss value.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Popular ML tasks and their dataset}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -225,7 +250,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
-  \frametitle{Creating dataset}
+  \frametitle{Dataset creation strategies}
 
   Creating new high quality datasets is both \textcolor{blue}{hard}
   and \textcolor{blue}{expensive}.
@@ -241,6 +266,9 @@
   Mechanical Turk) where you can pay to get your dataset labelled by
   humans.
 
+  \bigskip
+
+  These strategies are \textbf{not} the focus of this talk.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
