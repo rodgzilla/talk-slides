@@ -50,8 +50,6 @@
 
   \frametitle{Machine learning}
 
-  \framesubtitle{Supervised learning}
-
   Machine learning is a subfield of artificial intelligence.
 
   \bigskip
@@ -75,8 +73,6 @@
 \begin{frame}
 
   \frametitle{Application examples}
-
-  \framesubtitle{Supervised learning}
 
   \begin{itemize}
     \item Regression
@@ -105,6 +101,8 @@
 \begin{frame}
 
   \frametitle{Deep learning}
+
+  \framesubtitle{Concept}
 
   \textcolor{blue}{Deep learning} is a subfield of machine learning in
   which we use \textcolor{blue}{artificial neural networks} to make
@@ -139,6 +137,52 @@
   \[
   y = A(w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3} + w_{4}x_{4} + w_{5}x_{5} + w_{6}x_{6} + b)
   \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Artificial neural network}
+
+  \framesubtitle{Network}
+
+  \begin{center}
+    \scalebox{0.7}{
+      \input{figures/network_animation.tex}
+    }
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Computation example}
+
+  \framesubtitle{Binary AND gate}
+
+  \begin{center}
+    \scalebox{1}{
+      \input{figures/and_neuron.tex}
+    }
+  \end{center}
+
+  We want to set $w_{1}, w_{2}$ and $b$ such that:
+
+  \[
+  A(w_{1}x_{1} + w_{2}x_{2} + b) = x_{1} \text{ AND } x_{2}
+  \]
+
+  \uncover<3->{
+    \[
+    x_{0} = 0, x_{1} = 1. \quad y = A(0 + 1 - 1.5) = A(-0.5) = 0
+    \]
+  }
+
+  \uncover<4->{
+    \[
+    x_{0} = 1, x_{1} = 1. \quad y = A(1 + 1 - 1.5) = A(0.5) = 1
+    \]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
